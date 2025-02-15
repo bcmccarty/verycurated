@@ -42,6 +42,9 @@ export default {
           800: "#212529",
         },
       },
+      fontFamily: {
+        sans: ['Arial Narrow', 'Arial', 'Heiti SC', 'SimHei', 'sans-serif'],
+      },
       animation: {
         "fade-in": "fadeIn 0.5s ease-in-out",
         "slide-up": "slideUp 0.5s ease-out",

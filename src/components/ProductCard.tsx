@@ -23,7 +23,7 @@ const ProductCard = ({ product }: ProductCardProps) => {
         )}
       </div>
       <div className="p-4">
-        <h3 className="font-semibold text-lg mb-4 text-center line-clamp-1 font-['Heiti_SC']">{product.title}</h3>
+        <h3 className="font-semibold text-lg mb-4 text-center line-clamp-1">{product.title}</h3>
         <p className="text-neutral-500 text-sm mb-4 line-clamp-2 font-['Arial']">
           {product.description}
         </p>
@@ -32,7 +32,7 @@ const ProductCard = ({ product }: ProductCardProps) => {
             href={product.affiliateLink}
             target="_blank"
             rel="noopener noreferrer"
-            className="inline-flex items-center gap-2 px-6 py-2 bg-[#111111] text-white rounded-[4px] hover:bg-[#222222] transition-colors font-['Heiti_SC']"
+            className="inline-flex items-center gap-2 px-6 py-2 bg-[#111111] text-white rounded-[4px] hover:bg-[#222222] transition-colors font-['Heiti_SC'] text-sm"
           >
             CHECK IT OUT <ExternalLink className="w-4 h-4" />
           </a>

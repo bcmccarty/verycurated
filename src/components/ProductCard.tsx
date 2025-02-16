@@ -1,6 +1,5 @@
 
 import { Product } from "@/lib/types";
-import { ExternalLink } from "lucide-react";
 
 interface ProductCardProps {
   product: Product;
@@ -34,7 +33,7 @@ const ProductCard = ({ product }: ProductCardProps) => {
             rel="noopener noreferrer"
             className="inline-flex items-center gap-2 px-6 py-2 bg-[#111111] text-white rounded-[4px] hover:bg-[#222222] transition-colors font-['Heiti_SC'] text-sm"
           >
-            CHECK IT OUT <ExternalLink className="w-4 h-4" />
+            CHECK IT OUT
           </a>
         </div>
       </div>

@@ -124,7 +124,7 @@ const ProductGrid = ({ selectedCategory }: ProductGridProps) => {
   };
 
   return (
-    <div className="max-w-7xl mx-auto px-0.5 sm:px-1 lg:px-2 py-12">
+    <div className="max-w-7xl mx-auto px-0 sm:px-0.5 lg:px-1 py-12">
       {error && (
         <div className="text-red-500 text-center mb-4">
           {error}

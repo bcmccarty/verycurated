@@ -19,7 +19,7 @@ const FeaturedCard = ({ title, imageUrl, href }: FeaturedCardProps) => {
       </div>
       <div className="absolute top-4 left-4 right-4 flex justify-between items-center text-white">
         <h3 className="text-xl font-semibold">{title}</h3>
-        <span className="text-2xl transform transition-transform duration-300 group-hover:translate-x-2">→</span>
+        <span className="text-2xl">→</span>
       </div>
     </a>
   );

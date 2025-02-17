@@ -21,7 +21,7 @@ const ProductCard = ({ product }: ProductCardProps) => {
           </span>
         )}
       </div>
-      <div className="p-4 px-[18px] bg-gray-100 my-0 mx-0 rounded-sm">
+      <div className="p-4 pt-4 pb-6 px-[18px] bg-gray-100 my-0 mx-0 rounded-sm">
         <h3 className="font-semibold text-lg mb-4 text-center line-clamp-1">{product.title}</h3>
         <p className="text-neutral-500 text-sm mb-3 line-clamp-4 font-['Arial']">
           {product.description}

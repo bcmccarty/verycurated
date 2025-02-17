@@ -8,7 +8,7 @@ import LoadingSpinner from "./LoadingSpinner";
 const mockProducts: Product[] = Array.from({ length: 12 }, (_, i) => ({
   id: `${i + 1}`,
   title: `Amazing Product ${i + 1}`,
-  description: "This innovative product combines cutting-edge technology with practical everyday use. Perfect for both home and office, it offers exceptional value while solving common problems. With its sleek design and robust functionality, it's garnered rave reviews from satisfied customers worldwide. Made from premium materials, it's built to last and comes with a satisfaction guarantee.",
+  description: "This innovative product combines cutting-edge technology with practical everyday use, revolutionizing how you approach daily tasks. Perfect for both home and office environments, it offers exceptional value while solving common problems that you encounter every day. With its sleek design and robust functionality, it's garnered rave reviews from satisfied customers worldwide and continues to exceed expectations. Made from premium materials and crafted with meticulous attention to detail, it's built to last and comes with a comprehensive satisfaction guarantee. The intuitive interface and versatile applications make it an essential addition to any modern lifestyle, while its energy-efficient operation ensures long-term cost savings.",
   price: `$${Math.floor(Math.random() * 900 + 100)}.99`,
   imageUrl: `https://picsum.photos/seed/${i + 1}/400/300`,
   isSponsored: i % 5 === 0,

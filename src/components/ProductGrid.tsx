@@ -124,13 +124,13 @@ const ProductGrid = ({ selectedCategory }: ProductGridProps) => {
   };
 
   return (
-    <div className="max-w-7xl mx-auto px-0 sm:px-0.5 lg:px-1 py-12">
+    <div className="mx-auto px-4 sm:px-6 lg:px-8">
       {error && (
         <div className="text-red-500 text-center mb-4">
           {error}
         </div>
       )}
-      <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-5">
+      <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-5 justify-items-center">
         {renderGridItems()}
       </div>
       <div ref={loaderRef} className="py-4 text-center">

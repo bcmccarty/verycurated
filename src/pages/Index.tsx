@@ -46,11 +46,9 @@ const Index = () => {
         </div>
       </header>
 
-      <main className="container mx-auto max-w-7xl">
+      <main>
         <section className="bg-white py-12">
-          <div className="px-4 sm:px-6 lg:px-8">
-            <ProductGrid selectedCategory={selectedCategory} />
-          </div>
+          <ProductGrid selectedCategory={selectedCategory} />
         </section>
       </main>
 

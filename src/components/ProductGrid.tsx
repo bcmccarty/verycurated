@@ -1,4 +1,3 @@
-
 import { useEffect, useRef, useState } from "react";
 import { Product } from "@/lib/types";
 import ProductCard from "./ProductCard";
@@ -121,13 +120,12 @@ const ProductGrid = ({ selectedCategory }: ProductGridProps) => {
       );
       if (index === 0) {
         items.push(
-          <div key="featured-test" className="w-full max-w-[360px]">
-            <FeaturedCard
-              title="Home & Living"
-              imageUrl="https://images.unsplash.com/photo-1556912172-45b7abe8b7e1?auto=format&fit=crop&q=80"
-              href="/category/home-and-living"
-            />
-          </div>
+          <FeaturedCard
+            key="featured-test"
+            title="Home & Living"
+            imageUrl="https://images.unsplash.com/photo-1556912172-45b7abe8b7e1?auto=format&fit=crop&q=80"
+            href="/category/home-and-living"
+          />
         );
       }
     });

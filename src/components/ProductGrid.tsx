@@ -1,3 +1,4 @@
+
 import { useEffect, useRef, useState } from "react";
 import { Product } from "@/lib/types";
 import ProductCard from "./ProductCard";
@@ -10,7 +11,6 @@ interface ProductGridProps {
 }
 
 const PRODUCTS_PER_PAGE = 12;
-const FEATURED_CARD_INTERVAL = 30;
 const TABLE_NAME = 'products';
 
 const ProductGrid = ({ selectedCategory }: ProductGridProps) => {
@@ -113,7 +113,7 @@ const ProductGrid = ({ selectedCategory }: ProductGridProps) => {
         items.push(
           <FeaturedCard
             key="featured-test"
-            title="Home & Living →"
+            title="Home & Living"
             imageUrl="https://images.unsplash.com/photo-1556912172-45b7abe8b7e1?auto=format&fit=crop&q=80"
             href="/category/home-and-living"
           />

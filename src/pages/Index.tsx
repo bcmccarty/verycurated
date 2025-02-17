@@ -37,7 +37,7 @@ const Index = () => {
       </header>
 
       <main>
-        <section className="bg-neutral-50 py-12">
+        <section className="bg-white py-12">
           <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <ProductGrid />
           </div>

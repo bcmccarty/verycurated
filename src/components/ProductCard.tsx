@@ -8,7 +8,7 @@ interface ProductCardProps {
 const ProductCard = ({ product }: ProductCardProps) => {
   return (
     <div className="group relative bg-neutral-100 rounded-[4px] overflow-hidden shadow-lg transition-all duration-300 hover:shadow-xl animate-fade-in">
-      <div className="relative aspect-[4/3] overflow-hidden">
+      <div className="relative aspect-[4/2.5] overflow-hidden">
         <img
           src={product.imageUrl}
           alt={product.title}
@@ -23,7 +23,7 @@ const ProductCard = ({ product }: ProductCardProps) => {
       </div>
       <div className="p-4">
         <h3 className="font-semibold text-lg mb-4 text-center line-clamp-1">{product.title}</h3>
-        <p className="text-neutral-500 text-sm mb-4 line-clamp-2 font-['Arial']">
+        <p className="text-neutral-500 text-sm mb-6 line-clamp-2 font-['Arial']">
           {product.description}
         </p>
         <div className="flex justify-center">

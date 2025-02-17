@@ -15,7 +15,7 @@ const Index = () => {
 
   return (
     <div className="min-h-screen bg-white">
-      <header className="w-screen" style={{ background: 'linear-gradient(180deg, #355E3B 0%, #2f5534 100%)' }}>
+      <header className="w-full" style={{ background: 'linear-gradient(180deg, #355E3B 0%, #2f5534 100%)' }}>
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-4 text-center">
           <h1 className="text-2xl font-bold text-white">Curated Savings Hub</h1>
           <p className="mt-2 text-neutral-200">Discover amazing products at unbeatable prices</p>
@@ -46,13 +46,13 @@ const Index = () => {
         </div>
       </header>
 
-      <main>
+      <main className="w-full">
         <section className="bg-white py-12">
           <ProductGrid selectedCategory={selectedCategory} />
         </section>
       </main>
 
-      <footer className="w-screen bg-white border-t border-neutral-200 py-3">
+      <footer className="w-full bg-white border-t border-neutral-200 py-3">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="flex justify-center space-x-6 text-sm">
             <a href="/privacy-policy" className="text-neutral-500 hover:text-neutral-800">Privacy Policy</a>

@@ -36,23 +36,6 @@ const Index = () => {
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-4 text-center">
           <h1 className="text-2xl font-bold text-neutral-800">Curated Savings Hub</h1>
           <p className="mt-2 text-neutral-500">Discover amazing products at unbeatable prices</p>
-          
-          {/* Blog Section in Header */}
-          <div className="mt-4 flex gap-4 overflow-x-auto pb-4 justify-center">
-            {[1, 2, 3].map((i) => (
-              <article key={i} className="flex-none w-64 bg-white rounded-lg shadow-md">
-                <img
-                  src={`https://picsum.photos/seed/blog${i}/400/200`}
-                  alt="Blog post"
-                  className="w-full h-32 object-cover rounded-t-lg"
-                />
-                <div className="p-3">
-                  <h3 className="font-semibold text-sm">Amazing Products You Need to See</h3>
-                  <a href="#" className="text-primary text-xs hover:text-primary-dark mt-1 inline-block">Read More →</a>
-                </div>
-              </article>
-            ))}
-          </div>
 
           <nav className="mt-4">
             <ul className="flex space-x-6 overflow-x-auto pb-2 justify-center">
@@ -63,6 +46,11 @@ const Index = () => {
                   </button>
                 </li>
               ))}
+              <li>
+                <a href="/blog" className="text-neutral-600 hover:text-primary whitespace-nowrap transition-colors">
+                  Blog
+                </a>
+              </li>
             </ul>
           </nav>
         </div>
@@ -78,25 +66,16 @@ const Index = () => {
 
       <footer className="sticky bottom-0 bg-white border-t border-neutral-200 py-3">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="flex flex-col items-center gap-4">
-            <div className="flex gap-4">
-              <button 
-                onClick={() => setShowContactForm(true)}
-                className="text-primary hover:text-primary-dark text-sm font-medium"
-              >
-                Contact Us
-              </button>
-              <button 
-                className="text-primary hover:text-primary-dark text-sm font-medium"
-              >
-                Submit a Product
-              </button>
-            </div>
-            <div className="flex justify-center space-x-6 text-sm text-neutral-500">
-              <a href="/privacy-policy" className="hover:text-neutral-700">Privacy Policy</a>
-              <a href="/terms-of-service" className="hover:text-neutral-700">Terms of Service</a>
-              <a href="/affiliate-disclosure" className="hover:text-neutral-700">Affiliate Disclosure</a>
-            </div>
+          <div className="flex justify-center space-x-6 text-sm text-neutral-500">
+            <a href="/privacy-policy" className="hover:text-neutral-700">Privacy Policy</a>
+            <a href="/terms-of-service" className="hover:text-neutral-700">Terms of Service</a>
+            <a href="/affiliate-disclosure" className="hover:text-neutral-700">Affiliate Disclosure</a>
+            <button 
+              onClick={() => setShowContactForm(true)}
+              className="hover:text-neutral-700"
+            >
+              Contact & Submit
+            </button>
           </div>
         </div>
       </footer>

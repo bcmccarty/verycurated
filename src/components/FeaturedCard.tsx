@@ -7,7 +7,7 @@ interface FeaturedCardProps {
 
 const FeaturedCard = ({ title, imageUrl, href }: FeaturedCardProps) => {
   return (
-    <a href={href} className="group relative bg-neutral-100 rounded-[4px] overflow-hidden transition-all duration-300 animate-fade-in w-full aspect-square">
+    <a href={href} className="group relative bg-neutral-100 rounded-[4px] overflow-hidden transition-all duration-300 animate-fade-in w-full h-full">
       <div className="absolute inset-0">
         <img 
           src={imageUrl} 

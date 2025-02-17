@@ -2,6 +2,7 @@
 import { useEffect, useRef, useState } from "react";
 import { Product } from "@/lib/types";
 import ProductCard from "./ProductCard";
+import FeaturedCard from "./FeaturedCard";
 import LoadingSpinner from "./LoadingSpinner";
 import { supabase } from "../lib/supabaseClient";
 
@@ -10,6 +11,7 @@ interface ProductGridProps {
 }
 
 const PRODUCTS_PER_PAGE = 12;
+const FEATURED_CARD_INTERVAL = 30;
 // Try the exact table name from Supabase
 const TABLE_NAME = 'products';
 
@@ -107,6 +109,25 @@ const ProductGrid = ({ selectedCategory }: ProductGridProps) => {
     };
   }, [isLoading, hasMore]);
 
+  const renderGridItems = () => {
+    const items = [];
+    products.forEach((product, index) => {
+      // Add the featured card every FEATURED_CARD_INTERVAL items
+      if (index > 0 && index % FEATURED_CARD_INTERVAL === 0) {
+        items.push(
+          <FeaturedCard
+            key={`featured-${index}`}
+            title="Home & Living →"
+            imageUrl="https://images.unsplash.com/photo-1556912172-45b7abe8b7e1?auto=format&fit=crop&q=80"
+            href="/category/home-and-living"
+          />
+        );
+      }
+      items.push(<ProductCard key={product.id} product={product} />);
+    });
+    return items;
+  };
+
   return (
     <div className="max-w-7xl mx-auto px-1 sm:px-2 lg:px-3 py-12">
       {error && (
@@ -115,9 +136,7 @@ const ProductGrid = ({ selectedCategory }: ProductGridProps) => {
         </div>
       )}
       <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
-        {products.map((product) => (
-          <ProductCard key={product.id} product={product} />
-        ))}
+        {renderGridItems()}
       </div>
       <div ref={loaderRef} className="py-4 text-center">
         {isLoading && <LoadingSpinner />}

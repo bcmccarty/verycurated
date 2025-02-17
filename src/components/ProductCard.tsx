@@ -31,7 +31,7 @@ const ProductCard = ({ product }: ProductCardProps) => {
             href={product.affiliateLink}
             target="_blank"
             rel="noopener noreferrer"
-            className="inline-flex items-center gap-2 px-6 py-2 bg-[#111111] text-white rounded-[4px] hover:bg-[#222222] transition-colors font-['Heiti_SC'] text-sm"
+            className="inline-flex items-center gap-2 px-6 py-2 bg-[#111111] text-white rounded-[4px] hover:bg-[#222222] transition-colors font-['Heiti_SC'] text-sm font-bold"
           >
             CHECK IT OUT
           </a>

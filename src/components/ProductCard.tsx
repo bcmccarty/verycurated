@@ -20,7 +20,7 @@ const ProductCard = ({
           {product.description}
         </p>
         <div className="absolute bottom-6 left-0 right-0 flex justify-center">
-          <a href={product.affiliateLink} target="_blank" rel="noopener noreferrer" className="inline-flex items-center gap-2 px-6 text-white rounded-[4px] hover:opacity-90 transition-opacity font-['Heiti_SC'] text-sm font-bold py-[10px] tracking-[1px]" style={{ background: 'linear-gradient(90deg, hsla(134, 36%, 53%, 1) 0%, hsla(59, 86%, 68%, 1) 100%)' }}>
+          <a href={product.affiliateLink} target="_blank" rel="noopener noreferrer" className="inline-flex items-center gap-2 px-6 text-white rounded-[4px] hover:opacity-90 transition-opacity font-['Heiti_SC'] text-sm font-bold py-[10px] tracking-[1px]" style={{ background: 'linear-gradient(180deg, #355E3B 0%, #2a4b2f 100%)' }}>
             CHECK IT OUT
           </a>
         </div>

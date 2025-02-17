@@ -22,7 +22,7 @@ const FeaturedCard = ({ title, imageUrl, href }: FeaturedCardProps) => {
         <span className="text-2xl">→</span>
       </div>
       <div className="absolute bottom-[29px] left-4 right-4 flex justify-center">
-        <button className="inline-flex items-center gap-2 px-6 bg-white text-[#111111] rounded-[4px] hover:bg-neutral-100 transition-colors font-['Heiti_SC'] text-sm font-bold py-[10px] tracking-[5px]">
+        <button className="inline-flex items-center gap-2 px-6 bg-white text-[#111111] rounded-[4px] hover:bg-neutral-100 transition-colors font-['Heiti_SC'] text-sm font-bold py-[10px] tracking-[1px]">
           EXPLORE ALL
         </button>
       </div>

@@ -20,7 +20,7 @@ const ProductCard = ({
           {product.description}
         </p>
         <div className="flex justify-center">
-          <a href={product.affiliateLink} target="_blank" rel="noopener noreferrer" className="inline-flex items-center gap-2 px-6 bg-[#111111] text-white rounded-[4px] hover:bg-[#222222] transition-colors font-['Heiti_SC'] text-sm font-bold py-[10px] tracking-[5px]">
+          <a href={product.affiliateLink} target="_blank" rel="noopener noreferrer" className="inline-flex items-center gap-2 px-6 bg-[#111111] text-white rounded-[4px] hover:bg-[#222222] transition-colors font-['Heiti_SC'] text-sm font-bold py-[10px] tracking-[1px]">
             CHECK IT OUT
           </a>
         </div>

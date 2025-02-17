@@ -16,7 +16,7 @@ const ProductCard = ({
       <div className="p-4 pt-4 pb-8 px-[18px] bg-gray-100 my-0 mx-0 rounded-sm relative h-[240px]">
         <h3 className="font-semibold text-lg mb-2 text-center line-clamp-1">{product.title}</h3>
         <div className="text-neutral-600 font-bold text-center mb-3">{product.price}</div>
-        <p className="text-neutral-500 text-xs mb-[13px] line-clamp-4 font-['Arial']">
+        <p className="text-neutral-500 text-[13px] mb-[13px] line-clamp-4 font-['Arial']">
           {product.description}
         </p>
         <div className="absolute bottom-6 left-0 right-0 flex justify-center">

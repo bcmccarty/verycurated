@@ -44,7 +44,6 @@ export default {
       },
       fontFamily: {
         sans: ['Arial Narrow', 'Arial', 'Heiti SC', 'SimHei', 'sans-serif'],
-        playfair: ['Playfair Display', 'serif'],
       },
       animation: {
         "fade-in": "fadeIn 0.5s ease-in-out",

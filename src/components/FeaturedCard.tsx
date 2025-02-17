@@ -18,7 +18,7 @@ const FeaturedCard = ({ title, imageUrl, href }: FeaturedCardProps) => {
         <div className="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent" />
       </div>
       <div className="absolute top-4 left-4 right-4 flex justify-between items-center text-white">
-        <h3 className="text-xl font-semibold font-playfair">{title}</h3>
+        <h3 className="text-xl font-semibold">{title}</h3>
         <span className="text-2xl">→</span>
       </div>
       <div className="absolute bottom-[29px] left-4 right-4 flex justify-center">

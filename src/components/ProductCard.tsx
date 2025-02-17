@@ -13,13 +13,13 @@ const ProductCard = ({
             Sponsored
           </span>}
       </div>
-      <div className="p-4 pt-4 pb-6 px-[18px] bg-gray-100 my-0 mx-0 rounded-sm">
+      <div className="p-4 pt-4 pb-6 px-[18px] bg-gray-100 my-0 mx-0 rounded-sm relative h-[240px]">
         <h3 className="font-semibold text-lg mb-2 text-center line-clamp-1">{product.title}</h3>
         <div className="text-neutral-600 font-bold text-center mb-3">{product.price}</div>
         <p className="text-neutral-500 text-sm mb-3 line-clamp-4 font-['Arial']">
           {product.description}
         </p>
-        <div className="flex justify-center">
+        <div className="absolute bottom-6 left-0 right-0 flex justify-center">
           <a href={product.affiliateLink} target="_blank" rel="noopener noreferrer" className="inline-flex items-center gap-2 px-6 bg-[#111111] text-white rounded-[4px] hover:bg-[#222222] transition-colors font-['Heiti_SC'] text-sm font-bold py-[10px] tracking-[1px]">
             CHECK IT OUT
           </a>

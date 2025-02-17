@@ -8,7 +8,7 @@ interface ProductCardProps {
 const ProductCard = ({ product }: ProductCardProps) => {
   return (
     <div className="group relative bg-neutral-100 rounded-[4px] overflow-hidden shadow-lg transition-all duration-300 hover:shadow-xl animate-fade-in">
-      <div className="relative aspect-[4/2.5] overflow-hidden">
+      <div className="relative aspect-[4/5] overflow-hidden">
         <img
           src={product.imageUrl}
           alt={product.title}

@@ -23,7 +23,7 @@ const ProductCard = ({ product }: ProductCardProps) => {
       </div>
       <div className="p-4">
         <h3 className="font-semibold text-lg mb-4 text-center line-clamp-1">{product.title}</h3>
-        <p className="text-neutral-500 text-sm mb-6 line-clamp-2 font-['Arial']">
+        <p className="text-neutral-500 text-sm mb-6 line-clamp-4 font-['Arial']">
           {product.description}
         </p>
         <div className="flex justify-center">

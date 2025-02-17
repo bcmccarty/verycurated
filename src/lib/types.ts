@@ -8,4 +8,5 @@ export interface Product {
   affiliateLink?: string;
   sponsorId?: string;
   isSponsored?: boolean;
+  category: string;
 }

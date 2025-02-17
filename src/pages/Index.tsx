@@ -1,4 +1,5 @@
 
+import { useState } from "react";
 import ProductGrid from "@/components/ProductGrid";
 
 const categories = [
@@ -10,6 +11,8 @@ const categories = [
 ];
 
 const Index = () => {
+  const [selectedCategory, setSelectedCategory] = useState("Most Popular");
+
   return (
     <div className="min-h-screen bg-white">
       <header className="sticky top-0 bg-white shadow-sm z-50">
@@ -21,7 +24,14 @@ const Index = () => {
             <ul className="flex space-x-6 overflow-x-auto pb-2 justify-center">
               {categories.map((category) => (
                 <li key={category}>
-                  <button className="text-neutral-600 hover:text-primary whitespace-nowrap transition-colors">
+                  <button 
+                    className={`whitespace-nowrap transition-colors ${
+                      selectedCategory === category 
+                        ? "text-black font-semibold" 
+                        : "text-neutral-600 hover:text-primary"
+                    }`}
+                    onClick={() => setSelectedCategory(category)}
+                  >
                     {category}
                   </button>
                 </li>
@@ -39,7 +49,7 @@ const Index = () => {
       <main>
         <section className="bg-white py-12">
           <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-            <ProductGrid />
+            <ProductGrid selectedCategory={selectedCategory} />
           </div>
         </section>
       </main>

@@ -4,7 +4,7 @@ import { Product } from "@/lib/types";
 import ProductCard from "./ProductCard";
 import LoadingSpinner from "./LoadingSpinner";
 
-// Mock data - replace with actual API call later
+// Mock data with categories
 const mockProducts: Product[] = Array.from({ length: 12 }, (_, i) => ({
   id: `${i + 1}`,
   title: `Amazing Product ${i + 1}`,
@@ -12,9 +12,17 @@ const mockProducts: Product[] = Array.from({ length: 12 }, (_, i) => ({
   price: `$${Math.floor(Math.random() * 900 + 100)}.99`,
   imageUrl: `https://picsum.photos/seed/${i + 1}/400/300`,
   isSponsored: i % 5 === 0,
+  category: i % 5 === 0 ? "Tech Gadgets" : 
+           i % 4 === 0 ? "Home & Living" :
+           i % 3 === 0 ? "Fashion" :
+           i % 2 === 0 ? "Unique Finds" : "Most Popular"
 }));
 
-const ProductGrid = () => {
+interface ProductGridProps {
+  selectedCategory?: string;
+}
+
+const ProductGrid = ({ selectedCategory }: ProductGridProps) => {
   const [products, setProducts] = useState<Product[]>([]);
   const [isLoading, setIsLoading] = useState(false);
   const [page, setPage] = useState(1);
@@ -24,14 +32,25 @@ const ProductGrid = () => {
     setIsLoading(true);
     // Simulate API call delay
     await new Promise((resolve) => setTimeout(resolve, 1000));
-    setProducts((prev) => [...prev, ...mockProducts]);
+    
+    const newProducts = mockProducts.filter(product => 
+      !selectedCategory || selectedCategory === "Most Popular" || 
+      product.category === selectedCategory
+    );
+    
+    setProducts((prev) => {
+      if (page === 1) return newProducts;
+      return [...prev, ...newProducts];
+    });
     setPage((prev) => prev + 1);
     setIsLoading(false);
   };
 
   useEffect(() => {
+    setPage(1);
+    setProducts([]);
     loadMoreProducts();
-  }, []);
+  }, [selectedCategory]);
 
   useEffect(() => {
     const observer = new IntersectionObserver(

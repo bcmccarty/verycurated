@@ -6,7 +6,7 @@ export interface Product {
   price: string;
   imageUrl: string;
   affiliateLink?: string;
-  sponsorId?: string;
   isSponsored?: boolean;
   category: string;
+  created_at?: string;
 }

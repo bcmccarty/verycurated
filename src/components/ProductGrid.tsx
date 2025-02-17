@@ -3,52 +3,63 @@ import { useEffect, useRef, useState } from "react";
 import { Product } from "@/lib/types";
 import ProductCard from "./ProductCard";
 import LoadingSpinner from "./LoadingSpinner";
-
-// Mock data with categories
-const mockProducts: Product[] = Array.from({ length: 12 }, (_, i) => ({
-  id: `${i + 1}`,
-  title: `Amazing Product ${i + 1}`,
-  description: "This innovative product combines cutting-edge technology with practical everyday use, revolutionizing how you approach daily tasks. Perfect for both home and office environments, it offers exceptional value while solving common problems that you encounter every day. With its sleek design and robust functionality, it's garnered rave reviews from satisfied customers worldwide and continues to exceed expectations. Made from premium materials and crafted with meticulous attention to detail, it's built to last and comes with a comprehensive satisfaction guarantee. The intuitive interface and versatile applications make it an essential addition to any modern lifestyle, while its energy-efficient operation ensures long-term cost savings.",
-  price: `$${Math.floor(Math.random() * 900 + 100)}.99`,
-  imageUrl: `https://picsum.photos/seed/${i + 1}/400/300`,
-  isSponsored: i % 5 === 0,
-  category: i % 5 === 0 ? "Tech Gadgets" : 
-           i % 4 === 0 ? "Home & Living" :
-           i % 3 === 0 ? "Fashion" :
-           i % 2 === 0 ? "Unique Finds" : "Most Popular"
-}));
+import { supabase } from "../lib/supabaseClient";
 
 interface ProductGridProps {
   selectedCategory?: string;
 }
 
+const PRODUCTS_PER_PAGE = 12;
+
 const ProductGrid = ({ selectedCategory }: ProductGridProps) => {
   const [products, setProducts] = useState<Product[]>([]);
   const [isLoading, setIsLoading] = useState(false);
   const [page, setPage] = useState(1);
+  const [hasMore, setHasMore] = useState(true);
   const loaderRef = useRef(null);
 
   const loadMoreProducts = async () => {
+    if (!hasMore || isLoading) return;
+    
     setIsLoading(true);
-    // Simulate API call delay
-    await new Promise((resolve) => setTimeout(resolve, 1000));
-    
-    const newProducts = mockProducts.filter(product => 
-      !selectedCategory || selectedCategory === "Most Popular" || 
-      product.category === selectedCategory
-    );
-    
-    setProducts((prev) => {
-      if (page === 1) return newProducts;
-      return [...prev, ...newProducts];
-    });
-    setPage((prev) => prev + 1);
-    setIsLoading(false);
+    try {
+      let query = supabase
+        .from('products')
+        .select('*')
+        .range((page - 1) * PRODUCTS_PER_PAGE, page * PRODUCTS_PER_PAGE - 1)
+        .order('created_at', { ascending: false });
+
+      if (selectedCategory && selectedCategory !== "Most Popular") {
+        query = query.eq('category', selectedCategory);
+      }
+
+      const { data, error } = await query;
+
+      if (error) {
+        console.error('Error fetching products:', error);
+        return;
+      }
+
+      if (data.length < PRODUCTS_PER_PAGE) {
+        setHasMore(false);
+      }
+
+      setProducts((prev) => {
+        if (page === 1) return data as Product[];
+        return [...prev, ...(data as Product[])];
+      });
+      setPage((prev) => prev + 1);
+    } catch (error) {
+      console.error('Error:', error);
+    } finally {
+      setIsLoading(false);
+    }
   };
 
   useEffect(() => {
     setPage(1);
     setProducts([]);
+    setHasMore(true);
     loadMoreProducts();
   }, [selectedCategory]);
 
@@ -56,7 +67,7 @@ const ProductGrid = ({ selectedCategory }: ProductGridProps) => {
     const observer = new IntersectionObserver(
       (entries) => {
         const first = entries[0];
-        if (first.isIntersecting && !isLoading) {
+        if (first.isIntersecting && !isLoading && hasMore) {
           loadMoreProducts();
         }
       },
@@ -74,16 +85,24 @@ const ProductGrid = ({ selectedCategory }: ProductGridProps) => {
         observer.unobserve(currentLoader);
       }
     };
-  }, [isLoading]);
+  }, [isLoading, hasMore]);
 
   return (
     <div className="max-w-7xl mx-auto px-1 sm:px-2 lg:px-3 py-12">
       <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
         {products.map((product) => (
-          <ProductCard key={`${product.id}-${Math.random()}`} product={product} />
+          <ProductCard key={product.id} product={product} />
         ))}
       </div>
-      <div ref={loaderRef}>{isLoading && <LoadingSpinner />}</div>
+      <div ref={loaderRef} className="py-4 text-center">
+        {isLoading && <LoadingSpinner />}
+        {!hasMore && products.length > 0 && (
+          <p className="text-gray-500">No more products to load</p>
+        )}
+        {!isLoading && products.length === 0 && (
+          <p className="text-gray-500">No products found</p>
+        )}
+      </div>
     </div>
   );
 };

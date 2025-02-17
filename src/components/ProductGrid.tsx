@@ -13,36 +13,6 @@ interface ProductGridProps {
 const PRODUCTS_PER_PAGE = 12;
 const TABLE_NAME = 'products';
 
-// Sample data for demonstration
-const sampleProducts: Product[] = Array(30).fill(null).map((_, index) => ({
-  id: `sample-${index}`,
-  title: `Sample Product ${index + 1}`,
-  description: "Experience innovation with this cutting-edge product. Designed for maximum efficiency and comfort, this item combines premium materials with sophisticated engineering. Perfect for both everyday use and special occasions.",
-  price: `$${Math.floor(Math.random() * 200 + 29)}.99`,
-  imageUrl: `https://images.unsplash.com/photo-${Math.random() > 0.5 ? '1488590528505-98d2b5aba04b' : '1649972904349-6e44c42644a7'}?auto=format&fit=crop&w=800&q=80`,
-  category: ['Tech Gadgets', 'Home & Living', 'Fashion', 'Unique Finds'][Math.floor(Math.random() * 4)],
-  affiliateLink: "#",
-  isSponsored: Math.random() > 0.9
-}));
-
-const featuredCards = [
-  {
-    title: "Home & Living",
-    imageUrl: "https://images.unsplash.com/photo-1556912172-45b7abe8b7e1?auto=format&fit=crop&q=80",
-    href: "/category/home-and-living"
-  },
-  {
-    title: "Tech Essentials",
-    imageUrl: "https://images.unsplash.com/photo-1488590528505-98d2b5aba04b?auto=format&fit=crop&q=80",
-    href: "/category/tech-essentials"
-  },
-  {
-    title: "Fashion Trends",
-    imageUrl: "https://images.unsplash.com/photo-1509316975850-ff9c5deb0cd9?auto=format&fit=crop&q=80",
-    href: "/category/fashion-trends"
-  }
-];
-
 const ProductGrid = ({ selectedCategory }: ProductGridProps) => {
   const [products, setProducts] = useState<Product[]>([]);
   const [isLoading, setIsLoading] = useState(false);
@@ -58,13 +28,43 @@ const ProductGrid = ({ selectedCategory }: ProductGridProps) => {
     setError(null);
     
     try {
-      // For demonstration, we'll use the sample data instead of the actual API call
-      const filteredProducts = selectedCategory && selectedCategory !== "Most Popular"
-        ? sampleProducts.filter(p => p.category === selectedCategory)
-        : sampleProducts;
+      const { data: specificProduct, error: specificError } = await supabase
+        .from(TABLE_NAME)
+        .select('*')
+        .eq('id', 'abd9ad5c-e5b5-4551-a7be-260c2bb1a5b1');
 
-      setProducts(filteredProducts);
-      setHasMore(false);
+      console.log('Table name being used:', TABLE_NAME);
+      console.log('Specific product query:', { specificProduct, specificError });
+
+      let query = supabase
+        .from(TABLE_NAME)
+        .select('*')
+        .range((page - 1) * PRODUCTS_PER_PAGE, page * PRODUCTS_PER_PAGE - 1)
+        .order('created_at', { ascending: false });
+
+      if (selectedCategory && selectedCategory !== "Most Popular") {
+        query = query.eq('category', selectedCategory);
+      }
+
+      const { data, error } = await query;
+
+      console.log('Regular query response:', { data, error });
+
+      if (error) {
+        console.error('Supabase error:', error);
+        setError(error.message);
+        return;
+      }
+
+      if (data && data.length < PRODUCTS_PER_PAGE) {
+        setHasMore(false);
+      }
+
+      setProducts((prev) => {
+        if (page === 1) return data as Product[];
+        return [...prev, ...(data as Product[])];
+      });
+      setPage((prev) => prev + 1);
     } catch (error) {
       console.error('Error loading products:', error);
       setError('Failed to load products. Please try again later.');
@@ -109,27 +109,13 @@ const ProductGrid = ({ selectedCategory }: ProductGridProps) => {
     const items = [];
     products.forEach((product, index) => {
       items.push(<ProductCard key={product.id} product={product} />);
-      
-      // Add featured cards at specific intervals
-      if (index === 5) {
+      if (index === 0) {
         items.push(
           <FeaturedCard
-            key="featured-home"
-            {...featuredCards[0]}
-          />
-        );
-      } else if (index === 14) {
-        items.push(
-          <FeaturedCard
-            key="featured-tech"
-            {...featuredCards[1]}
-          />
-        );
-      } else if (index === 23) {
-        items.push(
-          <FeaturedCard
-            key="featured-fashion"
-            {...featuredCards[2]}
+            key="featured-test"
+            title="Home & Living"
+            imageUrl="https://images.unsplash.com/photo-1556912172-45b7abe8b7e1?auto=format&fit=crop&q=80"
+            href="/category/home-and-living"
           />
         );
       }

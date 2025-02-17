@@ -1,3 +1,4 @@
+
 import { useEffect, useRef, useState } from "react";
 import { Product } from "@/lib/types";
 import ProductCard from "./ProductCard";
@@ -9,7 +10,8 @@ interface ProductGridProps {
 }
 
 const PRODUCTS_PER_PAGE = 12;
-const TABLE_NAME = 'Product List Table';
+// Try the exact table name from Supabase
+const TABLE_NAME = 'products';
 
 const ProductGrid = ({ selectedCategory }: ProductGridProps) => {
   const [products, setProducts] = useState<Product[]>([]);
@@ -30,9 +32,9 @@ const ProductGrid = ({ selectedCategory }: ProductGridProps) => {
       const { data: specificProduct, error: specificError } = await supabase
         .from(TABLE_NAME)
         .select('*')
-        .eq('id', 'abd9ad5c-e5b5-4551-a7be-260c2bb1a5b1')
-        .single();
+        .eq('id', 'abd9ad5c-e5b5-4551-a7be-260c2bb1a5b1');
 
+      console.log('Table name being used:', TABLE_NAME);
       console.log('Specific product query:', { specificProduct, specificError });
 
       // Then proceed with the regular query

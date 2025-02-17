@@ -10,6 +10,7 @@ interface ProductGridProps {
 }
 
 const PRODUCTS_PER_PAGE = 12;
+const TABLE_NAME = 'Product List Table';
 
 const ProductGrid = ({ selectedCategory }: ProductGridProps) => {
   const [products, setProducts] = useState<Product[]>([]);
@@ -28,7 +29,7 @@ const ProductGrid = ({ selectedCategory }: ProductGridProps) => {
     try {
       // Test the connection first
       const { data: testConnection, error: connectionError } = await supabase
-        .from('products')
+        .from(TABLE_NAME)
         .select('count')
         .single();
 
@@ -41,7 +42,7 @@ const ProductGrid = ({ selectedCategory }: ProductGridProps) => {
 
       // If connection works, proceed with the actual query
       let query = supabase
-        .from('products')
+        .from(TABLE_NAME)
         .select('*')
         .range((page - 1) * PRODUCTS_PER_PAGE, page * PRODUCTS_PER_PAGE - 1)
         .order('created_at', { ascending: false });

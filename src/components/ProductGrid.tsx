@@ -1,4 +1,3 @@
-
 import { useEffect, useRef, useState } from "react";
 import { Product } from "@/lib/types";
 import ProductCard from "./ProductCard";
@@ -136,10 +135,8 @@ const ProductGrid = ({ selectedCategory }: ProductGridProps) => {
           {error}
         </div>
       )}
-      <div className="max-w-screen-xl mx-auto">
-        <div className="grid grid-cols-3 gap-8 place-items-center">
-          {renderGridItems()}
-        </div>
+      <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8 max-w-6xl mx-auto">
+        {renderGridItems()}
       </div>
       <div ref={loaderRef} className="py-4 text-center">
         {isLoading && <LoadingSpinner />}

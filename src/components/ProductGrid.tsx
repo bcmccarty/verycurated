@@ -26,12 +26,20 @@ const ProductGrid = ({ selectedCategory }: ProductGridProps) => {
     setError(null);
     
     try {
-      console.log('Fetching products:', {
-        page,
-        category: selectedCategory,
-        range: [(page - 1) * PRODUCTS_PER_PAGE, page * PRODUCTS_PER_PAGE - 1]
-      });
+      // Test the connection first
+      const { data: testConnection, error: connectionError } = await supabase
+        .from('products')
+        .select('count')
+        .single();
 
+      console.log('Testing connection:', { testConnection, connectionError });
+
+      if (connectionError) {
+        setError('Connection error: ' + connectionError.message);
+        return;
+      }
+
+      // If connection works, proceed with the actual query
       let query = supabase
         .from('products')
         .select('*')
@@ -52,7 +60,7 @@ const ProductGrid = ({ selectedCategory }: ProductGridProps) => {
         return;
       }
 
-      if (data.length < PRODUCTS_PER_PAGE) {
+      if (data && data.length < PRODUCTS_PER_PAGE) {
         setHasMore(false);
       }
 

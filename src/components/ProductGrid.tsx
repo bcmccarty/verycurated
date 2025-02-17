@@ -1,4 +1,3 @@
-
 import { useEffect, useRef, useState } from "react";
 import { Product } from "@/lib/types";
 import ProductCard from "./ProductCard";
@@ -10,8 +9,7 @@ interface ProductGridProps {
 }
 
 const PRODUCTS_PER_PAGE = 12;
-// Using double quotes for table name with spaces
-const TABLE_NAME = '"Product List Table"';
+const TABLE_NAME = 'Product List Table';
 
 const ProductGrid = ({ selectedCategory }: ProductGridProps) => {
   const [products, setProducts] = useState<Product[]>([]);
@@ -28,22 +26,18 @@ const ProductGrid = ({ selectedCategory }: ProductGridProps) => {
     setError(null);
     
     try {
-      // Test the connection first
-      const { data: testConnection, error: connectionError } = await supabase
-        .from('Product List Table') // Remove quotes for the API call
-        .select('count')
+      // Query the specific product first to verify data access
+      const { data: specificProduct, error: specificError } = await supabase
+        .from(TABLE_NAME)
+        .select('*')
+        .eq('id', 'abd9ad5c-e5b5-4551-a7be-260c2bb1a5b1')
         .single();
 
-      console.log('Testing connection:', { testConnection, connectionError });
+      console.log('Specific product query:', { specificProduct, specificError });
 
-      if (connectionError) {
-        setError('Connection error: ' + connectionError.message);
-        return;
-      }
-
-      // If connection works, proceed with the actual query
+      // Then proceed with the regular query
       let query = supabase
-        .from('Product List Table') // Remove quotes for the API call
+        .from(TABLE_NAME)
         .select('*')
         .range((page - 1) * PRODUCTS_PER_PAGE, page * PRODUCTS_PER_PAGE - 1)
         .order('created_at', { ascending: false });
@@ -52,14 +46,9 @@ const ProductGrid = ({ selectedCategory }: ProductGridProps) => {
         query = query.eq('category', selectedCategory);
       }
 
-      const { data, error, count } = await query;
+      const { data, error } = await query;
 
-      console.log('Query details:', {
-        category: selectedCategory,
-        page,
-        range: [(page - 1) * PRODUCTS_PER_PAGE, page * PRODUCTS_PER_PAGE - 1]
-      });
-      console.log('Supabase response:', { data, error, count });
+      console.log('Regular query response:', { data, error });
 
       if (error) {
         console.error('Supabase error:', error);

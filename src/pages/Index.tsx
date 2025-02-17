@@ -2,11 +2,12 @@
 import ProductGrid from "@/components/ProductGrid";
 import { useState } from "react";
 import {
-  DropdownMenu,
-  DropdownMenuContent,
-  DropdownMenuItem,
-  DropdownMenuTrigger,
-} from "@/components/ui/dropdown-menu";
+  Select,
+  SelectContent,
+  SelectItem,
+  SelectTrigger,
+  SelectValue,
+} from "@/components/ui/select";
 import { Input } from "@/components/ui/input";
 import { Textarea } from "@/components/ui/textarea";
 
@@ -106,21 +107,21 @@ const Index = () => {
             <form className="space-y-4">
               <div>
                 <label className="block text-sm font-medium mb-1">Reason for Contact</label>
-                <DropdownMenu>
-                  <DropdownMenuTrigger className="w-full px-3 py-2 text-left border rounded-md">
-                    {inquiryReason}
-                  </DropdownMenuTrigger>
-                  <DropdownMenuContent>
+                <Select
+                  value={inquiryReason}
+                  onValueChange={setInquiryReason}
+                >
+                  <SelectTrigger className="w-full">
+                    <SelectValue>{inquiryReason}</SelectValue>
+                  </SelectTrigger>
+                  <SelectContent>
                     {inquiryReasons.map((reason) => (
-                      <DropdownMenuItem 
-                        key={reason}
-                        onClick={() => setInquiryReason(reason)}
-                      >
+                      <SelectItem key={reason} value={reason}>
                         {reason}
-                      </DropdownMenuItem>
+                      </SelectItem>
                     ))}
-                  </DropdownMenuContent>
-                </DropdownMenu>
+                  </SelectContent>
+                </Select>
               </div>
 
               <div>

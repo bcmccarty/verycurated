@@ -15,7 +15,7 @@ const FeaturedCard = ({ title, imageUrl, href }: FeaturedCardProps) => {
           className="object-cover w-full h-full transform transition-transform duration-300 group-hover:scale-105" 
           loading="lazy"
         />
-        <div className="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent" />
+        <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-black/40" />
       </div>
       <div className="absolute top-4 left-4 right-4 flex justify-between items-center text-white">
         <h3 className="text-xl font-semibold">{title}</h3>

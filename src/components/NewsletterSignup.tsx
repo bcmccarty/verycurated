@@ -82,7 +82,7 @@ export function NewsletterSignup() {
               />
               <Button 
                 type="submit" 
-                className="w-full bg-[#355E3B] hover:bg-[#2f5534] text-white uppercase text-sm font-medium tracking-wide h-10"
+                className="w-full bg-[#355E3B] hover:bg-[#2f5534] text-white uppercase text-sm font-medium tracking-[1px] h-10"
               >
                 Subscribe Now
               </Button>

@@ -19,8 +19,8 @@ const ProductCard = ({
         <p className="text-neutral-500 text-sm mb-10 line-clamp-4 font-['Arial']">
           {product.description}
         </p>
-        <div className="absolute bottom-8 left-0 right-0 flex justify-center">
-          <a href={product.affiliateLink} target="_blank" rel="noopener noreferrer" className="inline-flex items-center gap-2 px-6 bg-[#111111] text-white rounded-[4px] hover:bg-[#222222] transition-colors font-['Heiti_SC'] text-sm font-bold py-[10px] tracking-[1px] mt-[5px]">
+        <div className="absolute bottom-3 left-0 right-0 flex justify-center">
+          <a href={product.affiliateLink} target="_blank" rel="noopener noreferrer" className="inline-flex items-center gap-2 px-6 bg-[#111111] text-white rounded-[4px] hover:bg-[#222222] transition-colors font-['Heiti_SC'] text-sm font-bold py-[10px] tracking-[1px]">
             CHECK IT OUT
           </a>
         </div>

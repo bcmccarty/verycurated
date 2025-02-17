@@ -28,7 +28,7 @@ const Index = () => {
                     className={`whitespace-nowrap transition-colors ${
                       selectedCategory === category 
                         ? "text-black font-semibold" 
-                        : "text-neutral-600 hover:text-primary"
+                        : "text-neutral-600 hover:text-[#C04000]"
                     }`}
                     onClick={() => setSelectedCategory(category)}
                   >
@@ -37,7 +37,7 @@ const Index = () => {
                 </li>
               ))}
               <li>
-                <a href="/blog" className="text-neutral-600 hover:text-primary whitespace-nowrap transition-colors">
+                <a href="/blog" className="text-neutral-600 hover:text-[#C04000] whitespace-nowrap transition-colors">
                   Blog
                 </a>
               </li>
@@ -57,10 +57,10 @@ const Index = () => {
       <footer className="sticky bottom-0 bg-white border-t border-neutral-200 py-3">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="flex justify-center space-x-6 text-sm text-neutral-500">
-            <a href="/privacy-policy" className="hover:text-neutral-700">Privacy Policy</a>
-            <a href="/terms-of-service" className="hover:text-neutral-700">Terms of Service</a>
-            <a href="/affiliate-disclosure" className="hover:text-neutral-700">Affiliate Disclosure</a>
-            <a href="/contact" className="hover:text-neutral-700">Contact & Submit</a>
+            <a href="/privacy-policy" className="hover:text-[#C04000]">Privacy Policy</a>
+            <a href="/terms-of-service" className="hover:text-[#C04000]">Terms of Service</a>
+            <a href="/affiliate-disclosure" className="hover:text-[#C04000]">Affiliate Disclosure</a>
+            <a href="/contact" className="hover:text-[#C04000]">Contact & Submit</a>
           </div>
         </div>
       </footer>

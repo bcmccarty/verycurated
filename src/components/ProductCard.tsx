@@ -1,25 +1,16 @@
-
 import { Product } from "@/lib/types";
-
 interface ProductCardProps {
   product: Product;
 }
-
-const ProductCard = ({ product }: ProductCardProps) => {
-  return (
-    <div className="group relative bg-neutral-100 rounded-[4px] overflow-hidden transition-all duration-300 animate-fade-in w-full">
+const ProductCard = ({
+  product
+}: ProductCardProps) => {
+  return <div className="group relative bg-neutral-100 rounded-[4px] overflow-hidden transition-all duration-300 animate-fade-in w-full">
       <div className="relative aspect-square overflow-hidden">
-        <img
-          src={product.imageUrl}
-          alt={product.title}
-          className="object-cover w-full h-full transform transition-transform duration-300 group-hover:scale-105"
-          loading="lazy"
-        />
-        {product.isSponsored && (
-          <span className="absolute top-2 right-2 bg-black/70 text-white px-2 py-1 text-xs rounded-[4px]">
+        <img src={product.imageUrl} alt={product.title} className="object-cover w-full h-full transform transition-transform duration-300 group-hover:scale-105" loading="lazy" />
+        {product.isSponsored && <span className="absolute top-2 right-2 bg-black/70 text-white px-2 py-1 text-xs rounded-[4px]">
             Sponsored
-          </span>
-        )}
+          </span>}
       </div>
       <div className="p-4 px-[18px] bg-gray-100 my-0 mx-0 rounded-sm">
         <h3 className="font-semibold text-lg mb-4 text-center line-clamp-1">{product.title}</h3>
@@ -27,18 +18,11 @@ const ProductCard = ({ product }: ProductCardProps) => {
           {product.description}
         </p>
         <div className="flex justify-center">
-          <a
-            href={product.affiliateLink}
-            target="_blank"
-            rel="noopener noreferrer"
-            className="inline-flex items-center gap-2 px-6 py-2 bg-[#111111] text-white rounded-[4px] hover:bg-[#222222] transition-colors font-['Heiti_SC'] text-sm"
-          >
+          <a href={product.affiliateLink} target="_blank" rel="noopener noreferrer" className="inline-flex items-center gap-2 bg-[#111111] text-white hover:bg-[#222222] transition-colors font-['Heiti_SC'] text-sm py-[10px] px-[30px] my-[10px] rounded-sm">
             CHECK IT OUT
           </a>
         </div>
       </div>
-    </div>
-  );
+    </div>;
 };
-
 export default ProductCard;

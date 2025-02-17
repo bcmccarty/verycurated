@@ -10,7 +10,8 @@ interface ProductGridProps {
 }
 
 const PRODUCTS_PER_PAGE = 12;
-const TABLE_NAME = 'Product List Table';
+// Using double quotes for table name with spaces
+const TABLE_NAME = '"Product List Table"';
 
 const ProductGrid = ({ selectedCategory }: ProductGridProps) => {
   const [products, setProducts] = useState<Product[]>([]);
@@ -29,7 +30,7 @@ const ProductGrid = ({ selectedCategory }: ProductGridProps) => {
     try {
       // Test the connection first
       const { data: testConnection, error: connectionError } = await supabase
-        .from(TABLE_NAME)
+        .from('Product List Table') // Remove quotes for the API call
         .select('count')
         .single();
 
@@ -42,7 +43,7 @@ const ProductGrid = ({ selectedCategory }: ProductGridProps) => {
 
       // If connection works, proceed with the actual query
       let query = supabase
-        .from(TABLE_NAME)
+        .from('Product List Table') // Remove quotes for the API call
         .select('*')
         .range((page - 1) * PRODUCTS_PER_PAGE, page * PRODUCTS_PER_PAGE - 1)
         .order('created_at', { ascending: false });
@@ -51,9 +52,14 @@ const ProductGrid = ({ selectedCategory }: ProductGridProps) => {
         query = query.eq('category', selectedCategory);
       }
 
-      const { data, error } = await query;
+      const { data, error, count } = await query;
 
-      console.log('Supabase response:', { data, error });
+      console.log('Query details:', {
+        category: selectedCategory,
+        page,
+        range: [(page - 1) * PRODUCTS_PER_PAGE, page * PRODUCTS_PER_PAGE - 1]
+      });
+      console.log('Supabase response:', { data, error, count });
 
       if (error) {
         console.error('Supabase error:', error);

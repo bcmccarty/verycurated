@@ -16,13 +16,22 @@ const ProductGrid = ({ selectedCategory }: ProductGridProps) => {
   const [isLoading, setIsLoading] = useState(false);
   const [page, setPage] = useState(1);
   const [hasMore, setHasMore] = useState(true);
+  const [error, setError] = useState<string | null>(null);
   const loaderRef = useRef(null);
 
   const loadMoreProducts = async () => {
     if (!hasMore || isLoading) return;
     
     setIsLoading(true);
+    setError(null);
+    
     try {
+      console.log('Fetching products:', {
+        page,
+        category: selectedCategory,
+        range: [(page - 1) * PRODUCTS_PER_PAGE, page * PRODUCTS_PER_PAGE - 1]
+      });
+
       let query = supabase
         .from('products')
         .select('*')
@@ -35,8 +44,11 @@ const ProductGrid = ({ selectedCategory }: ProductGridProps) => {
 
       const { data, error } = await query;
 
+      console.log('Supabase response:', { data, error });
+
       if (error) {
-        console.error('Error fetching products:', error);
+        console.error('Supabase error:', error);
+        setError(error.message);
         return;
       }
 
@@ -50,7 +62,8 @@ const ProductGrid = ({ selectedCategory }: ProductGridProps) => {
       });
       setPage((prev) => prev + 1);
     } catch (error) {
-      console.error('Error:', error);
+      console.error('Error loading products:', error);
+      setError('Failed to load products. Please try again later.');
     } finally {
       setIsLoading(false);
     }
@@ -60,6 +73,7 @@ const ProductGrid = ({ selectedCategory }: ProductGridProps) => {
     setPage(1);
     setProducts([]);
     setHasMore(true);
+    setError(null);
     loadMoreProducts();
   }, [selectedCategory]);
 
@@ -89,6 +103,11 @@ const ProductGrid = ({ selectedCategory }: ProductGridProps) => {
 
   return (
     <div className="max-w-7xl mx-auto px-1 sm:px-2 lg:px-3 py-12">
+      {error && (
+        <div className="text-red-500 text-center mb-4">
+          {error}
+        </div>
+      )}
       <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
         {products.map((product) => (
           <ProductCard key={product.id} product={product} />
@@ -99,7 +118,7 @@ const ProductGrid = ({ selectedCategory }: ProductGridProps) => {
         {!hasMore && products.length > 0 && (
           <p className="text-gray-500">No more products to load</p>
         )}
-        {!isLoading && products.length === 0 && (
+        {!isLoading && products.length === 0 && !error && (
           <p className="text-gray-500">No products found</p>
         )}
       </div>

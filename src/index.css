@@ -1,3 +1,4 @@
+
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
@@ -93,9 +94,19 @@
 @layer base {
   * {
     @apply border-border;
+    margin: 0;
+    padding: 0;
   }
 
   body {
     @apply bg-background text-foreground;
+    margin: 0;
+    padding: 0;
+  }
+
+  #root {
+    margin: 0;
+    padding: 0;
+    width: 100%;
   }
 }

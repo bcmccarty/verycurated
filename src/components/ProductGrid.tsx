@@ -114,15 +114,20 @@ const ProductGrid = ({ selectedCategory }: ProductGridProps) => {
   const renderGridItems = () => {
     const items = [];
     products.forEach((product, index) => {
-      items.push(<ProductCard key={product.id} product={product} />);
+      items.push(
+        <div key={product.id} className="w-full max-w-[360px]">
+          <ProductCard product={product} />
+        </div>
+      );
       if (index === 0) {
         items.push(
-          <FeaturedCard
-            key="featured-test"
-            title="Home & Living"
-            imageUrl="https://images.unsplash.com/photo-1556912172-45b7abe8b7e1?auto=format&fit=crop&q=80"
-            href="/category/home-and-living"
-          />
+          <div key="featured-test" className="w-full max-w-[360px]">
+            <FeaturedCard
+              title="Home & Living"
+              imageUrl="https://images.unsplash.com/photo-1556912172-45b7abe8b7e1?auto=format&fit=crop&q=80"
+              href="/category/home-and-living"
+            />
+          </div>
         );
       }
     });
@@ -130,13 +135,13 @@ const ProductGrid = ({ selectedCategory }: ProductGridProps) => {
   };
 
   return (
-    <div className="w-full max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+    <div className="w-full max-w-[1200px] mx-auto px-4 sm:px-6 lg:px-8">
       {error && (
         <div className="text-red-500 text-center mb-4">
           {error}
         </div>
       )}
-      <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8 justify-items-center">
+      <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-x-8 gap-y-8 justify-items-center">
         {renderGridItems()}
       </div>
       <div ref={loaderRef} className="py-4 text-center">

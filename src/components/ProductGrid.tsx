@@ -56,15 +56,21 @@ const ProductGrid = ({ selectedCategory }: ProductGridProps) => {
         return;
       }
 
-      if (data && data.length < PRODUCTS_PER_PAGE) {
-        setHasMore(false);
+      // Create dummy data based on the first product
+      let dummyData = [];
+      if (data && data.length > 0) {
+        const firstProduct = data[0];
+        for (let i = 0; i < 20; i++) {
+          dummyData.push({
+            ...firstProduct,
+            id: `dummy-${i}`, // Ensure unique IDs
+            title: `${firstProduct.title} ${i + 1}`, // Add number to title to differentiate
+          });
+        }
       }
 
-      setProducts((prev) => {
-        if (page === 1) return data as Product[];
-        return [...prev, ...(data as Product[])];
-      });
-      setPage((prev) => prev + 1);
+      setProducts(dummyData);
+      setHasMore(false); // Disable infinite scroll for testing
     } catch (error) {
       console.error('Error loading products:', error);
       setError('Failed to load products. Please try again later.');

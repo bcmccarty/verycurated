@@ -15,10 +15,13 @@ const FeaturedCard = ({ title, imageUrl, href }: FeaturedCardProps) => {
           className="object-cover w-full h-full transform transition-transform duration-300 group-hover:scale-105" 
           loading="lazy"
         />
-        <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-black/40" />
+        <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/40 to-transparent h-[50%] bottom-0" />
       </div>
-      <div className="absolute top-4 left-4 right-4 flex justify-center items-center">
-        <h3 className="text-xl font-semibold text-white">{title}</h3>
+      <div className="absolute bottom-24 left-4 right-4">
+        <h3 className="text-xl font-semibold text-white text-center mb-2">{title}</h3>
+        <p className="text-neutral-100 text-sm text-center mx-auto max-w-[280px]">
+          Discover our curated collection of premium items at unbeatable prices
+        </p>
       </div>
       <div className="absolute bottom-6 left-0 right-0 flex justify-center">
         <button className="inline-flex items-center gap-2 px-6 bg-white text-[#111111] rounded-[4px] hover:bg-neutral-100 transition-colors font-['Heiti_SC'] text-sm font-bold py-[10px] tracking-[1px]">

@@ -17,13 +17,12 @@ const FeaturedCard = ({ title, imageUrl, href }: FeaturedCardProps) => {
         />
         <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-black/40" />
       </div>
-      <div className="absolute top-4 left-4 right-4 flex justify-between items-center text-white">
-        <h3 className="text-xl font-semibold">{title}</h3>
-        <span className="text-2xl">→</span>
+      <div className="absolute top-4 left-4 right-4 flex justify-center items-center">
+        <h3 className="text-xl font-semibold text-white">{title}</h3>
       </div>
       <div className="absolute bottom-6 left-0 right-0 flex justify-center">
         <button className="inline-flex items-center gap-2 px-6 bg-white text-[#111111] rounded-[4px] hover:bg-neutral-100 transition-colors font-['Heiti_SC'] text-sm font-bold py-[10px] tracking-[1px]">
-          EXPLORE ALL
+          EXPLORE ALL →
         </button>
       </div>
     </a>

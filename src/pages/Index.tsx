@@ -2,6 +2,7 @@
 import { useState } from "react";
 import ProductGrid from "@/components/ProductGrid";
 import { NewsletterSignup } from "@/components/NewsletterSignup";
+import { AdBanner } from "@/components/AdBanner";
 
 const categories = [
   "Most Popular",
@@ -47,6 +48,8 @@ const Index = () => {
           </nav>
         </div>
       </header>
+
+      <AdBanner />
 
       <main className="w-full">
         <section className="bg-white py-12">

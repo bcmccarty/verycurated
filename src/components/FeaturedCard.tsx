@@ -20,7 +20,6 @@ const FeaturedCard = ({ title, imageUrl, href }: FeaturedCardProps) => {
       <div className="absolute bottom-24 left-4 right-4">
         <div className="flex items-center justify-center gap-2 mb-2">
           <h3 className="text-xl font-semibold text-white text-center">{title}</h3>
-          <span className="text-white">→</span>
         </div>
         <p className="text-neutral-100 text-[13px] text-center mx-auto max-w-[280px] font-['Arial']">
           Discover our curated collection of premium items at unbeatable prices

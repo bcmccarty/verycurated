@@ -55,29 +55,20 @@ const ProductGrid = ({ selectedCategory }: ProductGridProps) => {
         return;
       }
 
-      // Create dummy data based on the first product but keep first item if it exists
-      let dummyData = [];
+      let finalProducts = [];
+      
+      // Add all real products first
       if (data && data.length > 0) {
-        // Keep the first real product if it exists
-        dummyData.push(data[0]);
-        
-        // Generate placeholder products
-        for (let i = 1; i < 20; i++) {
-          dummyData.push({
+        finalProducts.push(...data);
+      }
+      
+      // Fill the rest with dummy products if needed
+      const remainingCount = 20 - finalProducts.length;
+      if (remainingCount > 0) {
+        for (let i = 0; i < remainingCount; i++) {
+          finalProducts.push({
             id: `dummy-${i}`,
-            title: `Product ${i + 1}`,
-            description: "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.",
-            price: "$X,XXX.XX",
-            imageUrl: "https://images.unsplash.com/photo-1488590528505-98d2b5aba04b?auto=format&fit=crop&q=80&w=500&h=500",
-            category: selectedCategory || "Most Popular",
-          });
-        }
-      } else {
-        // If no real products exist, generate all placeholders
-        for (let i = 0; i < 20; i++) {
-          dummyData.push({
-            id: `dummy-${i}`,
-            title: `Product ${i + 1}`,
+            title: `Product ${i + finalProducts.length + 1}`,
             description: "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.",
             price: "$X,XXX.XX",
             imageUrl: "https://images.unsplash.com/photo-1488590528505-98d2b5aba04b?auto=format&fit=crop&q=80&w=500&h=500",
@@ -86,7 +77,7 @@ const ProductGrid = ({ selectedCategory }: ProductGridProps) => {
         }
       }
 
-      setProducts(dummyData);
+      setProducts(finalProducts);
       setHasMore(false); // Disable infinite scroll for testing
     } catch (error) {
       console.error('Error loading products:', error);

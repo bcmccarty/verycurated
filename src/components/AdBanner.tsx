@@ -17,7 +17,7 @@ export function AdBanner() {
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div 
           ref={bannerRef}
-          className="w-full h-[90px] flex items-center justify-center bg-neutral-50 border border-neutral-200"
+          className="w-[728px] h-[90px] mx-auto flex items-center justify-center bg-neutral-50 border border-neutral-200"
         >
           {/* Ad will be injected here */}
           <p className="text-neutral-400 text-sm">Advertisement</p>

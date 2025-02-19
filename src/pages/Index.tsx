@@ -3,6 +3,7 @@ import { useState } from "react";
 import ProductGrid from "@/components/ProductGrid";
 import { NewsletterSignup } from "@/components/NewsletterSignup";
 import { AdBanner } from "@/components/AdBanner";
+import BlogShowcase from "@/components/BlogShowcase";
 
 const categories = [
   "Most Popular",
@@ -49,6 +50,8 @@ const Index = () => {
         </div>
       </header>
 
+      <BlogShowcase />
+      
       <AdBanner />
 
       <main className="w-full">

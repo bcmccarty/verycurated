@@ -14,7 +14,7 @@ const articles = [{
   imageUrl: "https://images.unsplash.com/photo-1607082349566-187342175e2f?auto=format&fit=crop&q=80&w=600"
 }];
 const BlogShowcase = () => {
-  return <div className="w-full bg-neutral-50 py-12">
+  return <div className="w-full py-12 bg-white">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex justify-between items-center mb-8">
           

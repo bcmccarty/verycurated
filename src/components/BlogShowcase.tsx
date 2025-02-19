@@ -104,7 +104,7 @@ const BlogShowcase = () => {
   };
 
   return (
-    <section className="py-12">
+    <div className="py-12 border-y border-neutral-200">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="relative group">
           {/* Left Arrow */}
@@ -171,7 +171,7 @@ const BlogShowcase = () => {
           </button>
         </div>
       </div>
-    </section>
+    </div>
   );
 };
 

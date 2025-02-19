@@ -50,11 +50,9 @@ const Index = () => {
         </div>
       </header>
 
-      <BlogShowcase />
-      
-      <AdBanner />
-
       <main className="w-full">
+        <BlogShowcase />
+        <AdBanner />
         <section className="bg-white py-12">
           <ProductGrid selectedCategory={selectedCategory} />
         </section>

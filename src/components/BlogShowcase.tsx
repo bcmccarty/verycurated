@@ -49,11 +49,16 @@ const BlogShowcase = () => {
           <h2 className="text-2xl font-semibold text-neutral-800">Latest Articles</h2>
         </div>
         
-        <div className="flex gap-4 overflow-x-auto pb-4 snap-x snap-mandatory">
+        <div className="flex gap-4 overflow-x-auto pb-4 snap-x snap-mandatory scrollbar-hide touch-pan-x" 
+             style={{ 
+               WebkitOverflowScrolling: 'touch',
+               scrollbarWidth: 'none',
+               msOverflowStyle: 'none'
+             }}>
           {articles.map((article, index) => (
             <div 
               key={index}
-              className="flex-none w-[280px] h-[280px] relative bg-white rounded-lg overflow-hidden shadow-sm hover:shadow-md transition-shadow duration-200 animate-fade-in snap-start"
+              className="flex-none w-[280px] h-[280px] relative bg-white rounded-lg overflow-hidden shadow-sm hover:shadow-md transition-shadow duration-200 animate-fade-in snap-start cursor-pointer"
             >
               <img
                 src={article.imageUrl}

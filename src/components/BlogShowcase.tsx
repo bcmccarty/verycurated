@@ -5,27 +5,19 @@ import { ArrowRight } from "lucide-react";
 const articles = [
   {
     title: "Top Tech Gadgets for 2025",
-    excerpt: "Discover the most innovative tech gadgets that are shaping the future.",
     imageUrl: "https://images.unsplash.com/photo-1526570207772-784d36084510?auto=format&fit=crop&q=80&w=600",
-    category: "Tech"
   },
   {
     title: "Home Living Essentials Guide",
-    excerpt: "Transform your living space with these must-have items.",
     imageUrl: "https://images.unsplash.com/photo-1484154218962-a197022b5858?auto=format&fit=crop&q=80&w=600",
-    category: "Home"
   },
   {
     title: "Fashion Trends This Season",
-    excerpt: "Stay ahead of the curve with these trending styles.",
     imageUrl: "https://images.unsplash.com/photo-1445205170230-053b83016050?auto=format&fit=crop&q=80&w=600",
-    category: "Fashion"
   },
   {
     title: "Smart Shopping Guide",
-    excerpt: "Learn how to find the best deals and make informed purchases.",
     imageUrl: "https://images.unsplash.com/photo-1607082349566-187342175e2f?auto=format&fit=crop&q=80&w=600",
-    category: "Shopping"
   }
 ];
 
@@ -49,27 +41,18 @@ const BlogShowcase = () => {
           {articles.map((article, index) => (
             <div 
               key={index}
-              className="group bg-white rounded-lg overflow-hidden shadow-sm hover:shadow-md transition-shadow duration-200 animate-fade-in"
+              className="group relative bg-white rounded-lg overflow-hidden h-64 shadow-sm hover:shadow-md transition-shadow duration-200 animate-fade-in"
             >
-              <div className="relative h-48 overflow-hidden">
-                <img
-                  src={article.imageUrl}
-                  alt={article.title}
-                  className="w-full h-full object-cover transform group-hover:scale-105 transition-transform duration-200"
-                />
-                <div className="absolute top-3 left-3">
-                  <span className="px-3 py-1 bg-white/90 rounded-full text-xs font-medium text-neutral-700">
-                    {article.category}
-                  </span>
-                </div>
-              </div>
-              <div className="p-4">
-                <h3 className="font-semibold text-lg text-neutral-800 mb-2 group-hover:text-primary-dark transition-colors">
+              <img
+                src={article.imageUrl}
+                alt={article.title}
+                className="w-full h-full object-cover transform group-hover:scale-105 transition-transform duration-200"
+              />
+              <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/50 to-transparent" />
+              <div className="absolute bottom-0 left-0 right-0 p-6">
+                <h3 className="font-semibold text-xl text-white">
                   {article.title}
                 </h3>
-                <p className="text-sm text-neutral-600 line-clamp-2">
-                  {article.excerpt}
-                </p>
               </div>
             </div>
           ))}

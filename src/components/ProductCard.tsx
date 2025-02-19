@@ -6,8 +6,8 @@ interface ProductCardProps {
 const ProductCard = ({
   product
 }: ProductCardProps) => {
-  return <div className="group relative bg-neutral-100 rounded-[4px] overflow-hidden transition-all duration-300 animate-fade-in w-full">
-      <div className="relative aspect-square overflow-hidden">
+  return <div className="group relative bg-gray-100 rounded-[4px] overflow-hidden transition-all duration-300 animate-fade-in w-full">
+      <div className="relative aspect-square overflow-hidden bg-gray-100">
         <img src={product.imageUrl} alt={product.title} className="object-cover w-full h-full transform transition-transform duration-300 group-hover:scale-105" loading="lazy" />
         {product.isSponsored && <span className="absolute top-2 right-2 bg-black/70 text-white px-2 py-1 text-xs rounded-[4px]">
             Sponsored

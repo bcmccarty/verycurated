@@ -45,20 +45,17 @@ const BlogShowcase = () => {
   return (
     <div className="w-full py-12 bg-white">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="flex justify-between items-center mb-8">
-          <h2 className="text-2xl font-semibold text-neutral-800">Latest Articles</h2>
-        </div>
-        
         <div className="flex gap-4 overflow-x-auto pb-4 snap-x snap-mandatory scrollbar-hide touch-pan-x" 
              style={{ 
                WebkitOverflowScrolling: 'touch',
                scrollbarWidth: 'none',
-               msOverflowStyle: 'none'
+               msOverflowStyle: 'none',
+               cursor: 'grab'
              }}>
           {articles.map((article, index) => (
             <div 
               key={index}
-              className="flex-none w-[280px] h-[280px] relative bg-white rounded-lg overflow-hidden shadow-sm hover:shadow-md transition-shadow duration-200 animate-fade-in snap-start cursor-pointer"
+              className="flex-none w-[200px] h-[200px] relative bg-white rounded-lg overflow-hidden shadow-sm hover:shadow-md transition-shadow duration-200 animate-fade-in snap-start cursor-pointer"
             >
               <img
                 src={article.imageUrl}
@@ -67,7 +64,7 @@ const BlogShowcase = () => {
               />
               <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/50 to-transparent" />
               <div className="absolute bottom-0 left-0 right-0 p-6">
-                <h3 className="font-semibold text-xl text-white">
+                <h3 className="font-semibold text-lg text-white">
                   {article.title}
                 </h3>
               </div>
@@ -77,7 +74,7 @@ const BlogShowcase = () => {
           {/* Read More Square */}
           <a 
             href="/blog"
-            className="flex-none w-[280px] h-[280px] bg-neutral-900 rounded-lg flex flex-col items-center justify-center gap-4 hover:bg-neutral-800 transition-colors duration-200 snap-start group"
+            className="flex-none w-[200px] h-[200px] bg-neutral-900 rounded-lg flex flex-col items-center justify-center gap-4 hover:bg-neutral-800 transition-colors duration-200 snap-start group"
           >
             <ArrowRight className="w-8 h-8 text-white group-hover:translate-x-2 transition-transform" />
             <span className="text-xl font-semibold text-white">View All Articles</span>

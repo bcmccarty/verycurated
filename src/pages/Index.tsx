@@ -19,7 +19,13 @@ const Index = () => {
   return (
     <div className="min-h-screen bg-white">
       <NewsletterSignup />
-      <header className="w-full" style={{ background: 'linear-gradient(180deg, #355E3B 0%, #2f5534 100%)' }}>
+      <header 
+        className="w-full bg-cover bg-center"
+        style={{ 
+          backgroundImage: 'url("/lovable-uploads/f6625c2f-7f5b-4fd3-b75f-32c790e2d702.png")',
+          backgroundColor: '#355E3B' // Fallback color
+        }}
+      >
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-4 text-center">
           <h1 className="text-2xl font-bold text-white">Curated Savings Hub</h1>
           <p className="mt-2 text-neutral-200">Discover amazing products at unbeatable prices</p>

@@ -8,7 +8,9 @@ const ProductCard = ({
 }: ProductCardProps) => {
   return <div className="group relative bg-gray-100 rounded-[4px] overflow-hidden transition-all duration-300 animate-fade-in w-full">
       <div className="relative aspect-square overflow-hidden bg-gray-100">
-        <img src={product.imageUrl} alt={product.title} className="object-cover w-full h-full transform transition-transform duration-300 group-hover:scale-105" loading="lazy" />
+        <a href={product.affiliateLink} target="_blank" rel="noopener noreferrer" className="block w-full h-full">
+          <img src={product.imageUrl} alt={product.title} className="object-cover w-full h-full transform transition-transform duration-300 group-hover:scale-105" loading="lazy" />
+        </a>
         {product.isSponsored && <span className="absolute top-2 right-2 bg-black/70 text-white px-2 py-1 text-xs rounded-[4px]">
             Sponsored
           </span>}

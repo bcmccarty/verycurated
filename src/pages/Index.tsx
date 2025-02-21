@@ -47,9 +47,9 @@ const Index = () => {
                 </li>
               ))}
               <li>
-                <a href="/blog" className="text-neutral-200 hover:text-white whitespace-nowrap transition-colors">
+                <button className="text-neutral-200 hover:text-white whitespace-nowrap transition-colors">
                   Blog
-                </a>
+                </button>
               </li>
             </ul>
           </nav>

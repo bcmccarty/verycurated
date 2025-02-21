@@ -6,11 +6,23 @@ interface ProductCardProps {
 const ProductCard = ({
   product
 }: ProductCardProps) => {
-  return <div className="group relative bg-gray-100 rounded-[4px] overflow-hidden transition-all duration-300 animate-fade-in w-full">
-      <div className="relative aspect-square overflow-hidden bg-gray-100">
+  // Don't render link wrapper if there's no affiliate link
+  const renderImage = () => {
+    if (product.affiliateLink) {
+      return (
         <a href={product.affiliateLink} target="_blank" rel="noopener noreferrer" className="block w-full h-full">
           <img src={product.imageUrl} alt={product.title} className="object-cover w-full h-full transform transition-transform duration-300 group-hover:scale-105" loading="lazy" />
         </a>
+      );
+    }
+    return (
+      <img src={product.imageUrl} alt={product.title} className="object-cover w-full h-full" loading="lazy" />
+    );
+  };
+
+  return <div className="group relative bg-gray-100 rounded-[4px] overflow-hidden transition-all duration-300 animate-fade-in w-full">
+      <div className="relative aspect-square overflow-hidden bg-gray-100">
+        {renderImage()}
         {product.isSponsored && <span className="absolute top-2 right-2 bg-black/70 text-white px-2 py-1 text-xs rounded-[4px]">
             Sponsored
           </span>}
@@ -21,11 +33,13 @@ const ProductCard = ({
         <p className="text-neutral-500 text-[13px] mb-[13px] line-clamp-4 font-['Arial']">
           {product.description}
         </p>
-        <div className="absolute bottom-6 left-0 right-0 flex justify-center">
-          <a href={product.affiliateLink} target="_blank" rel="noopener noreferrer" className="inline-flex items-center gap-2 px-6 text-white rounded-[4px] hover:opacity-90 transition-opacity font-['Heiti_SC'] text-sm font-bold py-[10px] tracking-[1px]" style={{ background: 'linear-gradient(180deg, #355E3B 0%, #2f5534 100%)' }}>
-            CHECK IT OUT
-          </a>
-        </div>
+        {product.affiliateLink && (
+          <div className="absolute bottom-6 left-0 right-0 flex justify-center">
+            <a href={product.affiliateLink} target="_blank" rel="noopener noreferrer" className="inline-flex items-center gap-2 px-6 text-white rounded-[4px] hover:opacity-90 transition-opacity font-['Heiti_SC'] text-sm font-bold py-[10px] tracking-[1px]" style={{ background: 'linear-gradient(180deg, #355E3B 0%, #2f5534 100%)' }}>
+              CHECK IT OUT
+            </a>
+          </div>
+        )}
       </div>
     </div>;
 };

@@ -26,7 +26,7 @@ const FeaturedCard = ({ title, imageUrl, href }: FeaturedCardProps) => {
         </p>
       </div>
       <div className="absolute bottom-6 left-0 right-0 flex justify-center">
-        <button className="relative inline-flex items-center justify-center w-[160px] h-[45px] text-[#111111] rounded-[4px] font-['Heiti_SC'] text-sm font-bold tracking-[1px] border-2 border-transparent hover:border-white hover:text-white before:absolute before:inset-0 before:bg-white hover:before:opacity-0 before:transition-opacity before:rounded-[4px]">
+        <button className="relative inline-flex items-center justify-center w-[160px] h-[43px] text-[#111111] rounded-[4px] font-['Heiti_SC'] text-sm font-bold tracking-[1px] border-2 border-transparent hover:border-white hover:text-white before:absolute before:inset-0 before:bg-white hover:before:opacity-0 before:transition-opacity before:rounded-[4px]">
           <span className="relative z-10 whitespace-nowrap">EXPLORE ALL</span>
         </button>
       </div>

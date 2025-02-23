@@ -39,8 +39,11 @@ const ProductCard = ({
               href={product.affiliateLink} 
               target="_blank" 
               rel="noopener noreferrer" 
-              className="inline-flex items-center gap-2 px-8 text-white rounded-full transition-all duration-300 font-['Heiti_SC'] text-sm font-bold py-[10px] tracking-[1px] border-2 border-transparent hover:bg-white hover:border-[#355E3B] hover:text-[#355E3B]" 
-              style={{ background: 'linear-gradient(180deg, #355E3B 0%, #2f5534 100%)' }}
+              className="inline-flex items-center gap-2 px-8 text-white rounded-full transition-all duration-300 font-['Heiti_SC'] text-sm font-bold py-[10px] tracking-[1px] border-2 border-transparent hover:bg-transparent hover:border-[#355E3B] hover:text-[#355E3B]" 
+              style={{ 
+                background: 'linear-gradient(180deg, #355E3B 0%, #2f5534 100%)',
+                '--tw-hover-bg': 'transparent'
+              }}
             >
               CHECK IT OUT
             </a>

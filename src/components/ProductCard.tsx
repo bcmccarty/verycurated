@@ -39,7 +39,7 @@ const ProductCard = ({
               href={product.affiliateLink} 
               target="_blank" 
               rel="noopener noreferrer" 
-              className="relative inline-flex items-center gap-2 px-8 text-white rounded-full transition-all duration-300 font-['Heiti_SC'] text-sm font-bold py-[10px] tracking-[1px] border-2 border-transparent hover:border-[#355E3B] hover:text-[#355E3B] before:absolute before:inset-0 before:bg-gradient-to-b before:from-[#355E3B] before:to-[#2f5534] hover:before:opacity-0 before:transition-opacity before:rounded-full" 
+              className="relative inline-flex items-center gap-2 px-8 text-white rounded-full font-['Heiti_SC'] text-sm font-bold py-[10px] tracking-[1px] border-2 border-transparent hover:border-[#355E3B] hover:text-[#355E3B] before:absolute before:inset-0 before:bg-gradient-to-b before:from-[#355E3B] before:to-[#2f5534] hover:before:opacity-0 before:transition-opacity before:rounded-full w-[160px] h-[41px] justify-center" 
             >
               <span className="relative z-10">CHECK IT OUT</span>
             </a>

@@ -28,14 +28,6 @@ const ProductGrid = ({ selectedCategory }: ProductGridProps) => {
     setError(null);
     
     try {
-      const { data: specificProduct, error: specificError } = await supabase
-        .from(TABLE_NAME)
-        .select('*')
-        .eq('id', 'abd9ad5c-e5b5-4551-a7be-260c2bb1a5b1');
-
-      console.log('Table name being used:', TABLE_NAME);
-      console.log('Specific product query:', { specificProduct, specificError });
-
       let query = supabase
         .from(TABLE_NAME)
         .select('*')
@@ -48,38 +40,28 @@ const ProductGrid = ({ selectedCategory }: ProductGridProps) => {
 
       const { data, error } = await query;
 
-      console.log('Regular query response:', { data, error });
-
       if (error) {
         console.error('Supabase error:', error);
         setError(error.message);
         return;
       }
 
-      let finalProducts = [];
-      
-      // Add all real products first
-      if (data && data.length > 0) {
-        finalProducts.push(...data);
-      }
-      
-      // Fill the rest with dummy products if needed
-      const remainingCount = 20 - finalProducts.length;
-      if (remainingCount > 0) {
-        for (let i = 0; i < remainingCount; i++) {
-          finalProducts.push({
-            id: `dummy-${i}`,
-            title: `Product ${i + finalProducts.length + 1}`,
-            description: "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.",
-            price: "$X,XXX.XX",
-            imageUrl: "https://images.unsplash.com/photo-1488590528505-98d2b5aba04b?auto=format&fit=crop&q=80&w=500&h=500",
-            category: selectedCategory || "Most Popular",
-          });
-        }
+      // If we got fewer items than requested, there are no more to load
+      if (!data || data.length < PRODUCTS_PER_PAGE) {
+        setHasMore(false);
       }
 
-      setProducts(finalProducts);
-      setHasMore(false); // Disable infinite scroll for testing
+      // Append new products to existing ones
+      setProducts(prevProducts => {
+        if (page === 1) {
+          return data || [];
+        }
+        return [...prevProducts, ...(data || [])];
+      });
+
+      // Increment page for next load
+      setPage(prev => prev + 1);
+      
     } catch (error) {
       console.error('Error loading products:', error);
       setError('Failed to load products. Please try again later.');
@@ -104,7 +86,7 @@ const ProductGrid = ({ selectedCategory }: ProductGridProps) => {
           loadMoreProducts();
         }
       },
-      { threshold: 1.0 }
+      { threshold: 0.1 }
     );
 
     const currentLoader = loaderRef.current;

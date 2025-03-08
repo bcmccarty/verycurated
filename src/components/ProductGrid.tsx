@@ -19,7 +19,24 @@ const ProductGrid = ({ selectedCategory }: ProductGridProps) => {
   const [page, setPage] = useState(1);
   const [hasMore, setHasMore] = useState(true);
   const [error, setError] = useState<string | null>(null);
+  const [preloadedImages, setPreloadedImages] = useState<string[]>([]);
   const loaderRef = useRef(null);
+
+  const preloadImages = (urls: string[]) => {
+    const newPreloadedImages: string[] = [];
+    
+    urls.forEach(url => {
+      if (!preloadedImages.includes(url) && url) {
+        const img = new Image();
+        img.src = url;
+        newPreloadedImages.push(url);
+      }
+    });
+    
+    if (newPreloadedImages.length > 0) {
+      setPreloadedImages(prev => [...prev, ...newPreloadedImages]);
+    }
+  };
 
   const loadMoreProducts = async () => {
     if (!hasMore || isLoading) return;
@@ -51,6 +68,12 @@ const ProductGrid = ({ selectedCategory }: ProductGridProps) => {
         setHasMore(false);
       }
 
+      // Preload images from the fetched products
+      if (data && data.length > 0) {
+        const imageUrls = data.map(product => product.imageUrl);
+        preloadImages(imageUrls);
+      }
+
       // Append new products to existing ones
       setProducts(prevProducts => {
         if (page === 1) {
@@ -61,6 +84,25 @@ const ProductGrid = ({ selectedCategory }: ProductGridProps) => {
 
       // Increment page for next load
       setPage(prev => prev + 1);
+      
+      // Preload next batch of images if we have more products
+      if (hasMore && data && data.length === PRODUCTS_PER_PAGE) {
+        const nextQuery = supabase
+          .from(TABLE_NAME)
+          .select('*')
+          .range(page * PRODUCTS_PER_PAGE, (page + 1) * PRODUCTS_PER_PAGE - 1)
+          .order('created_at', { ascending: false });
+          
+        if (selectedCategory && selectedCategory !== "Most Popular") {
+          nextQuery.eq('category', selectedCategory);
+        }
+        
+        const { data: nextData } = await nextQuery;
+        if (nextData && nextData.length > 0) {
+          const nextImageUrls = nextData.map(product => product.imageUrl);
+          preloadImages(nextImageUrls);
+        }
+      }
       
     } catch (error) {
       console.error('Error loading products:', error);
@@ -75,6 +117,7 @@ const ProductGrid = ({ selectedCategory }: ProductGridProps) => {
     setProducts([]);
     setHasMore(true);
     setError(null);
+    setPreloadedImages([]); // Reset preloaded images when category changes
     loadMoreProducts();
   }, [selectedCategory]);
 
@@ -101,6 +144,13 @@ const ProductGrid = ({ selectedCategory }: ProductGridProps) => {
       }
     };
   }, [isLoading, hasMore]);
+
+  // Also preload featured card image
+  useEffect(() => {
+    if (products.length > 0) {
+      preloadImages(["https://images.unsplash.com/photo-1556912172-45b7abe8b7e1?auto=format&fit=crop&q=80"]);
+    }
+  }, [products]);
 
   const renderGridItems = () => {
     const items = [];

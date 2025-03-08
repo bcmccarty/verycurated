@@ -1,4 +1,3 @@
-
 import { useEffect, useRef, useState } from "react";
 import { Product } from "@/lib/types";
 import ProductCard from "./ProductCard";
@@ -10,9 +9,9 @@ interface ProductGridProps {
   selectedCategory?: string;
 }
 
-const PRODUCTS_PER_PAGE = 24; // Increased from 12 to preload more products
+const PRODUCTS_PER_PAGE = 24; // Increased for preloading
 const TABLE_NAME = 'products';
-const VISIBLE_ITEMS_PER_PAGE = 12; // We'll still only show 12 at a time
+const VISIBLE_ITEMS_PER_PAGE = 12; // We'll still only show 12 at a time initially
 
 const ProductGrid = ({ selectedCategory }: ProductGridProps) => {
   const [products, setProducts] = useState<Product[]>([]);
@@ -41,7 +40,6 @@ const ProductGrid = ({ selectedCategory }: ProductGridProps) => {
     }
   };
 
-  // Track scroll position to optimize rendering
   useEffect(() => {
     const handleScroll = () => {
       scrollPosition.current = window.scrollY;
@@ -76,35 +74,32 @@ const ProductGrid = ({ selectedCategory }: ProductGridProps) => {
         return;
       }
 
-      // If we got fewer items than requested, there are no more to load
       if (!data || data.length < PRODUCTS_PER_PAGE) {
         setHasMore(false);
       }
 
-      // Eagerly preload ALL images immediately
       if (data && data.length > 0) {
         const imageUrls = data.map(product => product.imageUrl);
-        // Prioritize preloading first visible batch
         preloadImages(imageUrls.slice(0, VISIBLE_ITEMS_PER_PAGE));
-        // Then preload the rest
         setTimeout(() => preloadImages(imageUrls.slice(VISIBLE_ITEMS_PER_PAGE)), 100);
       }
 
-      // Append new products to existing ones
       setProducts(prevProducts => {
         const newProducts = page === 1 ? data || [] : [...prevProducts, ...(data || [])];
-        
-        // Update visible products
-        const newVisibleProducts = newProducts.slice(0, page * VISIBLE_ITEMS_PER_PAGE);
-        setVisibleProducts(newVisibleProducts);
-        
         return newProducts;
       });
 
-      // Increment page for next load
+      setVisibleProducts(prevVisible => {
+        if (page === 1) {
+          return data || [];
+        } else {
+          const allProducts = [...prevVisible, ...(data || [])];
+          return allProducts.slice(0, Math.min(allProducts.length, page * VISIBLE_ITEMS_PER_PAGE));
+        }
+      });
+
       setPage(prev => prev + 1);
       
-      // Preload next batch of images in advance
       if (hasMore && data && data.length === PRODUCTS_PER_PAGE) {
         const nextQuery = supabase
           .from(TABLE_NAME)
@@ -119,7 +114,6 @@ const ProductGrid = ({ selectedCategory }: ProductGridProps) => {
         const { data: nextData } = await nextQuery;
         if (nextData && nextData.length > 0) {
           const nextImageUrls = nextData.map(product => product.imageUrl);
-          // Add a small delay to not compete with current batch loading
           setTimeout(() => preloadImages(nextImageUrls), 300);
         }
       }
@@ -132,18 +126,16 @@ const ProductGrid = ({ selectedCategory }: ProductGridProps) => {
     }
   };
 
-  // Reset everything when category changes
   useEffect(() => {
     setPage(1);
     setProducts([]);
     setVisibleProducts([]);
     setHasMore(true);
     setError(null);
-    setPreloadedImages([]); // Reset preloaded images when category changes
+    setPreloadedImages([]);
     loadMoreProducts();
   }, [selectedCategory]);
 
-  // Intersection observer for infinite scroll
   useEffect(() => {
     const observer = new IntersectionObserver(
       (entries) => {
@@ -152,7 +144,7 @@ const ProductGrid = ({ selectedCategory }: ProductGridProps) => {
           loadMoreProducts();
         }
       },
-      { threshold: 0.1, rootMargin: "200px" } // Increased rootMargin to trigger earlier
+      { threshold: 0.1, rootMargin: "200px" }
     );
 
     const currentLoader = loaderRef.current;
@@ -168,20 +160,21 @@ const ProductGrid = ({ selectedCategory }: ProductGridProps) => {
     };
   }, [isLoading, hasMore]);
 
-  // Also preload featured card image
   useEffect(() => {
     if (products.length > 0) {
       preloadImages(["https://images.unsplash.com/photo-1556912172-45b7abe8b7e1?auto=format&fit=crop&q=80"]);
     }
   }, [products]);
 
-  // Show more visible products as user scrolls
   useEffect(() => {
     if (products.length > visibleProducts.length) {
+      const minVisible = Math.max(VISIBLE_ITEMS_PER_PAGE, visibleProducts.length);
+      
       const visibleCount = Math.min(
         products.length,
-        Math.ceil((visibleProducts.length + 6) / 6) * 6 // Always show complete rows
+        Math.ceil((minVisible + 6) / 6) * 6
       );
+      
       setVisibleProducts(products.slice(0, visibleCount));
     }
   }, [products, scrollPosition.current]);
@@ -189,14 +182,12 @@ const ProductGrid = ({ selectedCategory }: ProductGridProps) => {
   const renderGridItems = () => {
     const items = [];
     visibleProducts.forEach((product, index) => {
-      // Add product cards
       items.push(
         <div key={product.id} className="w-full max-w-[360px]">
           <ProductCard product={product} />
         </div>
       );
 
-      // Add featured card after first item
       if (index === 0) {
         items.push(
           <FeaturedCard
@@ -208,7 +199,6 @@ const ProductGrid = ({ selectedCategory }: ProductGridProps) => {
         );
       }
 
-      // Add ad space after 8th item (9th position including featured card)
       if (index === 7) {
         items.push(
           <div key="ad-space" className="w-full max-w-[360px] aspect-square">

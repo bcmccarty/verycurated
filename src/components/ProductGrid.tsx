@@ -1,3 +1,4 @@
+
 import { useEffect, useRef, useState } from "react";
 import { Product } from "@/lib/types";
 import ProductCard from "./ProductCard";
@@ -9,9 +10,9 @@ interface ProductGridProps {
   selectedCategory?: string;
 }
 
-const PRODUCTS_PER_PAGE = 24; // Increased for preloading
+const PRODUCTS_PER_PAGE = 24;
 const TABLE_NAME = 'products';
-const VISIBLE_ITEMS_PER_PAGE = 12; // We'll still only show 12 at a time initially
+const VISIBLE_ITEMS_PER_PAGE = 12;
 
 const ProductGrid = ({ selectedCategory }: ProductGridProps) => {
   const [products, setProducts] = useState<Product[]>([]);
@@ -79,27 +80,28 @@ const ProductGrid = ({ selectedCategory }: ProductGridProps) => {
       }
 
       if (data && data.length > 0) {
+        // Preload all images immediately
         const imageUrls = data.map(product => product.imageUrl);
-        preloadImages(imageUrls.slice(0, VISIBLE_ITEMS_PER_PAGE));
-        setTimeout(() => preloadImages(imageUrls.slice(VISIBLE_ITEMS_PER_PAGE)), 100);
+        preloadImages(imageUrls);
       }
 
+      // Always update the full products list correctly
       setProducts(prevProducts => {
-        const newProducts = page === 1 ? data || [] : [...prevProducts, ...(data || [])];
-        return newProducts;
+        return page === 1 ? data || [] : [...prevProducts, ...(data || [])];
       });
 
-      setVisibleProducts(prevVisible => {
-        if (page === 1) {
-          return data || [];
-        } else {
-          const allProducts = [...prevVisible, ...(data || [])];
-          return allProducts.slice(0, Math.min(allProducts.length, page * VISIBLE_ITEMS_PER_PAGE));
-        }
-      });
+      // For the first page, show all products immediately
+      if (page === 1) {
+        setVisibleProducts(data || []);
+      } else {
+        // For subsequent pages, append to visible products
+        setVisibleProducts(prevVisible => [...prevVisible, ...(data || [])]);
+      }
 
+      // Increase the page counter for the next fetch
       setPage(prev => prev + 1);
       
+      // Optionally pre-fetch the next page
       if (hasMore && data && data.length === PRODUCTS_PER_PAGE) {
         const nextQuery = supabase
           .from(TABLE_NAME)
@@ -144,7 +146,7 @@ const ProductGrid = ({ selectedCategory }: ProductGridProps) => {
           loadMoreProducts();
         }
       },
-      { threshold: 0.1, rootMargin: "200px" }
+      { threshold: 0.1, rootMargin: "300px" } // Increased rootMargin
     );
 
     const currentLoader = loaderRef.current;
@@ -166,18 +168,8 @@ const ProductGrid = ({ selectedCategory }: ProductGridProps) => {
     }
   }, [products]);
 
-  useEffect(() => {
-    if (products.length > visibleProducts.length) {
-      const minVisible = Math.max(VISIBLE_ITEMS_PER_PAGE, visibleProducts.length);
-      
-      const visibleCount = Math.min(
-        products.length,
-        Math.ceil((minVisible + 6) / 6) * 6
-      );
-      
-      setVisibleProducts(products.slice(0, visibleCount));
-    }
-  }, [products, scrollPosition.current]);
+  // This effect is no longer needed as we're directly updating visibleProducts in loadMoreProducts
+  // Removing the effect that was causing products to disappear
 
   const renderGridItems = () => {
     const items = [];

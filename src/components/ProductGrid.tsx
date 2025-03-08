@@ -10,17 +10,20 @@ interface ProductGridProps {
   selectedCategory?: string;
 }
 
-const PRODUCTS_PER_PAGE = 12;
+const PRODUCTS_PER_PAGE = 24; // Increased from 12 to preload more products
 const TABLE_NAME = 'products';
+const VISIBLE_ITEMS_PER_PAGE = 12; // We'll still only show 12 at a time
 
 const ProductGrid = ({ selectedCategory }: ProductGridProps) => {
   const [products, setProducts] = useState<Product[]>([]);
+  const [visibleProducts, setVisibleProducts] = useState<Product[]>([]);
   const [isLoading, setIsLoading] = useState(false);
   const [page, setPage] = useState(1);
   const [hasMore, setHasMore] = useState(true);
   const [error, setError] = useState<string | null>(null);
   const [preloadedImages, setPreloadedImages] = useState<string[]>([]);
   const loaderRef = useRef(null);
+  const scrollPosition = useRef(0);
 
   const preloadImages = (urls: string[]) => {
     const newPreloadedImages: string[] = [];
@@ -37,6 +40,16 @@ const ProductGrid = ({ selectedCategory }: ProductGridProps) => {
       setPreloadedImages(prev => [...prev, ...newPreloadedImages]);
     }
   };
+
+  // Track scroll position to optimize rendering
+  useEffect(() => {
+    const handleScroll = () => {
+      scrollPosition.current = window.scrollY;
+    };
+    
+    window.addEventListener('scroll', handleScroll);
+    return () => window.removeEventListener('scroll', handleScroll);
+  }, []);
 
   const loadMoreProducts = async () => {
     if (!hasMore || isLoading) return;
@@ -68,24 +81,30 @@ const ProductGrid = ({ selectedCategory }: ProductGridProps) => {
         setHasMore(false);
       }
 
-      // Preload images from the fetched products
+      // Eagerly preload ALL images immediately
       if (data && data.length > 0) {
         const imageUrls = data.map(product => product.imageUrl);
-        preloadImages(imageUrls);
+        // Prioritize preloading first visible batch
+        preloadImages(imageUrls.slice(0, VISIBLE_ITEMS_PER_PAGE));
+        // Then preload the rest
+        setTimeout(() => preloadImages(imageUrls.slice(VISIBLE_ITEMS_PER_PAGE)), 100);
       }
 
       // Append new products to existing ones
       setProducts(prevProducts => {
-        if (page === 1) {
-          return data || [];
-        }
-        return [...prevProducts, ...(data || [])];
+        const newProducts = page === 1 ? data || [] : [...prevProducts, ...(data || [])];
+        
+        // Update visible products
+        const newVisibleProducts = newProducts.slice(0, page * VISIBLE_ITEMS_PER_PAGE);
+        setVisibleProducts(newVisibleProducts);
+        
+        return newProducts;
       });
 
       // Increment page for next load
       setPage(prev => prev + 1);
       
-      // Preload next batch of images if we have more products
+      // Preload next batch of images in advance
       if (hasMore && data && data.length === PRODUCTS_PER_PAGE) {
         const nextQuery = supabase
           .from(TABLE_NAME)
@@ -100,7 +119,8 @@ const ProductGrid = ({ selectedCategory }: ProductGridProps) => {
         const { data: nextData } = await nextQuery;
         if (nextData && nextData.length > 0) {
           const nextImageUrls = nextData.map(product => product.imageUrl);
-          preloadImages(nextImageUrls);
+          // Add a small delay to not compete with current batch loading
+          setTimeout(() => preloadImages(nextImageUrls), 300);
         }
       }
       
@@ -112,15 +132,18 @@ const ProductGrid = ({ selectedCategory }: ProductGridProps) => {
     }
   };
 
+  // Reset everything when category changes
   useEffect(() => {
     setPage(1);
     setProducts([]);
+    setVisibleProducts([]);
     setHasMore(true);
     setError(null);
     setPreloadedImages([]); // Reset preloaded images when category changes
     loadMoreProducts();
   }, [selectedCategory]);
 
+  // Intersection observer for infinite scroll
   useEffect(() => {
     const observer = new IntersectionObserver(
       (entries) => {
@@ -129,7 +152,7 @@ const ProductGrid = ({ selectedCategory }: ProductGridProps) => {
           loadMoreProducts();
         }
       },
-      { threshold: 0.1 }
+      { threshold: 0.1, rootMargin: "200px" } // Increased rootMargin to trigger earlier
     );
 
     const currentLoader = loaderRef.current;
@@ -152,9 +175,20 @@ const ProductGrid = ({ selectedCategory }: ProductGridProps) => {
     }
   }, [products]);
 
+  // Show more visible products as user scrolls
+  useEffect(() => {
+    if (products.length > visibleProducts.length) {
+      const visibleCount = Math.min(
+        products.length,
+        Math.ceil((visibleProducts.length + 6) / 6) * 6 // Always show complete rows
+      );
+      setVisibleProducts(products.slice(0, visibleCount));
+    }
+  }, [products, scrollPosition.current]);
+
   const renderGridItems = () => {
     const items = [];
-    products.forEach((product, index) => {
+    visibleProducts.forEach((product, index) => {
       // Add product cards
       items.push(
         <div key={product.id} className="w-full max-w-[360px]">

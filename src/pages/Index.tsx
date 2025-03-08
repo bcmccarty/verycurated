@@ -17,7 +17,7 @@ const Index = () => {
   const [selectedCategory, setSelectedCategory] = useState("Most Popular");
 
   return (
-    <div className="min-h-screen bg-white">
+    <div className="min-h-screen bg-white flex flex-col">
       <NewsletterSignup />
       <header 
         className="w-full bg-cover bg-center"
@@ -56,7 +56,7 @@ const Index = () => {
         </div>
       </header>
 
-      <main className="w-full">
+      <main className="w-full flex-grow">
         <BlogShowcase />
         <AdBanner />
         <section className="bg-white py-12">
@@ -64,7 +64,7 @@ const Index = () => {
         </section>
       </main>
 
-      <footer className="w-full bg-white border-t border-neutral-200 py-3">
+      <footer className="w-full bg-white border-t border-neutral-200 py-3 fixed bottom-0 left-0 z-10">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="flex justify-center space-x-6 text-sm">
             <a href="/privacy-policy" className="text-neutral-500 hover:text-neutral-800">Privacy Policy</a>

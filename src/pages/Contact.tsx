@@ -23,7 +23,7 @@ const Contact = () => {
   const [inquiryReason, setInquiryReason] = useState("General Inquiry");
 
   return (
-    <div className="min-h-screen bg-white flex flex-col">
+    <div className="min-h-screen bg-white flex flex-col pb-16">
       <header className="sticky top-0 bg-white shadow-sm z-50">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-4 text-center">
           <Link to="/" className="inline-block">
@@ -87,7 +87,7 @@ const Contact = () => {
         </div>
       </main>
 
-      <footer className="bg-white border-t border-neutral-200 py-3 mt-auto">
+      <footer className="bg-white border-t border-neutral-200 py-3 fixed bottom-0 left-0 w-full z-10">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="flex justify-center space-x-6 text-sm text-neutral-500">
             <Link to="/privacy-policy" className="hover:text-neutral-700">Privacy Policy</Link>

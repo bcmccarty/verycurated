@@ -1,4 +1,3 @@
-
 import { useEffect, useRef, useState } from "react";
 import { Product } from "@/lib/types";
 import ProductCard from "./ProductCard";
@@ -12,7 +11,7 @@ interface ProductGridProps {
 
 const PRODUCTS_PER_PAGE = 24;
 const TABLE_NAME = 'products';
-const VISIBLE_ITEMS_PER_PAGE = 12;
+const VISIBLE_ITEMS_PER_PAGE = 24;
 
 const ProductGrid = ({ selectedCategory }: ProductGridProps) => {
   const [products, setProducts] = useState<Product[]>([]);
@@ -80,28 +79,16 @@ const ProductGrid = ({ selectedCategory }: ProductGridProps) => {
       }
 
       if (data && data.length > 0) {
-        // Preload all images immediately
         const imageUrls = data.map(product => product.imageUrl);
         preloadImages(imageUrls);
       }
 
-      // Always update the full products list correctly
-      setProducts(prevProducts => {
-        return page === 1 ? data || [] : [...prevProducts, ...(data || [])];
-      });
+      const newProducts = page === 1 ? data || [] : [...products, ...(data || [])];
+      setProducts(newProducts);
+      setVisibleProducts(newProducts);
 
-      // For the first page, show all products immediately
-      if (page === 1) {
-        setVisibleProducts(data || []);
-      } else {
-        // For subsequent pages, append to visible products
-        setVisibleProducts(prevVisible => [...prevVisible, ...(data || [])]);
-      }
-
-      // Increase the page counter for the next fetch
       setPage(prev => prev + 1);
       
-      // Optionally pre-fetch the next page
       if (hasMore && data && data.length === PRODUCTS_PER_PAGE) {
         const nextQuery = supabase
           .from(TABLE_NAME)
@@ -146,7 +133,7 @@ const ProductGrid = ({ selectedCategory }: ProductGridProps) => {
           loadMoreProducts();
         }
       },
-      { threshold: 0.1, rootMargin: "300px" } // Increased rootMargin
+      { threshold: 0.1, rootMargin: "500px" }
     );
 
     const currentLoader = loaderRef.current;
@@ -167,9 +154,6 @@ const ProductGrid = ({ selectedCategory }: ProductGridProps) => {
       preloadImages(["https://images.unsplash.com/photo-1556912172-45b7abe8b7e1?auto=format&fit=crop&q=80"]);
     }
   }, [products]);
-
-  // This effect is no longer needed as we're directly updating visibleProducts in loadMoreProducts
-  // Removing the effect that was causing products to disappear
 
   const renderGridItems = () => {
     const items = [];

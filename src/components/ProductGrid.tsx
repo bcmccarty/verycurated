@@ -1,3 +1,4 @@
+
 import { useEffect, useRef, useState } from "react";
 import { Product } from "@/lib/types";
 import ProductCard from "./ProductCard";
@@ -9,45 +10,16 @@ interface ProductGridProps {
   selectedCategory?: string;
 }
 
-const PRODUCTS_PER_PAGE = 24;
+const PRODUCTS_PER_PAGE = 12;
 const TABLE_NAME = 'products';
-const VISIBLE_ITEMS_PER_PAGE = 24;
 
 const ProductGrid = ({ selectedCategory }: ProductGridProps) => {
   const [products, setProducts] = useState<Product[]>([]);
-  const [visibleProducts, setVisibleProducts] = useState<Product[]>([]);
   const [isLoading, setIsLoading] = useState(false);
   const [page, setPage] = useState(1);
   const [hasMore, setHasMore] = useState(true);
   const [error, setError] = useState<string | null>(null);
-  const [preloadedImages, setPreloadedImages] = useState<string[]>([]);
   const loaderRef = useRef(null);
-  const scrollPosition = useRef(0);
-
-  const preloadImages = (urls: string[]) => {
-    const newPreloadedImages: string[] = [];
-    
-    urls.forEach(url => {
-      if (!preloadedImages.includes(url) && url) {
-        const img = new Image();
-        img.src = url;
-        newPreloadedImages.push(url);
-      }
-    });
-    
-    if (newPreloadedImages.length > 0) {
-      setPreloadedImages(prev => [...prev, ...newPreloadedImages]);
-    }
-  };
-
-  useEffect(() => {
-    const handleScroll = () => {
-      scrollPosition.current = window.scrollY;
-    };
-    
-    window.addEventListener('scroll', handleScroll);
-    return () => window.removeEventListener('scroll', handleScroll);
-  }, []);
 
   const loadMoreProducts = async () => {
     if (!hasMore || isLoading) return;
@@ -74,38 +46,21 @@ const ProductGrid = ({ selectedCategory }: ProductGridProps) => {
         return;
       }
 
+      // If we got fewer items than requested, there are no more to load
       if (!data || data.length < PRODUCTS_PER_PAGE) {
         setHasMore(false);
       }
 
-      if (data && data.length > 0) {
-        const imageUrls = data.map(product => product.imageUrl);
-        preloadImages(imageUrls);
-      }
+      // Append new products to existing ones
+      setProducts(prevProducts => {
+        if (page === 1) {
+          return data || [];
+        }
+        return [...prevProducts, ...(data || [])];
+      });
 
-      const newProducts = page === 1 ? data || [] : [...products, ...(data || [])];
-      setProducts(newProducts);
-      setVisibleProducts(newProducts);
-
+      // Increment page for next load
       setPage(prev => prev + 1);
-      
-      if (hasMore && data && data.length === PRODUCTS_PER_PAGE) {
-        const nextQuery = supabase
-          .from(TABLE_NAME)
-          .select('*')
-          .range(page * PRODUCTS_PER_PAGE, (page + 1) * PRODUCTS_PER_PAGE - 1)
-          .order('created_at', { ascending: false });
-          
-        if (selectedCategory && selectedCategory !== "Most Popular") {
-          nextQuery.eq('category', selectedCategory);
-        }
-        
-        const { data: nextData } = await nextQuery;
-        if (nextData && nextData.length > 0) {
-          const nextImageUrls = nextData.map(product => product.imageUrl);
-          setTimeout(() => preloadImages(nextImageUrls), 300);
-        }
-      }
       
     } catch (error) {
       console.error('Error loading products:', error);
@@ -118,10 +73,8 @@ const ProductGrid = ({ selectedCategory }: ProductGridProps) => {
   useEffect(() => {
     setPage(1);
     setProducts([]);
-    setVisibleProducts([]);
     setHasMore(true);
     setError(null);
-    setPreloadedImages([]);
     loadMoreProducts();
   }, [selectedCategory]);
 
@@ -133,7 +86,7 @@ const ProductGrid = ({ selectedCategory }: ProductGridProps) => {
           loadMoreProducts();
         }
       },
-      { threshold: 0.1, rootMargin: "500px" }
+      { threshold: 0.1 }
     );
 
     const currentLoader = loaderRef.current;
@@ -149,21 +102,17 @@ const ProductGrid = ({ selectedCategory }: ProductGridProps) => {
     };
   }, [isLoading, hasMore]);
 
-  useEffect(() => {
-    if (products.length > 0) {
-      preloadImages(["https://images.unsplash.com/photo-1556912172-45b7abe8b7e1?auto=format&fit=crop&q=80"]);
-    }
-  }, [products]);
-
   const renderGridItems = () => {
     const items = [];
-    visibleProducts.forEach((product, index) => {
+    products.forEach((product, index) => {
+      // Add product cards
       items.push(
         <div key={product.id} className="w-full max-w-[360px]">
           <ProductCard product={product} />
         </div>
       );
 
+      // Add featured card after first item
       if (index === 0) {
         items.push(
           <FeaturedCard
@@ -175,6 +124,7 @@ const ProductGrid = ({ selectedCategory }: ProductGridProps) => {
         );
       }
 
+      // Add ad space after 8th item (9th position including featured card)
       if (index === 7) {
         items.push(
           <div key="ad-space" className="w-full max-w-[360px] aspect-square">

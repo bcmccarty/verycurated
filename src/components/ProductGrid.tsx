@@ -1,4 +1,3 @@
-
 import { useEffect, useRef, useState } from "react";
 import { Product } from "@/lib/types";
 import ProductCard from "./ProductCard";
@@ -10,7 +9,7 @@ interface ProductGridProps {
   selectedCategory?: string;
 }
 
-const PRODUCTS_PER_PAGE = 12;
+const PRODUCTS_PER_PAGE = 24;
 const TABLE_NAME = 'products';
 
 const ProductGrid = ({ selectedCategory }: ProductGridProps) => {
@@ -20,6 +19,51 @@ const ProductGrid = ({ selectedCategory }: ProductGridProps) => {
   const [hasMore, setHasMore] = useState(true);
   const [error, setError] = useState<string | null>(null);
   const loaderRef = useRef(null);
+
+  useEffect(() => {
+    const initialLoad = async () => {
+      setIsLoading(true);
+      setError(null);
+      
+      try {
+        let query = supabase
+          .from(TABLE_NAME)
+          .select('*')
+          .range(0, PRODUCTS_PER_PAGE * 2 - 1)
+          .order('created_at', { ascending: false });
+
+        if (selectedCategory && selectedCategory !== "Most Popular") {
+          query = query.eq('category', selectedCategory);
+        }
+
+        const { data, error } = await query;
+
+        if (error) {
+          console.error('Supabase error:', error);
+          setError(error.message);
+          return;
+        }
+
+        if (!data || data.length < PRODUCTS_PER_PAGE * 2) {
+          setHasMore(false);
+        }
+
+        setProducts(data || []);
+        setPage(3);
+      } catch (error) {
+        console.error('Error loading products:', error);
+        setError('Failed to load products. Please try again later.');
+      } finally {
+        setIsLoading(false);
+      }
+    };
+
+    setPage(1);
+    setProducts([]);
+    setHasMore(true);
+    setError(null);
+    initialLoad();
+  }, [selectedCategory]);
 
   const loadMoreProducts = async () => {
     if (!hasMore || isLoading) return;
@@ -46,20 +90,12 @@ const ProductGrid = ({ selectedCategory }: ProductGridProps) => {
         return;
       }
 
-      // If we got fewer items than requested, there are no more to load
       if (!data || data.length < PRODUCTS_PER_PAGE) {
         setHasMore(false);
       }
 
-      // Append new products to existing ones
-      setProducts(prevProducts => {
-        if (page === 1) {
-          return data || [];
-        }
-        return [...prevProducts, ...(data || [])];
-      });
+      setProducts(prevProducts => [...prevProducts, ...(data || [])]);
 
-      // Increment page for next load
       setPage(prev => prev + 1);
       
     } catch (error) {
@@ -71,15 +107,6 @@ const ProductGrid = ({ selectedCategory }: ProductGridProps) => {
   };
 
   useEffect(() => {
-    setPage(1);
-    setProducts([]);
-    setHasMore(true);
-    setError(null);
-    loadMoreProducts();
-  }, [selectedCategory]);
-
-  useEffect(() => {
-    // Use a more aggressive rootMargin to load content earlier
     const observer = new IntersectionObserver(
       (entries) => {
         const first = entries[0];
@@ -88,8 +115,8 @@ const ProductGrid = ({ selectedCategory }: ProductGridProps) => {
         }
       },
       { 
-        threshold: 0.1,
-        rootMargin: "300px 0px" // Load more content 300px before it comes into view
+        threshold: 0,
+        rootMargin: "800px 0px"
       }
     );
 
@@ -109,14 +136,12 @@ const ProductGrid = ({ selectedCategory }: ProductGridProps) => {
   const renderGridItems = () => {
     const items = [];
     products.forEach((product, index) => {
-      // Add product cards
       items.push(
         <div key={product.id} className="w-full max-w-[360px]">
           <ProductCard product={product} />
         </div>
       );
 
-      // Add featured card after first item
       if (index === 0) {
         items.push(
           <FeaturedCard
@@ -128,7 +153,6 @@ const ProductGrid = ({ selectedCategory }: ProductGridProps) => {
         );
       }
 
-      // Add ad space after 8th item (9th position including featured card)
       if (index === 7) {
         items.push(
           <div key="ad-space" className="w-full max-w-[360px] aspect-square">

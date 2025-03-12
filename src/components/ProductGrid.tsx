@@ -79,6 +79,7 @@ const ProductGrid = ({ selectedCategory }: ProductGridProps) => {
   }, [selectedCategory]);
 
   useEffect(() => {
+    // Use a more aggressive rootMargin to load content earlier
     const observer = new IntersectionObserver(
       (entries) => {
         const first = entries[0];
@@ -86,7 +87,10 @@ const ProductGrid = ({ selectedCategory }: ProductGridProps) => {
           loadMoreProducts();
         }
       },
-      { threshold: 0.1 }
+      { 
+        threshold: 0.1,
+        rootMargin: "300px 0px" // Load more content 300px before it comes into view
+      }
     );
 
     const currentLoader = loaderRef.current;

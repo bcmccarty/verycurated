@@ -1,3 +1,4 @@
+
 import { useEffect, useRef, useState } from "react";
 import { Product } from "@/lib/types";
 import ProductCard from "./ProductCard";
@@ -150,6 +151,16 @@ const ProductGrid = ({ selectedCategory }: ProductGridProps) => {
             imageUrl="https://images.unsplash.com/photo-1556912172-45b7abe8b7e1?auto=format&fit=crop&q=80"
             href="/category/home-and-living"
           />
+        );
+      }
+      
+      if (index === 7) {
+        items.push(
+          <div key="ad-space" className="w-full max-w-[360px] aspect-square">
+            <div className="w-full h-full bg-neutral-100 rounded-[4px] flex items-center justify-center border border-neutral-200">
+              <div className="text-neutral-400 text-sm">Advertisement</div>
+            </div>
+          </div>
         );
       }
     });

@@ -2,7 +2,6 @@
 import { useState } from "react";
 import ProductGrid from "@/components/ProductGrid";
 import { NewsletterSignup } from "@/components/NewsletterSignup";
-import { AdBanner } from "@/components/AdBanner";
 import BlogShowcase from "@/components/BlogShowcase";
 
 const categories = [
@@ -58,7 +57,6 @@ const Index = () => {
 
       <main className="w-full flex-grow">
         <BlogShowcase />
-        <AdBanner />
         <section className="bg-white py-12">
           <ProductGrid selectedCategory={selectedCategory} />
         </section>

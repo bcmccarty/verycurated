@@ -4,7 +4,8 @@ import { Product } from "@/lib/types";
 import ProductCard from "./ProductCard";
 import FeaturedCard from "./FeaturedCard";
 import LoadingSpinner from "./LoadingSpinner";
-import { supabase } from "../lib/supabaseClient";
+import { supabase, isPermissionError } from "../lib/supabaseClient";
+import { toast } from "sonner";
 
 interface ProductGridProps {
   selectedCategory?: string;
@@ -41,7 +42,14 @@ const ProductGrid = ({ selectedCategory }: ProductGridProps) => {
 
         if (error) {
           console.error('Supabase error:', error);
-          setError(error.message);
+          
+          // Special handling for RLS permission errors
+          if (isPermissionError(error)) {
+            setError('Access denied. This could be due to Row Level Security (RLS) settings in Supabase. Please check your database permissions.');
+            toast.error('Database access error. Please check RLS policies.');
+          } else {
+            setError(error.message);
+          }
           return;
         }
 
@@ -87,7 +95,14 @@ const ProductGrid = ({ selectedCategory }: ProductGridProps) => {
 
       if (error) {
         console.error('Supabase error:', error);
-        setError(error.message);
+        
+        // Special handling for RLS permission errors
+        if (isPermissionError(error)) {
+          setError('Access denied. This could be due to Row Level Security (RLS) settings in Supabase. Please check your database permissions.');
+          toast.error('Database access error. Please check RLS policies.');
+        } else {
+          setError(error.message);
+        }
         return;
       }
 
@@ -170,8 +185,20 @@ const ProductGrid = ({ selectedCategory }: ProductGridProps) => {
   return (
     <div className="w-full max-w-[1200px] mx-auto px-4 sm:px-6 lg:px-8">
       {error && (
-        <div className="text-red-500 text-center mb-4">
-          {error}
+        <div className="text-red-500 text-center mb-4 p-4 bg-red-50 rounded-md border border-red-200">
+          <p className="font-medium">Error</p>
+          <p>{error}</p>
+          {error.includes('Row Level Security') && (
+            <div className="mt-2 text-sm">
+              <p>To fix this issue in Supabase:</p>
+              <ol className="list-decimal list-inside mt-1 space-y-1">
+                <li>Go to your Supabase dashboard</li>
+                <li>Navigate to Authentication → Policies</li>
+                <li>Find your 'products' table</li>
+                <li>Add a policy for anonymous users to SELECT data</li>
+              </ol>
+            </div>
+          )}
         </div>
       )}
       <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-x-8 gap-y-8 justify-items-center">

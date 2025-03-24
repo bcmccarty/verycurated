@@ -16,7 +16,7 @@ const Index = () => {
   const [selectedCategory, setSelectedCategory] = useState("Most Popular");
 
   return (
-    <div className="min-h-screen bg-gray-100 flex flex-col">
+    <div className="min-h-screen bg-white flex flex-col">
       <NewsletterSignup />
       <header 
         className="w-full bg-cover bg-center"
@@ -55,9 +55,9 @@ const Index = () => {
         </div>
       </header>
 
-      <main className="w-full flex-grow bg-gray-100">
+      <main className="w-full flex-grow bg-white">
         <BlogShowcase />
-        <section className="bg-gray-100 py-12">
+        <section className="bg-white py-12">
           <ProductGrid selectedCategory={selectedCategory} />
         </section>
       </main>

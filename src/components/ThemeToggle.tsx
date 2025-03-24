@@ -12,13 +12,13 @@ export function ThemeToggle() {
       size="sm"
       pressed={theme === "dark"}
       onPressedChange={(pressed) => setTheme(pressed ? "dark" : "light")}
-      className="fixed top-4 right-4 z-50 rounded-full p-2 shadow-md"
+      className="fixed top-4 right-4 z-50 rounded-full p-2 shadow-md bg-white dark:bg-gray-800 border dark:border-gray-700"
       aria-label="Toggle theme"
     >
       {theme === "dark" ? (
-        <Moon className="h-[1.2rem] w-[1.2rem]" />
+        <Moon className="h-[1.2rem] w-[1.2rem] text-blue-600" />
       ) : (
-        <Sun className="h-[1.2rem] w-[1.2rem]" />
+        <Sun className="h-[1.2rem] w-[1.2rem] text-amber-500" />
       )}
     </Toggle>
   );

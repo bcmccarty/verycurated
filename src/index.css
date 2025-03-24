@@ -1,4 +1,3 @@
-
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
@@ -107,7 +106,19 @@
 
 /* Dark mode specific styles */
 .dark .bg-white {
-  @apply bg-background;
+  @apply bg-gray-900;
+}
+
+.dark header {
+  @apply bg-gray-800;
+}
+
+.dark main {
+  @apply bg-gray-900;
+}
+
+.dark footer {
+  @apply bg-gray-800 border-gray-700;
 }
 
 .dark .text-neutral-800 {

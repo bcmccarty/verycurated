@@ -1,4 +1,5 @@
 
+
 import ProductGrid from "@/components/ProductGrid";
 
 const Index = () => {
@@ -28,7 +29,7 @@ const Index = () => {
           </p>
 
           <p className="font-sans text-sm text-zinc-500 mb-8" style={{ letterSpacing: '0.35em' }}>
-            QUOTE OF THE DAY
+            Quote of the Day
           </p>
         </div>
       </header>
@@ -52,3 +53,4 @@ const Index = () => {
     </div>;
 };
 export default Index;
+

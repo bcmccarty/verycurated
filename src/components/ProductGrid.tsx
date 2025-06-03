@@ -5,6 +5,7 @@ import FeaturedCard from "./FeaturedCard";
 import LoadingSpinner from "./LoadingSpinner";
 import { supabase, isPermissionError } from "../lib/supabaseClient";
 import { toast } from "sonner";
+import { useBitcoinPrice } from "../hooks/useBitcoinPrice";
 
 interface ProductGridProps {
   selectedCategory?: string;
@@ -20,6 +21,7 @@ const ProductGrid = ({ selectedCategory }: ProductGridProps) => {
   const [hasMore, setHasMore] = useState(true);
   const [error, setError] = useState<string | null>(null);
   const loaderRef = useRef(null);
+  const { price: bitcoinPrice } = useBitcoinPrice();
 
   useEffect(() => {
     const initialLoad = async () => {
@@ -151,9 +153,14 @@ const ProductGrid = ({ selectedCategory }: ProductGridProps) => {
   const renderGridItems = () => {
     const items = [];
     products.forEach((product, index) => {
+      // Update Bitcoin product price with real-time data
+      const updatedProduct = product.id === "caa6a7f9-c931-47c7-8953-e47df40ea2b1" 
+        ? { ...product, price: bitcoinPrice }
+        : product;
+
       items.push(
         <div key={product.id} className="w-full max-w-[360px]">
-          <ProductCard product={product} />
+          <ProductCard product={updatedProduct} />
         </div>
       );
 

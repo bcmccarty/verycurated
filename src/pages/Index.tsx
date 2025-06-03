@@ -8,7 +8,7 @@ const Index = () => {
             <span className="text-gray-500 text-sm">Logo</span>
           </div>
 
-          <p className="italic font-serif mb-8 text-xl text-zinc-600">
+          <p className="italic mb-8 text-xl text-zinc-600" style={{ fontFamily: 'Georgia, "Times New Roman", serif' }}>
             <span className="font-bold">"How long are you going to wait before you demand the best for yourself?"</span> <span className="font-normal">– Epictetus</span>
           </p>
         </div>

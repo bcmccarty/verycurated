@@ -1,12 +1,27 @@
 
 import ProductGrid from "@/components/ProductGrid";
+
 const Index = () => {
+  const getCurrentDate = () => {
+    const today = new Date();
+    const options: Intl.DateTimeFormatOptions = { 
+      year: 'numeric', 
+      month: 'long', 
+      day: 'numeric' 
+    };
+    return today.toLocaleDateString('en-US', options);
+  };
+
   return <div className="min-h-screen bg-white flex flex-col">
       <header className="w-full bg-white py-8">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
           <div className="w-32 h-16 bg-gray-200 rounded-lg mx-auto flex items-center justify-center mb-6">
             <span className="text-gray-500 text-sm">Logo</span>
           </div>
+
+          <p className="font-sans text-sm text-zinc-500 mb-4" style={{ letterSpacing: '0.35em' }}>
+            {getCurrentDate().toUpperCase()}
+          </p>
 
           <p className="italic mb-4 text-xl text-zinc-600" style={{ fontFamily: 'Georgia, "Times New Roman", serif' }}>
             <span className="font-bold">"How long are you going to wait before you demand the best for yourself?"</span> <span className="font-normal">– Epictetus</span>

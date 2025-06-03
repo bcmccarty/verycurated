@@ -1,4 +1,3 @@
-
 import { useState } from "react";
 import { Link } from "react-router-dom";
 import {
@@ -10,6 +9,8 @@ import {
 } from "@/components/ui/select";
 import { Input } from "@/components/ui/input";
 import { Textarea } from "@/components/ui/textarea";
+import { supabase } from "@/lib/supabaseClient";
+import { toast } from "sonner";
 
 const inquiryReasons = [
   "General Inquiry",
@@ -21,6 +22,49 @@ const inquiryReasons = [
 
 const Contact = () => {
   const [inquiryReason, setInquiryReason] = useState("General Inquiry");
+  const [email, setEmail] = useState("");
+  const [message, setMessage] = useState("");
+  const [isSubmitting, setIsSubmitting] = useState(false);
+
+  const handleSubmit = async (e: React.FormEvent) => {
+    e.preventDefault();
+    
+    if (!email || !message) {
+      toast.error("Please fill in all required fields");
+      return;
+    }
+
+    setIsSubmitting(true);
+
+    try {
+      const { error } = await supabase
+        .from('contact_submissions')
+        .insert([
+          {
+            inquiry_reason: inquiryReason,
+            email: email,
+            message: message,
+            created_at: new Date().toISOString()
+          }
+        ]);
+
+      if (error) {
+        console.error('Error submitting form:', error);
+        toast.error("There was an error submitting your message. Please try again.");
+      } else {
+        toast.success("Thank you! Your message has been sent successfully.");
+        // Reset form
+        setEmail("");
+        setMessage("");
+        setInquiryReason("General Inquiry");
+      }
+    } catch (error) {
+      console.error('Error submitting form:', error);
+      toast.error("There was an error submitting your message. Please try again.");
+    } finally {
+      setIsSubmitting(false);
+    }
+  };
 
   return (
     <div className="min-h-screen bg-white flex flex-col pb-16">
@@ -44,7 +88,7 @@ const Contact = () => {
             </p>
           </div>
 
-          <form className="space-y-6 bg-white rounded-lg border p-6">
+          <form onSubmit={handleSubmit} className="space-y-6 bg-white rounded-lg border p-6">
             <div>
               <label className="block text-sm font-medium mb-2">Reason for Contact</label>
               <Select
@@ -65,23 +109,34 @@ const Contact = () => {
             </div>
 
             <div>
-              <label className="block text-sm font-medium mb-2">Email</label>
-              <Input type="email" placeholder="your@email.com" className="bg-white" />
+              <label className="block text-sm font-medium mb-2">Email *</label>
+              <Input 
+                type="email" 
+                placeholder="your@email.com" 
+                className="bg-white" 
+                value={email}
+                onChange={(e) => setEmail(e.target.value)}
+                required
+              />
             </div>
 
             <div>
-              <label className="block text-sm font-medium mb-2">Message</label>
+              <label className="block text-sm font-medium mb-2">Message *</label>
               <Textarea 
                 placeholder="Type your message here..." 
                 className="min-h-[150px] bg-white" 
+                value={message}
+                onChange={(e) => setMessage(e.target.value)}
+                required
               />
             </div>
 
             <button 
               type="submit" 
-              className="w-full bg-primary hover:bg-primary-dark text-white font-medium py-3 px-4 rounded-md transition-colors"
+              disabled={isSubmitting}
+              className="w-full bg-primary hover:bg-primary-dark text-white font-medium py-3 px-4 rounded-md transition-colors disabled:opacity-50 disabled:cursor-not-allowed"
             >
-              Send Message
+              {isSubmitting ? "Sending..." : "Send Message"}
             </button>
           </form>
         </div>

@@ -29,7 +29,7 @@ const Index = () => {
           </p>
 
           <p className="font-sans text-sm text-zinc-500 mb-8" style={{ letterSpacing: '0.35em' }}>
-            Quote of the Day
+            QUOTE OF THE DAY
           </p>
         </div>
       </header>

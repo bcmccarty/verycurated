@@ -1,16 +1,13 @@
-
 import ProductGrid from "@/components/ProductGrid";
-
 const Index = () => {
-  return (
-    <div className="min-h-screen bg-white flex flex-col">
+  return <div className="min-h-screen bg-white flex flex-col">
       <header className="w-full bg-white py-8">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
           <div className="w-32 h-16 bg-gray-200 rounded-lg mx-auto flex items-center justify-center mb-6">
             <span className="text-gray-500 text-sm">Logo</span>
           </div>
 
-          <p className="text-gray-700 italic font-bold text-lg mb-8">
+          <p className="italic font-bold mb-8 text-xl text-zinc-600">
             "How long are you going to wait before you demand the best for yourself?" – Epictetus
           </p>
         </div>
@@ -32,8 +29,6 @@ const Index = () => {
           </div>
         </div>
       </footer>
-    </div>
-  );
+    </div>;
 };
-
 export default Index;

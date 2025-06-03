@@ -1,4 +1,6 @@
+
 import { Link } from "react-router-dom";
+import { ArrowLeft } from "lucide-react";
 
 const PrivacyPolicy = () => {
   return (
@@ -15,6 +17,16 @@ const PrivacyPolicy = () => {
 
       <main className="flex-grow py-12">
         <div className="max-w-3xl mx-auto px-4 sm:px-6 lg:px-8">
+          {/* Take Me Back Button */}
+          <div className="mb-8 flex justify-center">
+            <Link to="/" className="relative inline-flex items-center justify-center w-[200px] h-[50px] text-white rounded-[4px] font-['Heiti_SC'] text-sm font-bold tracking-[1px] border-2 border-transparent hover:border-[#355E3B] hover:text-[#355E3B] before:absolute before:inset-0 before:bg-gradient-to-b before:from-[#355E3B] before:to-[#2f5534] hover:before:opacity-0 before:transition-opacity before:rounded-[4px]">
+              <span className="relative z-10 flex items-center gap-2 whitespace-nowrap">
+                <ArrowLeft size={16} />
+                TAKE ME BACK
+              </span>
+            </Link>
+          </div>
+
           <h1 className="text-3xl font-bold text-center mb-8">Privacy Policy</h1>
           <div className="prose prose-neutral">
             <p className="mb-4">Last updated: {new Date().toLocaleDateString()}</p>

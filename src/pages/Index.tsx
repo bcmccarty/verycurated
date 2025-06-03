@@ -12,7 +12,7 @@ const Index = () => {
             <span className="font-bold">"How long are you going to wait before you demand the best for yourself?"</span> <span className="font-normal">– Epictetus</span>
           </p>
 
-          <p className="font-sans text-sm text-zinc-500 mb-8" style={{ letterSpacing: '0.5em' }}>
+          <p className="font-sans text-sm text-zinc-500 mb-8" style={{ letterSpacing: '0.35em' }}>
             QUOTE OF THE DAY
           </p>
         </div>

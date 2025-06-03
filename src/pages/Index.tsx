@@ -1,3 +1,4 @@
+
 import ProductGrid from "@/components/ProductGrid";
 
 const Index = () => {
@@ -12,9 +13,9 @@ const Index = () => {
   };
 
   return <div className="min-h-screen bg-white flex flex-col">
-      <header className="w-full bg-white py-8 flex-1 flex flex-col justify-center">
+      <header className="w-full bg-white py-8">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
-          <div className="w-32 h-16 bg-gray-200 rounded-lg mx-auto flex items-center justify-center mb-6">
+          <div className="w-32 h-16 bg-gray-200 rounded-lg mx-auto flex items-center justify-center mb-16">
             <span className="text-gray-500 text-sm">Logo</span>
           </div>
 
@@ -26,7 +27,7 @@ const Index = () => {
             <span className="font-bold">"How long are you going to wait before you demand the best for yourself?"</span> <span className="font-normal">– Epictetus</span>
           </p>
 
-          <p className="font-sans text-sm text-zinc-500 mb-8" style={{ letterSpacing: '0.35em' }}>
+          <p className="font-sans text-sm text-zinc-500 mb-16" style={{ letterSpacing: '0.35em' }}>
             QUOTE OF THE DAY
           </p>
         </div>

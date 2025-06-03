@@ -1,5 +1,7 @@
+
 import { useState } from "react";
 import ProductGrid from "@/components/ProductGrid";
+import { Link } from "react-router-dom";
 
 const HomeCategory = () => {
   return (
@@ -25,10 +27,11 @@ const HomeCategory = () => {
       <footer className="w-full bg-white border-t border-neutral-200 py-3 fixed bottom-0 left-0 z-10">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="flex justify-center space-x-6 text-sm">
-            <a href="/privacy-policy" className="text-neutral-500 hover:text-neutral-800">Privacy Policy</a>
-            <a href="/terms-of-service" className="text-neutral-500 hover:text-neutral-800">Terms of Service</a>
-            <a href="/affiliate-disclosure" className="text-neutral-500 hover:text-neutral-800">Affiliate Disclosure</a>
-            <a href="/contact" className="text-neutral-500 hover:text-neutral-800">Contact & Submit</a>
+            <Link to="/" className="text-neutral-500 hover:text-neutral-800">Home</Link>
+            <Link to="/privacy-policy" className="text-neutral-500 hover:text-neutral-800">Privacy Policy</Link>
+            <Link to="/terms-of-service" className="text-neutral-500 hover:text-neutral-800">Terms of Service</Link>
+            <Link to="/affiliate-disclosure" className="text-neutral-500 hover:text-neutral-800">Affiliate Disclosure</Link>
+            <Link to="/contact" className="text-neutral-500 hover:text-neutral-800">Contact & Submit</Link>
           </div>
         </div>
       </footer>

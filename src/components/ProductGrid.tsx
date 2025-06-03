@@ -1,7 +1,6 @@
 import { useEffect, useRef, useState } from "react";
 import { Product } from "@/lib/types";
 import ProductCard from "./ProductCard";
-import FeaturedCard from "./FeaturedCard";
 import LoadingSpinner from "./LoadingSpinner";
 import { supabase, isPermissionError } from "../lib/supabaseClient";
 import { toast } from "sonner";
@@ -163,18 +162,6 @@ const ProductGrid = ({ selectedCategory }: ProductGridProps) => {
           <ProductCard product={updatedProduct} />
         </div>
       );
-
-      // Only show the featured card if we're not already in the Home category
-      if (index === 0 && selectedCategory !== "Home") {
-        items.push(
-          <FeaturedCard
-            key="featured-test"
-            title="Home & Living"
-            imageUrl="https://images.unsplash.com/photo-1556912172-45b7abe8b7e1?auto=format&fit=crop&q=80"
-            href="/category/home-and-living"
-          />
-        );
-      }
       
       if (index === 7) {
         items.push(

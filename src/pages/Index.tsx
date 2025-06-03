@@ -1,19 +1,7 @@
 
-import { useState } from "react";
-import { Link } from "react-router-dom";
 import ProductGrid from "@/components/ProductGrid";
 
-const categories = [
-  "Most Popular",
-  "Tech Gadgets",
-  "Home & Living",
-  "Fashion",
-  "Unique Finds"
-];
-
 const Index = () => {
-  const [selectedCategory, setSelectedCategory] = useState("Most Popular");
-
   return (
     <div className="min-h-screen bg-white flex flex-col">
       <header className="w-full bg-white py-8">
@@ -22,39 +10,15 @@ const Index = () => {
             <span className="text-gray-500 text-sm">Logo</span>
           </div>
 
-          <nav>
-            <ul className="flex space-x-6 overflow-x-auto pb-2 justify-center">
-              {categories.map((category) => (
-                <li key={category}>
-                  {category === "Home & Living" ? (
-                    <Link 
-                      to="/category/home-and-living"
-                      className="whitespace-nowrap transition-colors text-gray-600 hover:text-gray-900"
-                    >
-                      {category}
-                    </Link>
-                  ) : (
-                    <button 
-                      className={`whitespace-nowrap transition-colors ${
-                        selectedCategory === category 
-                          ? "text-gray-900 font-semibold" 
-                          : "text-gray-600 hover:text-gray-900"
-                      }`}
-                      onClick={() => setSelectedCategory(category)}
-                    >
-                      {category}
-                    </button>
-                  )}
-                </li>
-              ))}
-            </ul>
-          </nav>
+          <p className="text-gray-700 italic font-bold text-lg mb-8">
+            "How long are you going to wait before you demand the best for yourself?" – Epictetus
+          </p>
         </div>
       </header>
 
       <main className="w-full flex-grow bg-white">
         <section className="bg-white py-12">
-          <ProductGrid selectedCategory={selectedCategory} />
+          <ProductGrid selectedCategory="Most Popular" />
         </section>
       </main>
 

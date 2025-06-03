@@ -1,3 +1,4 @@
+
 import ProductGrid from "@/components/ProductGrid";
 const Index = () => {
   return <div className="min-h-screen bg-white flex flex-col">
@@ -7,8 +8,8 @@ const Index = () => {
             <span className="text-gray-500 text-sm">Logo</span>
           </div>
 
-          <p className="italic font-bold mb-8 text-xl text-zinc-600">
-            "How long are you going to wait before you demand the best for yourself?" – Epictetus
+          <p className="italic font-serif mb-8 text-xl text-zinc-600">
+            <span className="font-bold">"How long are you going to wait before you demand the best for yourself?"</span> <span className="font-normal">– Epictetus</span>
           </p>
         </div>
       </header>

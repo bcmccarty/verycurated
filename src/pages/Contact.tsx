@@ -1,3 +1,4 @@
+
 import { useState } from "react";
 import { Link } from "react-router-dom";
 import {
@@ -34,6 +35,11 @@ const Contact = () => {
       return;
     }
 
+    if (message.length > 500) {
+      toast.error("Message must be under 500 characters");
+      return;
+    }
+
     setIsSubmitting(true);
 
     try {
@@ -52,7 +58,7 @@ const Contact = () => {
         console.error('Error submitting form:', error);
         toast.error("There was an error submitting your message. Please try again.");
       } else {
-        toast.success("Thank you! Your message has been sent successfully.");
+        toast.success("Thank you! Your message has been sent successfully. We'll get back to you soon!");
         // Reset form
         setEmail("");
         setMessage("");
@@ -121,23 +127,33 @@ const Contact = () => {
             </div>
 
             <div>
-              <label className="block text-sm font-medium mb-2">Message *</label>
+              <label className="block text-sm font-medium mb-2">
+                Message * 
+                <span className="text-neutral-400 font-normal">
+                  ({message.length}/500 characters)
+                </span>
+              </label>
               <Textarea 
                 placeholder="Type your message here..." 
                 className="min-h-[150px] bg-white" 
                 value={message}
                 onChange={(e) => setMessage(e.target.value)}
+                maxLength={500}
                 required
               />
             </div>
 
-            <button 
-              type="submit" 
-              disabled={isSubmitting}
-              className="w-full bg-primary hover:bg-primary-dark text-white font-medium py-3 px-4 rounded-md transition-colors disabled:opacity-50 disabled:cursor-not-allowed"
-            >
-              {isSubmitting ? "Sending..." : "Send Message"}
-            </button>
+            <div className="flex justify-center pt-4">
+              <button 
+                type="submit" 
+                disabled={isSubmitting}
+                className="relative inline-flex items-center justify-center w-[200px] h-[50px] text-white rounded-[4px] font-['Heiti_SC'] text-sm font-bold tracking-[1px] border-2 border-transparent hover:border-[#355E3B] hover:text-[#355E3B] before:absolute before:inset-0 before:bg-gradient-to-b before:from-[#355E3B] before:to-[#2f5534] hover:before:opacity-0 before:transition-opacity before:rounded-[4px] disabled:opacity-50 disabled:cursor-not-allowed disabled:hover:border-transparent disabled:hover:text-white"
+              >
+                <span className="relative z-10 whitespace-nowrap">
+                  {isSubmitting ? "SENDING..." : "SEND MESSAGE"}
+                </span>
+              </button>
+            </div>
           </form>
         </div>
       </main>

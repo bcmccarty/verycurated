@@ -1,4 +1,3 @@
-
 import { useState } from "react";
 import { Link } from "react-router-dom";
 import {
@@ -77,11 +76,9 @@ const Contact = () => {
       <header className="sticky top-0 bg-white shadow-sm z-50">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-4 text-center">
           <Link to="/" className="inline-block">
-            <div className="w-32 h-16 bg-gray-200 rounded-lg mx-auto flex items-center justify-center mb-4">
+            <div className="w-32 h-16 bg-gray-200 rounded-lg mx-auto flex items-center justify-center">
               <span className="text-gray-500 text-sm">Logo</span>
             </div>
-            <h1 className="text-2xl font-bold text-neutral-800">Curated Savings Hub</h1>
-            <p className="mt-2 text-neutral-500">Discover amazing products at unbeatable prices</p>
           </Link>
         </div>
       </header>

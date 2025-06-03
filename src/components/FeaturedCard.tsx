@@ -1,3 +1,4 @@
+import { Link } from "react-router-dom";
 
 interface FeaturedCardProps {
   title: string;
@@ -7,7 +8,7 @@ interface FeaturedCardProps {
 
 const FeaturedCard = ({ title, imageUrl, href }: FeaturedCardProps) => {
   return (
-    <a href={href} className="group relative bg-neutral-100 rounded-[4px] overflow-hidden transition-all duration-300 animate-fade-in w-full h-full">
+    <Link to={href} className="group relative bg-neutral-100 rounded-[4px] overflow-hidden transition-all duration-300 animate-fade-in w-full h-full">
       <div className="absolute inset-0">
         <img 
           src={imageUrl} 
@@ -30,7 +31,7 @@ const FeaturedCard = ({ title, imageUrl, href }: FeaturedCardProps) => {
           <span className="relative z-10 whitespace-nowrap">EXPLORE ALL</span>
         </button>
       </div>
-    </a>
+    </Link>
   );
 };
 

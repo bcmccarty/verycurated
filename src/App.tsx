@@ -6,6 +6,7 @@ import PrivacyPolicy from "./pages/PrivacyPolicy";
 import TermsOfService from "./pages/TermsOfService";
 import AffiliateDisclosure from "./pages/AffiliateDisclosure";
 import Contact from "./pages/Contact";
+import HomeCategory from "./pages/HomeCategory";
 import { Toaster } from "sonner";
 import "./App.css";
 
@@ -15,6 +16,7 @@ function App() {
       <Toaster position="top-right" />
       <Routes>
         <Route path="/" element={<Index />} />
+        <Route path="/category/home-and-living" element={<HomeCategory />} />
         <Route path="/privacy-policy" element={<PrivacyPolicy />} />
         <Route path="/terms-of-service" element={<TermsOfService />} />
         <Route path="/affiliate-disclosure" element={<AffiliateDisclosure />} />

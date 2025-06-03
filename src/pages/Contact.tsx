@@ -123,7 +123,7 @@ const Contact = () => {
         <div className="max-w-2xl mx-auto px-4">
           <form onSubmit={handleSubmit} className="space-y-6 bg-white rounded-lg border p-6">
             <div>
-              <label className="block text-sm font-medium mb-2">Reason for Contact</label>
+              <label className="block text-sm font-medium mb-2">Talk to us about...</label>
               <Select
                 value={inquiryReason}
                 onValueChange={setInquiryReason}
@@ -142,7 +142,7 @@ const Contact = () => {
             </div>
 
             <div>
-              <label className="block text-sm font-medium mb-2">Email *</label>
+              <label className="block text-sm font-medium mb-2">Your best email *</label>
               <Input 
                 type="email" 
                 placeholder="your@email.com" 
@@ -155,7 +155,7 @@ const Contact = () => {
 
             <div>
               <label className="block text-sm font-medium mb-2">
-                Message * 
+                Drop us a note below * 
                 <span className="text-neutral-400 font-normal">
                   ({message.length}/500 characters)
                 </span>
@@ -177,7 +177,7 @@ const Contact = () => {
                 className="relative inline-flex items-center justify-center w-[200px] h-[50px] text-white rounded-[4px] font-['Heiti_SC'] text-sm font-bold tracking-[1px] border-2 border-transparent hover:border-[#355E3B] hover:text-[#355E3B] before:absolute before:inset-0 before:bg-gradient-to-b before:from-[#355E3B] before:to-[#2f5534] hover:before:opacity-0 before:transition-opacity before:rounded-[4px] disabled:opacity-50 disabled:cursor-not-allowed disabled:hover:border-transparent disabled:hover:text-white"
               >
                 <span className="relative z-10 whitespace-nowrap">
-                  {isSubmitting ? "SENDING..." : "SEND MESSAGE"}
+                  {isSubmitting ? "SENDING..." : "SEND IT"}
                 </span>
               </button>
             </div>

@@ -1,5 +1,3 @@
-
-
 import ProductGrid from "@/components/ProductGrid";
 
 const Index = () => {
@@ -14,7 +12,7 @@ const Index = () => {
   };
 
   return <div className="min-h-screen bg-white flex flex-col">
-      <header className="w-full bg-white py-8">
+      <header className="w-full bg-white py-8 flex-1 flex flex-col justify-center">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
           <div className="w-32 h-16 bg-gray-200 rounded-lg mx-auto flex items-center justify-center mb-6">
             <span className="text-gray-500 text-sm">Logo</span>
@@ -34,7 +32,7 @@ const Index = () => {
         </div>
       </header>
 
-      <main className="w-full flex-grow bg-white">
+      <main className="w-full bg-white">
         <section className="bg-white py-12">
           <ProductGrid selectedCategory="Most Popular" />
         </section>
@@ -53,4 +51,3 @@ const Index = () => {
     </div>;
 };
 export default Index;
-

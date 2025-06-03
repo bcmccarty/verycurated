@@ -8,9 +8,11 @@ const TermsOfService = () => {
       <header className="sticky top-0 bg-white shadow-sm z-50">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-4 text-center">
           <Link to="/" className="inline-block">
-            <div className="w-32 h-16 bg-gray-200 rounded-lg mx-auto flex items-center justify-center">
-              <span className="text-gray-500 text-sm">Logo</span>
-            </div>
+            <img 
+              src="https://gzganvncavbtsjpecpjy.supabase.co/storage/v1/object/sign/product%20photos/verycurated_logo.svg?token=eyJraWQiOiJzdG9yYWdlLXVybC1zaWduaW5nLWtleV83OWY3YWI5ZS0xZDJmLTQ4ZTktOTlkNS1mMWViMGI1ZTAyOWQiLCJhbGciOiJIUzI1NiJ9.eyJ1cmwiOiJwcm9kdWN0IHBob3Rvcy92ZXJ5Y3VyYXRlZF9sb2dvLnN2ZyIsImlhdCI6MTc0ODk3MzU1OCwiZXhwIjo0OTAyNTczNTU4fQ.U5gzWT7_SIQ_PnTZI3gheMUl7x4jufM9LMxEi1MSsXM" 
+              alt="Very Curated Logo" 
+              className="w-32 h-16 mx-auto object-contain"
+            />
           </Link>
         </div>
       </header>

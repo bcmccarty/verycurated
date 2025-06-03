@@ -1,4 +1,3 @@
-
 import { useEffect, useRef, useState } from "react";
 import { Product } from "@/lib/types";
 import ProductCard from "./ProductCard";
@@ -158,7 +157,8 @@ const ProductGrid = ({ selectedCategory }: ProductGridProps) => {
         </div>
       );
 
-      if (index === 0) {
+      // Only show the featured card if we're not already in the Home category
+      if (index === 0 && selectedCategory !== "Home") {
         items.push(
           <FeaturedCard
             key="featured-test"

@@ -1,5 +1,3 @@
-
-
 import ProductGrid from "@/components/ProductGrid";
 
 const Index = () => {
@@ -19,7 +17,7 @@ const Index = () => {
           <img 
             src="https://gzganvncavbtsjpecpjy.supabase.co/storage/v1/object/sign/product%20photos/verycurated_logo_gradient.svg?token=eyJraWQiOiJzdG9yYWdlLXVybC1zaWduaW5nLWtleV83OWY3YWI5ZS0xZDJmLTQ4ZTktOTlkNS1mMWViMGI1ZTAyOWQiLCJhbGciOiJIUzI1NiJ9.eyJ1cmwiOiJwcm9kdWN0IHBob3Rvcy92ZXJ5Y3VyYXRlZF9sb2dvX2dyYWRpZW50LnN2ZyIsImlhdCI6MTc0ODk3NTI0OCwiZXhwIjo0OTAyNTc1MjQ4fQ.FMRouq7crL0tWDzbJSOPiVqsHxaaCL0MwkBsyJGqlwQ" 
             alt="Very Curated Logo" 
-            className="w-64 h-32 mx-auto mb-16 object-contain"
+            className="w-64 h-32 mx-auto mb-8 object-contain"
           />
 
           <p className="font-sans text-sm text-zinc-500 mb-4" style={{ letterSpacing: '0.35em' }}>
@@ -55,4 +53,3 @@ const Index = () => {
     </div>;
 };
 export default Index;
-

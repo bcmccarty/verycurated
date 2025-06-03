@@ -8,8 +8,12 @@ const Index = () => {
             <span className="text-gray-500 text-sm">Logo</span>
           </div>
 
-          <p className="italic mb-8 text-xl text-zinc-600" style={{ fontFamily: 'Georgia, "Times New Roman", serif' }}>
+          <p className="italic mb-4 text-xl text-zinc-600" style={{ fontFamily: 'Georgia, "Times New Roman", serif' }}>
             <span className="font-bold">"How long are you going to wait before you demand the best for yourself?"</span> <span className="font-normal">– Epictetus</span>
+          </p>
+
+          <p className="font-sans text-sm text-zinc-500 mb-8" style={{ letterSpacing: '0.2em' }}>
+            QUOTE OF THE DAY
           </p>
         </div>
       </header>

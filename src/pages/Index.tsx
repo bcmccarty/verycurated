@@ -1,8 +1,6 @@
 
 import { useState } from "react";
 import ProductGrid from "@/components/ProductGrid";
-import { NewsletterSignup } from "@/components/NewsletterSignup";
-import BlogShowcase from "@/components/BlogShowcase";
 
 const categories = [
   "Most Popular",
@@ -17,27 +15,21 @@ const Index = () => {
 
   return (
     <div className="min-h-screen bg-white flex flex-col">
-      <NewsletterSignup />
-      <header 
-        className="w-full bg-cover bg-center"
-        style={{ 
-          backgroundImage: 'url("/lovable-uploads/f6625c2f-7f5b-4fd3-b75f-32c790e2d702.png")',
-          backgroundColor: '#355E3B' // Fallback color
-        }}
-      >
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-4 text-center">
-          <h1 className="text-2xl font-bold text-white">Curated Savings Hub</h1>
-          <p className="mt-2 text-neutral-200">Discover amazing products at unbeatable prices</p>
+      <header className="w-full bg-white py-8">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+          <div className="w-32 h-16 bg-gray-200 rounded-lg mx-auto flex items-center justify-center mb-6">
+            <span className="text-gray-500 text-sm">Logo</span>
+          </div>
 
-          <nav className="mt-4">
+          <nav>
             <ul className="flex space-x-6 overflow-x-auto pb-2 justify-center">
               {categories.map((category) => (
                 <li key={category}>
                   <button 
                     className={`whitespace-nowrap transition-colors ${
                       selectedCategory === category 
-                        ? "text-white font-semibold" 
-                        : "text-neutral-200 hover:text-white"
+                        ? "text-gray-900 font-semibold" 
+                        : "text-gray-600 hover:text-gray-900"
                     }`}
                     onClick={() => setSelectedCategory(category)}
                   >
@@ -45,18 +37,12 @@ const Index = () => {
                   </button>
                 </li>
               ))}
-              <li>
-                <button className="text-neutral-200 hover:text-white whitespace-nowrap transition-colors">
-                  Blog
-                </button>
-              </li>
             </ul>
           </nav>
         </div>
       </header>
 
       <main className="w-full flex-grow bg-white">
-        <BlogShowcase />
         <section className="bg-white py-12">
           <ProductGrid selectedCategory={selectedCategory} />
         </section>

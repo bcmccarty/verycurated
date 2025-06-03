@@ -120,15 +120,6 @@ const Contact = () => {
 
       <main className="flex-grow py-12">
         <div className="max-w-2xl mx-auto px-4">
-          {/* About Us Section */}
-          <div className="mb-8 p-6 bg-neutral-50 rounded-lg">
-            <h2 className="text-xl font-semibold mb-4">About Us</h2>
-            <p className="text-neutral-600">
-              We're dedicated to bringing you the best curated products at unbeatable prices. 
-              Our team carefully selects each item to ensure quality and value for our community.
-            </p>
-          </div>
-
           <form onSubmit={handleSubmit} className="space-y-6 bg-white rounded-lg border p-6">
             <div>
               <label className="block text-sm font-medium mb-2">Reason for Contact</label>

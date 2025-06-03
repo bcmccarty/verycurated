@@ -1,5 +1,6 @@
 
 import { useState } from "react";
+import { Link } from "react-router-dom";
 import ProductGrid from "@/components/ProductGrid";
 
 const categories = [
@@ -25,16 +26,25 @@ const Index = () => {
             <ul className="flex space-x-6 overflow-x-auto pb-2 justify-center">
               {categories.map((category) => (
                 <li key={category}>
-                  <button 
-                    className={`whitespace-nowrap transition-colors ${
-                      selectedCategory === category 
-                        ? "text-gray-900 font-semibold" 
-                        : "text-gray-600 hover:text-gray-900"
-                    }`}
-                    onClick={() => setSelectedCategory(category)}
-                  >
-                    {category}
-                  </button>
+                  {category === "Home & Living" ? (
+                    <Link 
+                      to="/category/home-and-living"
+                      className="whitespace-nowrap transition-colors text-gray-600 hover:text-gray-900"
+                    >
+                      {category}
+                    </Link>
+                  ) : (
+                    <button 
+                      className={`whitespace-nowrap transition-colors ${
+                        selectedCategory === category 
+                          ? "text-gray-900 font-semibold" 
+                          : "text-gray-600 hover:text-gray-900"
+                      }`}
+                      onClick={() => setSelectedCategory(category)}
+                    >
+                      {category}
+                    </button>
+                  )}
                 </li>
               ))}
             </ul>

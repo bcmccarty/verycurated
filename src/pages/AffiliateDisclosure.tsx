@@ -4,7 +4,7 @@ import { ArrowLeft } from "lucide-react";
 
 const AffiliateDisclosure = () => {
   return (
-    <div className="min-h-screen bg-white flex flex-col pb-16">
+    <div className="min-h-screen bg-white flex flex-col pb-20">
       <header className="sticky top-0 bg-white shadow-sm z-50">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-4 text-center">
           <Link to="/" className="inline-block">
@@ -17,16 +17,6 @@ const AffiliateDisclosure = () => {
 
       <main className="flex-grow py-12">
         <div className="max-w-3xl mx-auto px-4 sm:px-6 lg:px-8">
-          {/* Take Me Back Button */}
-          <div className="mb-8 flex justify-center">
-            <Link to="/" className="relative inline-flex items-center justify-center w-[200px] h-[50px] text-white rounded-[4px] font-['Heiti_SC'] text-sm font-bold tracking-[1px] border-2 border-transparent hover:border-[#355E3B] hover:text-[#355E3B] before:absolute before:inset-0 before:bg-gradient-to-b before:from-[#355E3B] before:to-[#2f5534] hover:before:opacity-0 before:transition-opacity before:rounded-[4px]">
-              <span className="relative z-10 flex items-center gap-2 whitespace-nowrap">
-                <ArrowLeft size={16} />
-                TAKE ME BACK
-              </span>
-            </Link>
-          </div>
-
           <h1 className="text-3xl font-bold text-center mb-8">Affiliate Disclosure</h1>
           <div className="prose prose-neutral">
             <p className="mb-4">Last updated: {new Date().toLocaleDateString()}</p>
@@ -39,6 +29,14 @@ const AffiliateDisclosure = () => {
 
             <h2 className="text-xl font-semibold mt-6 mb-4">Our Commitment</h2>
             <p className="mb-4">We only recommend products that we believe will be valuable to our readers. All opinions expressed are our own and are not influenced by affiliate partnerships.</p>
+          </div>
+
+          {/* Take Me Back Link - moved to bottom */}
+          <div className="mt-8 flex justify-center">
+            <Link to="/" className="inline-flex items-center gap-2 text-neutral-600 hover:text-neutral-800 underline">
+              <ArrowLeft size={16} />
+              Take me back
+            </Link>
           </div>
         </div>
       </main>

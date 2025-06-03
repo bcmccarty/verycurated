@@ -1,4 +1,3 @@
-
 import { useState } from "react";
 import { Link } from "react-router-dom";
 import { ArrowLeft } from "lucide-react";
@@ -106,7 +105,7 @@ const Contact = () => {
   };
 
   return (
-    <div className="min-h-screen bg-white flex flex-col pb-16">
+    <div className="min-h-screen bg-white flex flex-col pb-20">
       <header className="sticky top-0 bg-white shadow-sm z-50">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-4 text-center">
           <Link to="/" className="inline-block">
@@ -119,16 +118,6 @@ const Contact = () => {
 
       <main className="flex-grow py-12">
         <div className="max-w-2xl mx-auto px-4">
-          {/* Take Me Back Button */}
-          <div className="mb-8 flex justify-center">
-            <Link to="/" className="relative inline-flex items-center justify-center w-[200px] h-[50px] text-white rounded-[4px] font-['Heiti_SC'] text-sm font-bold tracking-[1px] border-2 border-transparent hover:border-[#355E3B] hover:text-[#355E3B] before:absolute before:inset-0 before:bg-gradient-to-b before:from-[#355E3B] before:to-[#2f5534] hover:before:opacity-0 before:transition-opacity before:rounded-[4px]">
-              <span className="relative z-10 flex items-center gap-2 whitespace-nowrap">
-                <ArrowLeft size={16} />
-                TAKE ME BACK
-              </span>
-            </Link>
-          </div>
-
           {/* About Us Section */}
           <div className="mb-8 p-6 bg-neutral-50 rounded-lg">
             <h2 className="text-xl font-semibold mb-4">About Us</h2>
@@ -199,6 +188,14 @@ const Contact = () => {
               </button>
             </div>
           </form>
+
+          {/* Take Me Back Link - moved to bottom */}
+          <div className="mt-8 flex justify-center">
+            <Link to="/" className="inline-flex items-center gap-2 text-neutral-600 hover:text-neutral-800 underline">
+              <ArrowLeft size={16} />
+              Take me back
+            </Link>
+          </div>
         </div>
       </main>
 

@@ -42,23 +42,55 @@ const Contact = () => {
     }
 
     setIsSubmitting(true);
+    console.log("Attempting to submit contact form...");
 
     try {
+      // First, let's test the Supabase connection
+      const { data: testData, error: testError } = await supabase
+        .from('contact_submissions')
+        .select('count')
+        .limit(1);
+
+      console.log("Supabase connection test:", { testData, testError });
+
+      if (testError) {
+        console.error('Supabase connection/table error:', testError);
+        
+        // If table doesn't exist or permission issues, show a more user-friendly message
+        if (testError.code === 'PGRST116' || testError.message?.includes('relation') || testError.message?.includes('does not exist')) {
+          toast.error("Contact form is currently unavailable. Please try emailing us directly.");
+        } else {
+          toast.error("Database connection issue. Please try again later.");
+        }
+        return;
+      }
+
+      // If connection test passes, proceed with the insert
+      const submissionData = {
+        inquiry_reason: inquiryReason,
+        email: email,
+        message: message,
+        created_at: new Date().toISOString()
+      };
+
+      console.log("Submitting data:", submissionData);
+
       const { error } = await supabase
         .from('contact_submissions')
-        .insert([
-          {
-            inquiry_reason: inquiryReason,
-            email: email,
-            message: message,
-            created_at: new Date().toISOString()
-          }
-        ]);
+        .insert([submissionData]);
 
       if (error) {
         console.error('Error submitting form:', error);
+        console.error('Error details:', {
+          code: error.code,
+          message: error.message,
+          details: error.details,
+          hint: error.hint
+        });
+        
         toast.error("There was an error submitting your message. Please try again.");
       } else {
+        console.log("Form submitted successfully!");
         toast.success("Thank you! Your message has been sent successfully. We'll get back to you soon!");
         // Reset form
         setEmail("");
@@ -66,8 +98,8 @@ const Contact = () => {
         setInquiryReason("General Inquiry");
       }
     } catch (error) {
-      console.error('Error submitting form:', error);
-      toast.error("There was an error submitting your message. Please try again.");
+      console.error('Unexpected error submitting form:', error);
+      toast.error("There was an unexpected error. Please try again.");
     } finally {
       setIsSubmitting(false);
     }

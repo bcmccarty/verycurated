@@ -56,7 +56,6 @@ const PrivacyPolicy = () => {
           <div className="flex justify-center space-x-6 text-sm text-neutral-500">
             <Link to="/" className="hover:text-neutral-700">Home</Link>
             <Link to="/privacy-policy" className="hover:text-neutral-700">Privacy Policy</Link>
-            <Link to="/terms-of-service" className="hover:text-neutral-700">Terms of Service</Link>
             <Link to="/affiliate-disclosure" className="hover:text-neutral-700">Affiliate Disclosure</Link>
             <Link to="/contact" className="hover:text-neutral-700">Contact & Submit</Link>
           </div>

@@ -1,4 +1,3 @@
-
 import ProductGrid from "@/components/ProductGrid";
 import { Link } from "react-router-dom";
 
@@ -39,7 +38,6 @@ const Index = () => {
           <div className="flex justify-center space-x-6 text-sm">
             <Link to="/" className="text-neutral-500 hover:text-neutral-800">Home</Link>
             <Link to="/privacy-policy" className="text-neutral-500 hover:text-neutral-800">Privacy Policy</Link>
-            <Link to="/terms-of-service" className="text-neutral-500 hover:text-neutral-800">Terms of Service</Link>
             <Link to="/affiliate-disclosure" className="text-neutral-500 hover:text-neutral-800">Affiliate Disclosure</Link>
             <Link to="/contact" className="text-neutral-500 hover:text-neutral-800">Contact & Submit</Link>
           </div>

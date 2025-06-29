@@ -1,5 +1,4 @@
 
-
 import { Product } from "@/lib/types";
 import { useIsMobile } from "@/hooks/use-mobile";
 import { ArrowRight } from "lucide-react";
@@ -47,15 +46,15 @@ const ProductCard = ({
         </p>
         {product.affiliateLink && (
           <div className="flex justify-center mt-auto">
-            <div className="relative p-[1px] rounded-full bg-gradient-to-r from-gray-600 via-gray-400 to-gray-600">
+            <div className="relative p-[1px] rounded-full bg-gradient-to-r from-gray-500 via-gray-300 to-gray-500">
               <a 
                 href={product.affiliateLink} 
                 target="_blank" 
                 rel="noopener noreferrer" 
-                className="inline-flex items-center justify-center gap-2 px-8 py-4 bg-gradient-to-b from-gray-800 to-black text-white rounded-full font-medium text-base hover:from-gray-700 hover:to-gray-900 transition-all duration-200 shadow-lg"
+                className="inline-flex items-center justify-center gap-2 px-8 py-4 bg-gradient-to-b from-gray-900 to-black text-white rounded-full font-medium text-base hover:from-gray-800 hover:to-gray-900 transition-all duration-200 shadow-lg"
               >
                 <span>Check it out</span>
-                <ArrowRight className="w-4 h-4" />
+                <ArrowRight className="w-4 h-4 text-white" />
               </a>
             </div>
           </div>
@@ -66,4 +65,3 @@ const ProductCard = ({
 };
 
 export default ProductCard;
-

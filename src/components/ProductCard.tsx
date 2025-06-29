@@ -38,13 +38,15 @@ const ProductCard = ({
           </span>
         )}
       </div>
-      <div className="p-4 pt-4 pb-8 px-[18px] bg-gray-100 my-0 mx-0 rounded-sm relative h-[240px]">
+      <div className={`p-4 pt-4 pb-8 px-[18px] bg-gray-100 my-0 mx-0 rounded-sm relative ${
+        isMobile && isLongTitle ? 'h-[270px]' : 'h-[240px]'
+      }`}>
         <h3 className={`font-semibold text-lg mb-[6px] text-center ${
           isMobile ? 'line-clamp-2' : 'line-clamp-1'
         }`}>{product.title}</h3>
         <div className="text-neutral-600 font-bold text-center mb-[10px]">{product.price}</div>
         <p className={`text-neutral-500 text-[13px] line-clamp-4 font-['Arial'] ${
-          isMobile && isLongTitle ? 'mb-[32px]' : 'mb-[13px]'
+          isMobile && isLongTitle ? 'mb-[45px]' : 'mb-[13px]'
         }`}>
           {product.description}
         </p>

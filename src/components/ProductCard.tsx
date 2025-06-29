@@ -27,10 +27,10 @@ const ProductCard = ({
             Sponsored
           </span>}
       </div>
-      <div className="p-4 pt-4 pb-8 px-[18px] bg-gray-100 my-0 mx-0 rounded-sm relative h-[260px] sm:h-[240px]">
+      <div className="p-4 pt-4 pb-8 px-[18px] bg-gray-100 my-0 mx-0 rounded-sm relative h-[250px]">
         <h3 className="font-semibold text-lg mb-[6px] text-center line-clamp-2 sm:line-clamp-1 leading-tight">{product.title}</h3>
         <div className="text-neutral-600 font-bold text-center mb-[10px]">{product.price}</div>
-        <p className="text-neutral-500 text-[13px] mb-[18px] sm:mb-[13px] line-clamp-3 sm:line-clamp-4 font-['Arial']">
+        <p className="text-neutral-500 text-[13px] mb-[15px] line-clamp-3 sm:line-clamp-4 font-['Arial']">
           {product.description}
         </p>
         {product.affiliateLink && (

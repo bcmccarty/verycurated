@@ -47,15 +47,17 @@ const ProductCard = ({
         </p>
         {product.affiliateLink && (
           <div className="flex justify-center mt-auto">
-            <a 
-              href={product.affiliateLink} 
-              target="_blank" 
-              rel="noopener noreferrer" 
-              className="inline-flex items-center justify-center gap-2 px-8 py-4 bg-gradient-to-b from-gray-800 to-black text-white rounded-full font-medium text-base hover:from-gray-700 hover:to-gray-900 transition-all duration-200 shadow-lg"
-            >
-              <span>Check it out</span>
-              <ArrowRight className="w-4 h-4" />
-            </a>
+            <div className="relative p-[1px] rounded-full bg-gradient-to-r from-gray-600 via-gray-400 to-gray-600">
+              <a 
+                href={product.affiliateLink} 
+                target="_blank" 
+                rel="noopener noreferrer" 
+                className="inline-flex items-center justify-center gap-2 px-8 py-4 bg-gradient-to-b from-gray-800 to-black text-white rounded-full font-medium text-base hover:from-gray-700 hover:to-gray-900 transition-all duration-200 shadow-lg"
+              >
+                <span>Check it out</span>
+                <ArrowRight className="w-4 h-4" />
+              </a>
+            </div>
           </div>
         )}
       </div>

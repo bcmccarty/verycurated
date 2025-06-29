@@ -45,11 +45,11 @@ const ProductCard = ({
           isMobile ? 'line-clamp-2' : 'line-clamp-1'
         }`}>{product.title}</h3>
         <div className="text-neutral-600 font-bold text-center mb-[10px]">{product.price}</div>
-        <p className="text-neutral-500 text-[13px] line-clamp-4 font-['Arial'] flex-1 mb-4">
+        <p className="text-neutral-500 text-[13px] line-clamp-4 font-['Arial'] flex-grow mb-6">
           {product.description}
         </p>
         {product.affiliateLink && (
-          <div className="flex justify-center mt-auto">
+          <div className="flex justify-center">
             <a 
               href={product.affiliateLink} 
               target="_blank" 

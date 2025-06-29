@@ -57,3 +57,12 @@
     @apply bg-white;
   }
 }
+
+@layer components {
+  /* Make footer elements more transparent */
+  footer,
+  [role="contentinfo"],
+  .footer {
+    opacity: 0.8 !important;
+  }
+}

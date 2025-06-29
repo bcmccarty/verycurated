@@ -54,7 +54,8 @@ export function FloatingProductCard({ product, position, index }: FloatingProduc
     if (isDragging) {
       console.log(`Card ${index} thrown`);
       const force = dragCurrentPos.current.clone().sub(dragStartPos.current).multiplyScalar(5);
-      api.applyImpulse([force.x, force.y, force.z], [0, 0, 0]);
+      // Fix: Ensure we pass exactly 3 elements as a Triplet
+      api.applyImpulse([force.x, force.y, force.z] as [number, number, number], [0, 0, 0]);
       setIsDragging(false);
     }
   };
@@ -62,17 +63,18 @@ export function FloatingProductCard({ product, position, index }: FloatingProduc
   // Add some random drift
   useFrame(() => {
     if (!isDragging && Math.random() < 0.002) {
-      const randomForce = [(Math.random() - 0.5) * 1, (Math.random() - 0.5) * 1, (Math.random() - 0.5) * 0.5];
+      const randomForce: [number, number, number] = [
+        (Math.random() - 0.5) * 1, 
+        (Math.random() - 0.5) * 1, 
+        (Math.random() - 0.5) * 0.5
+      ];
       api.applyImpulse(randomForce, [0, 0, 0]);
     }
   });
 
   return (
     <mesh
-      ref={(mesh) => {
-        ref.current = mesh;
-        meshRef.current = mesh;
-      }}
+      ref={ref}
       onPointerDown={handlePointerDown}
       onPointerMove={handlePointerMove}
       onPointerUp={handlePointerUp}

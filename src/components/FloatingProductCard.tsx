@@ -80,7 +80,7 @@ export function FloatingProductCard({ product, position, index }: FloatingProduc
       onPointerLeave={() => setIsDragging(false)}
     >
       <boxGeometry args={[2, 2.5, 0.1]} />
-      <meshBasicMaterial transparent opacity={0} />
+      <meshStandardMaterial color="orange" transparent opacity={0.1} />
       <Html
         transform
         occlude

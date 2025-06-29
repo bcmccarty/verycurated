@@ -30,8 +30,16 @@ export function ZeroGravityMode({ products }: ZeroGravityModeProps) {
     <div className="fixed inset-0 z-40 bg-gradient-to-b from-blue-900 via-black to-purple-900">
       <Canvas
         camera={{ position: [0, 0, 10], fov: 75 }}
-        style={{ background: 'transparent' }}
-        onCreated={() => console.log('Canvas created successfully')}
+        style={{ 
+          background: 'transparent',
+          width: '100vw',
+          height: '100vh'
+        }}
+        onCreated={({ gl }) => {
+          console.log('Canvas created successfully');
+          gl.setSize(window.innerWidth, window.innerHeight);
+        }}
+        gl={{ antialias: true, alpha: false }}
       >
         <Suspense fallback={null}>
           <ambientLight intensity={0.6} />
@@ -72,6 +80,12 @@ export function ZeroGravityMode({ products }: ZeroGravityModeProps) {
       <div className="absolute top-20 left-1/2 transform -translate-x-1/2 text-white text-center z-50">
         <p className="text-lg font-semibold mb-2">🚀 Zero Gravity Mode Active! 🚀</p>
         <p className="text-sm opacity-80">Drag cards to throw them • Scroll to zoom • Click and drag to look around</p>
+      </div>
+      
+      {/* Debug info */}
+      <div className="absolute bottom-4 left-4 text-white text-xs z-50">
+        <p>Products loaded: {products.length}</p>
+        <p>Canvas should be visible above this text</p>
       </div>
     </div>
   );

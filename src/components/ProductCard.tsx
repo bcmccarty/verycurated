@@ -1,11 +1,19 @@
 
 import { Product } from "@/lib/types";
+import { useIsMobile } from "@/hooks/use-mobile";
+
 interface ProductCardProps {
   product: Product;
 }
+
 const ProductCard = ({
   product
 }: ProductCardProps) => {
+  const isMobile = useIsMobile();
+  
+  // Consider a title "long" if it's more than 25 characters (likely to wrap on mobile)
+  const isLongTitle = product.title.length > 25;
+  
   // Don't render link wrapper if there's no affiliate link
   const renderImage = () => {
     if (product.affiliateLink) {
@@ -20,17 +28,22 @@ const ProductCard = ({
     );
   };
 
-  return <div className="group relative bg-gray-100 rounded-[4px] overflow-hidden transition-all duration-300 animate-fade-in w-full">
+  return (
+    <div className="group relative bg-gray-100 rounded-[4px] overflow-hidden transition-all duration-300 animate-fade-in w-full">
       <div className="relative aspect-square overflow-hidden bg-gray-100">
         {renderImage()}
-        {product.isSponsored && <span className="absolute top-2 right-2 bg-black/70 text-white px-2 py-1 text-xs rounded-[4px]">
+        {product.isSponsored && (
+          <span className="absolute top-2 right-2 bg-black/70 text-white px-2 py-1 text-xs rounded-[4px]">
             Sponsored
-          </span>}
+          </span>
+        )}
       </div>
       <div className="p-4 pt-4 pb-8 px-[18px] bg-gray-100 my-0 mx-0 rounded-sm relative h-[240px]">
         <h3 className="font-semibold text-lg mb-[6px] text-center line-clamp-1">{product.title}</h3>
         <div className="text-neutral-600 font-bold text-center mb-[10px]">{product.price}</div>
-        <p className="text-neutral-500 text-[13px] mb-[13px] line-clamp-4 font-['Arial']">
+        <p className={`text-neutral-500 text-[13px] line-clamp-4 font-['Arial'] ${
+          isMobile && isLongTitle ? 'mb-[20px]' : 'mb-[13px]'
+        }`}>
           {product.description}
         </p>
         {product.affiliateLink && (
@@ -46,6 +59,8 @@ const ProductCard = ({
           </div>
         )}
       </div>
-    </div>;
+    </div>
+  );
 };
+
 export default ProductCard;

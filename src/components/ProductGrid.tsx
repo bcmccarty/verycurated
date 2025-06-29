@@ -5,8 +5,6 @@ import LoadingSpinner from "./LoadingSpinner";
 import { supabase, isPermissionError } from "../lib/supabaseClient";
 import { toast } from "sonner";
 import { useBitcoinPrice } from "../hooks/useBitcoinPrice";
-import { GravityToggle } from "./GravityToggle";
-import { ZeroGravityMode } from "./ZeroGravityMode";
 
 interface ProductGridProps {
   selectedCategory?: string;
@@ -21,14 +19,8 @@ const ProductGrid = ({ selectedCategory }: ProductGridProps) => {
   const [page, setPage] = useState(1);
   const [hasMore, setHasMore] = useState(true);
   const [error, setError] = useState<string | null>(null);
-  const [zeroGravityEnabled, setZeroGravityEnabled] = useState(false);
   const loaderRef = useRef(null);
   const { price: bitcoinPrice } = useBitcoinPrice();
-
-  const handleGravityToggle = (enabled: boolean) => {
-    console.log('Zero gravity toggled:', enabled);
-    setZeroGravityEnabled(enabled);
-  };
 
   useEffect(() => {
     const initialLoad = async () => {
@@ -174,55 +166,38 @@ const ProductGrid = ({ selectedCategory }: ProductGridProps) => {
     return items;
   };
 
-  const updatedProducts = products.map(product => 
-    product.id === "caa6a7f9-c931-47c7-8953-e47df40ea2b1" 
-      ? { ...product, price: bitcoinPrice }
-      : product
-  );
-
-  console.log('ProductGrid render - zeroGravityEnabled:', zeroGravityEnabled, 'products count:', updatedProducts.length);
-
   return (
-    <>
-      <GravityToggle 
-        enabled={zeroGravityEnabled} 
-        onToggle={handleGravityToggle}
-      />
-      
-      {zeroGravityEnabled && <ZeroGravityMode products={updatedProducts} />}
-      
-      <div className={`w-full max-w-[1200px] mx-auto px-4 sm:px-6 lg:px-8 ${zeroGravityEnabled ? 'hidden' : ''}`}>
-        {error && (
-          <div className="text-red-500 text-center mb-4 p-4 bg-red-50 rounded-md border border-red-200">
-            <p className="font-medium">Error</p>
-            <p>{error}</p>
-            {error.includes('Row Level Security') && (
-              <div className="mt-2 text-sm">
-                <p>To fix this issue in Supabase:</p>
-                <ol className="list-decimal list-inside mt-1 space-y-1">
-                  <li>Go to your Supabase dashboard</li>
-                  <li>Navigate to Authentication → Policies</li>
-                  <li>Find your 'products' table</li>
-                  <li>Add a policy for anonymous users to SELECT data</li>
-                </ol>
-              </div>
-            )}
-          </div>
-        )}
-        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-x-8 gap-y-8 justify-items-center">
-          {renderGridItems()}
-        </div>
-        <div ref={loaderRef} className="py-4 text-center">
-          {isLoading && <LoadingSpinner />}
-          {!hasMore && products.length > 0 && (
-            <p className="text-gray-500">No more products to load</p>
-          )}
-          {!isLoading && products.length === 0 && !error && (
-            <p className="text-gray-500">No products found</p>
+    <div className="w-full max-w-[1200px] mx-auto px-4 sm:px-6 lg:px-8">
+      {error && (
+        <div className="text-red-500 text-center mb-4 p-4 bg-red-50 rounded-md border border-red-200">
+          <p className="font-medium">Error</p>
+          <p>{error}</p>
+          {error.includes('Row Level Security') && (
+            <div className="mt-2 text-sm">
+              <p>To fix this issue in Supabase:</p>
+              <ol className="list-decimal list-inside mt-1 space-y-1">
+                <li>Go to your Supabase dashboard</li>
+                <li>Navigate to Authentication → Policies</li>
+                <li>Find your 'products' table</li>
+                <li>Add a policy for anonymous users to SELECT data</li>
+              </ol>
+            </div>
           )}
         </div>
+      )}
+      <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-x-8 gap-y-8 justify-items-center">
+        {renderGridItems()}
       </div>
-    </>
+      <div ref={loaderRef} className="py-4 text-center">
+        {isLoading && <LoadingSpinner />}
+        {!hasMore && products.length > 0 && (
+          <p className="text-gray-500">No more products to load</p>
+        )}
+        {!isLoading && products.length === 0 && !error && (
+          <p className="text-gray-500">No products found</p>
+        )}
+      </div>
+    </div>
   );
 };
 

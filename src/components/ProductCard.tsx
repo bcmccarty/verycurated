@@ -11,9 +11,6 @@ const ProductCard = ({
 }: ProductCardProps) => {
   const isMobile = useIsMobile();
   
-  // Consider a title "long" if it's more than 25 characters (likely to wrap on mobile)
-  const isLongTitle = product.title.length > 25;
-  
   // Don't render link wrapper if there's no affiliate link
   const renderImage = () => {
     if (product.affiliateLink) {
@@ -38,18 +35,16 @@ const ProductCard = ({
           </span>
         )}
       </div>
-      <div className={`p-4 pt-4 pb-8 px-[18px] bg-gray-100 my-0 mx-0 rounded-sm relative flex flex-col ${
-        isMobile && isLongTitle ? 'h-[280px]' : 'h-[250px]'
-      }`}>
+      <div className="p-4 pt-4 pb-8 px-[18px] bg-gray-100 my-0 mx-0 rounded-sm flex flex-col min-h-[250px]">
         <h3 className={`font-semibold text-lg mb-[6px] text-center ${
           isMobile ? 'line-clamp-2' : 'line-clamp-1'
         }`}>{product.title}</h3>
         <div className="text-neutral-600 font-bold text-center mb-[10px]">{product.price}</div>
-        <p className="text-neutral-500 text-[13px] line-clamp-4 font-['Arial'] flex-grow mb-4">
+        <p className="text-neutral-500 text-[13px] line-clamp-4 font-['Arial'] mb-4 flex-1">
           {product.description}
         </p>
         {product.affiliateLink && (
-          <div className="flex justify-center">
+          <div className="flex justify-center mt-auto">
             <a 
               href={product.affiliateLink} 
               target="_blank" 

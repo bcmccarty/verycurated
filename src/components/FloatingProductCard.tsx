@@ -1,7 +1,7 @@
 
 import { useRef, useState } from 'react';
 import { useFrame, useThree } from '@react-three/fiber';
-import { useBox, usePlane } from '@react-three/cannon';
+import { useBox } from '@react-three/cannon';
 import { Html } from '@react-three/drei';
 import { Product } from '@/lib/types';
 import ProductCard from './ProductCard';
@@ -16,8 +16,8 @@ interface FloatingProductCardProps {
 export function FloatingProductCard({ product, position, index }: FloatingProductCardProps) {
   console.log(`FloatingProductCard ${index} initialized at position:`, position);
   
-  const { viewport } = useThree();
   const [isDragging, setIsDragging] = useState(false);
+  const meshRef = useRef<THREE.Mesh>(null);
   
   // Physics body for the card
   const [ref, api] = useBox(() => ({
@@ -28,13 +28,7 @@ export function FloatingProductCard({ product, position, index }: FloatingProduc
       friction: 0.1,
       restitution: 0.3,
     },
-  })) as any;
-
-  // Create invisible walls to contain the cards
-  usePlane(() => ({ position: [viewport.width / 2 + 1, 0, 0], rotation: [0, -Math.PI / 2, 0] }));
-  usePlane(() => ({ position: [-viewport.width / 2 - 1, 0, 0], rotation: [0, Math.PI / 2, 0] }));
-  usePlane(() => ({ position: [0, viewport.height / 2 + 1, 0], rotation: [-Math.PI / 2, 0, 0] }));
-  usePlane(() => ({ position: [0, -viewport.height / 2 - 1, 0], rotation: [Math.PI / 2, 0, 0] }));
+  }));
 
   const dragStartPos = useRef<THREE.Vector3>(new THREE.Vector3());
   const dragCurrentPos = useRef<THREE.Vector3>(new THREE.Vector3());
@@ -51,29 +45,34 @@ export function FloatingProductCard({ product, position, index }: FloatingProduc
   const handlePointerMove = (e: any) => {
     if (isDragging) {
       dragCurrentPos.current.copy(e.point);
+      // Move the physics body to follow the mouse
+      api.position.set(e.point.x, e.point.y, e.point.z);
     }
   };
 
   const handlePointerUp = (e: any) => {
     if (isDragging) {
       console.log(`Card ${index} thrown`);
-      const force = dragCurrentPos.current.clone().sub(dragStartPos.current).multiplyScalar(10);
-      api.applyImpulse([force.x, force.y, 0], [0, 0, 0]);
+      const force = dragCurrentPos.current.clone().sub(dragStartPos.current).multiplyScalar(5);
+      api.applyImpulse([force.x, force.y, force.z], [0, 0, 0]);
       setIsDragging(false);
     }
   };
 
   // Add some random drift
   useFrame(() => {
-    if (!isDragging && Math.random() < 0.001) {
-      const randomForce = [(Math.random() - 0.5) * 0.5, (Math.random() - 0.5) * 0.5, 0];
+    if (!isDragging && Math.random() < 0.002) {
+      const randomForce = [(Math.random() - 0.5) * 1, (Math.random() - 0.5) * 1, (Math.random() - 0.5) * 0.5];
       api.applyImpulse(randomForce, [0, 0, 0]);
     }
   });
 
   return (
     <mesh
-      ref={ref}
+      ref={(mesh) => {
+        ref.current = mesh;
+        meshRef.current = mesh;
+      }}
       onPointerDown={handlePointerDown}
       onPointerMove={handlePointerMove}
       onPointerUp={handlePointerUp}
@@ -83,16 +82,16 @@ export function FloatingProductCard({ product, position, index }: FloatingProduc
       <meshStandardMaterial color="orange" transparent opacity={0.1} />
       <Html
         transform
-        occlude
+        distanceFactor={10}
         position={[0, 0, 0.1]}
         style={{
-          width: '300px',
-          height: '375px',
-          pointerEvents: isDragging ? 'none' : 'auto',
-          cursor: 'grab',
+          width: '200px',
+          height: '250px',
+          pointerEvents: 'auto',
+          cursor: isDragging ? 'grabbing' : 'grab',
         }}
       >
-        <div className="transform scale-75 origin-center">
+        <div className="transform scale-50 origin-center">
           <ProductCard product={product} />
         </div>
       </Html>

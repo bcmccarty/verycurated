@@ -38,20 +38,18 @@ const ProductCard = ({
           </span>
         )}
       </div>
-      <div className={`p-4 pt-4 pb-8 px-[18px] bg-gray-100 my-0 mx-0 rounded-sm relative ${
+      <div className={`p-4 pt-4 pb-8 px-[18px] bg-gray-100 my-0 mx-0 rounded-sm relative flex flex-col ${
         isMobile && isLongTitle ? 'h-[270px]' : 'h-[240px]'
       }`}>
         <h3 className={`font-semibold text-lg mb-[6px] text-center ${
           isMobile ? 'line-clamp-2' : 'line-clamp-1'
         }`}>{product.title}</h3>
         <div className="text-neutral-600 font-bold text-center mb-[10px]">{product.price}</div>
-        <p className={`text-neutral-500 text-[13px] line-clamp-4 font-['Arial'] ${
-          isMobile && isLongTitle ? 'mb-[45px]' : 'mb-[13px]'
-        }`}>
+        <p className="text-neutral-500 text-[13px] line-clamp-4 font-['Arial'] flex-1 mb-4">
           {product.description}
         </p>
         {product.affiliateLink && (
-          <div className="absolute bottom-6 left-0 right-0 flex justify-center">
+          <div className="flex justify-center mt-auto">
             <a 
               href={product.affiliateLink} 
               target="_blank" 

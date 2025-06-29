@@ -23,13 +23,13 @@ const HomeCategory = () => {
         </section>
       </main>
 
-      <footer className="w-full bg-white border-t border-neutral-200 py-3 fixed bottom-0 left-0 z-10">
+      <footer className="w-full bg-white/80 backdrop-blur-md border-t border-white/20 py-3 fixed bottom-0 left-0 z-10 shadow-lg">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="flex justify-center space-x-6 text-sm">
-            <Link to="/" className="text-neutral-500 hover:text-neutral-800">Home</Link>
-            <Link to="/privacy-policy" className="text-neutral-500 hover:text-neutral-800">Privacy Policy</Link>
-            <Link to="/affiliate-disclosure" className="text-neutral-500 hover:text-neutral-800">Affiliate Disclosure</Link>
-            <Link to="/contact" className="text-neutral-500 hover:text-neutral-800">Contact & Submit</Link>
+            <Link to="/" className="text-neutral-600 hover:text-neutral-800">Home</Link>
+            <Link to="/privacy-policy" className="text-neutral-600 hover:text-neutral-800">Privacy Policy</Link>
+            <Link to="/affiliate-disclosure" className="text-neutral-600 hover:text-neutral-800">Affiliate Disclosure</Link>
+            <Link to="/contact" className="text-neutral-600 hover:text-neutral-800">Contact & Submit</Link>
           </div>
         </div>
       </footer>

@@ -11,6 +11,8 @@ interface ZeroGravityModeProps {
 }
 
 export function ZeroGravityMode({ products }: ZeroGravityModeProps) {
+  console.log('ZeroGravityMode rendered with products:', products.length);
+
   // Generate random positions for each card
   const getRandomPosition = (index: number): [number, number, number] => {
     const gridCols = Math.ceil(Math.sqrt(products.length));
@@ -29,6 +31,7 @@ export function ZeroGravityMode({ products }: ZeroGravityModeProps) {
       <Canvas
         camera={{ position: [0, 0, 10], fov: 75 }}
         style={{ background: 'transparent' }}
+        onCreated={() => console.log('Canvas created successfully')}
       >
         <Suspense fallback={null}>
           <ambientLight intensity={0.6} />
@@ -42,14 +45,17 @@ export function ZeroGravityMode({ products }: ZeroGravityModeProps) {
               restitution: 0.3,
             }}
           >
-            {products.map((product, index) => (
-              <FloatingProductCard
-                key={product.id}
-                product={product}
-                position={getRandomPosition(index)}
-                index={index}
-              />
-            ))}
+            {products.map((product, index) => {
+              console.log(`Rendering floating card ${index} for product:`, product.title);
+              return (
+                <FloatingProductCard
+                  key={product.id}
+                  product={product}
+                  position={getRandomPosition(index)}
+                  index={index}
+                />
+              );
+            })}
           </Physics>
           
           <OrbitControls

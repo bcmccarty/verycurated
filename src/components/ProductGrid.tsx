@@ -25,6 +25,11 @@ const ProductGrid = ({ selectedCategory }: ProductGridProps) => {
   const loaderRef = useRef(null);
   const { price: bitcoinPrice } = useBitcoinPrice();
 
+  const handleGravityToggle = (enabled: boolean) => {
+    console.log('Zero gravity toggled:', enabled);
+    setZeroGravityEnabled(enabled);
+  };
+
   useEffect(() => {
     const initialLoad = async () => {
       setIsLoading(true);
@@ -175,11 +180,13 @@ const ProductGrid = ({ selectedCategory }: ProductGridProps) => {
       : product
   );
 
+  console.log('ProductGrid render - zeroGravityEnabled:', zeroGravityEnabled, 'products count:', updatedProducts.length);
+
   return (
     <>
       <GravityToggle 
         enabled={zeroGravityEnabled} 
-        onToggle={setZeroGravityEnabled}
+        onToggle={handleGravityToggle}
       />
       
       {zeroGravityEnabled && <ZeroGravityMode products={updatedProducts} />}

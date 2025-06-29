@@ -14,6 +14,8 @@ interface FloatingProductCardProps {
 }
 
 export function FloatingProductCard({ product, position, index }: FloatingProductCardProps) {
+  console.log(`FloatingProductCard ${index} initialized at position:`, position);
+  
   const { viewport } = useThree();
   const [isDragging, setIsDragging] = useState(false);
   
@@ -39,6 +41,7 @@ export function FloatingProductCard({ product, position, index }: FloatingProduc
 
   const handlePointerDown = (e: any) => {
     e.stopPropagation();
+    console.log(`Card ${index} pointer down`);
     setIsDragging(true);
     dragStartPos.current.copy(e.point);
     api.velocity.set(0, 0, 0);
@@ -53,6 +56,7 @@ export function FloatingProductCard({ product, position, index }: FloatingProduc
 
   const handlePointerUp = (e: any) => {
     if (isDragging) {
+      console.log(`Card ${index} thrown`);
       const force = dragCurrentPos.current.clone().sub(dragStartPos.current).multiplyScalar(10);
       api.applyImpulse([force.x, force.y, 0], [0, 0, 0]);
       setIsDragging(false);

@@ -44,7 +44,7 @@ const ProductCard = ({
         }`}>{product.title}</h3>
         <div className="text-neutral-600 font-bold text-center mb-[10px]">{product.price}</div>
         <p className={`text-neutral-500 text-[13px] line-clamp-4 font-['Arial'] ${
-          isMobile && isLongTitle ? 'mb-[20px]' : 'mb-[13px]'
+          isMobile && isLongTitle ? 'mb-[32px]' : 'mb-[13px]'
         }`}>
           {product.description}
         </p>

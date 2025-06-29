@@ -74,7 +74,13 @@ export function FloatingProductCard({ product, position, index }: FloatingProduc
 
   return (
     <mesh
-      ref={ref}
+      ref={(mesh) => {
+        // Assign to both refs properly
+        if (mesh) {
+          (ref as any).current = mesh;
+          meshRef.current = mesh;
+        }
+      }}
       onPointerDown={handlePointerDown}
       onPointerMove={handlePointerMove}
       onPointerUp={handlePointerUp}

@@ -39,13 +39,13 @@ const ProductCard = ({
         )}
       </div>
       <div className={`p-4 pt-4 pb-8 px-[18px] bg-gray-100 my-0 mx-0 rounded-sm relative flex flex-col ${
-        isMobile && isLongTitle ? 'h-[270px]' : 'h-[240px]'
+        isMobile && isLongTitle ? 'h-[280px]' : 'h-[250px]'
       }`}>
         <h3 className={`font-semibold text-lg mb-[6px] text-center ${
           isMobile ? 'line-clamp-2' : 'line-clamp-1'
         }`}>{product.title}</h3>
         <div className="text-neutral-600 font-bold text-center mb-[10px]">{product.price}</div>
-        <p className="text-neutral-500 text-[13px] line-clamp-4 font-['Arial'] flex-grow mb-6">
+        <p className="text-neutral-500 text-[13px] line-clamp-4 font-['Arial'] flex-grow mb-4">
           {product.description}
         </p>
         {product.affiliateLink && (

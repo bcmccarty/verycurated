@@ -1,4 +1,5 @@
 
+
 import { Product } from "@/lib/types";
 import { useIsMobile } from "@/hooks/use-mobile";
 import { ArrowRight } from "lucide-react";
@@ -50,9 +51,9 @@ const ProductCard = ({
               href={product.affiliateLink} 
               target="_blank" 
               rel="noopener noreferrer" 
-              className="inline-flex items-center justify-center gap-2 px-8 py-4 bg-black text-white rounded-full font-medium text-base hover:bg-gray-800 transition-colors duration-200"
+              className="inline-flex items-center justify-center gap-2 px-8 py-4 bg-gradient-to-b from-gray-800 to-black text-white rounded-full font-medium text-base hover:from-gray-700 hover:to-gray-900 transition-all duration-200 shadow-lg"
             >
-              <span>View Pricing</span>
+              <span>Check it out</span>
               <ArrowRight className="w-4 h-4" />
             </a>
           </div>
@@ -63,3 +64,4 @@ const ProductCard = ({
 };
 
 export default ProductCard;
+

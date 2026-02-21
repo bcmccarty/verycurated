@@ -16,7 +16,7 @@ const Index = () => {
       <header className="w-full bg-white py-4">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
           <img 
-            src="https://gzganvncavbtsjpecpjy.supabase.co/storage/v1/object/sign/product%20photos/verycurated_logo_gradient.svg?token=eyJraWQiOiJzdG9yYWdlLXVybC1zaWduaW5nLWtleV83OWY3YWI5ZS0xZDJmLTQ4ZTktOTlkNS1mMWViMGI1ZTAyOWQiLCJhbGciOiJIUzI1NiJ9.eyJ1cmwiOiJwcm9kdWN0IHBob3Rvcy92ZXJ5Y3VyYXRlZF9sb2dvX2dyYWRpZW50LnN2ZyIsImlhdCI6MTc0ODk3NTI0OCwiZXhwIjo0OTAyNTc1MjQ4fQ.FMRouq7crL0tWDzbJSOPiVqsHxaaCL0MwkBsyJGqlwQ" 
+            src="/images/verycurated_logo_gradient.svg" 
             alt="Very Curated Logo" 
             className="w-48 h-24 mx-auto mb-3 object-contain"
           />

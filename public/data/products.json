@@ -5,10 +5,10 @@
     "title": "Porsche 911 GT1'98 - Ltd.",
     "description": "High-quality, detailed collector's model of the 911 GT1'98",
     "price": "$929.00",
-    "imageUrl": "https://shop.porsche.com/_next/image?url=https%3A%2F%2Fassets-prod.porsche.com%2Fassets%2Fc3fbe8df-c4e4-4753-9932-f991de636098.webp&w=2560&q=75",
+    "imageUrl": "/images/products/Porsche_911_GT198_-_Ltd.webp",
     "affiliateLink": "https://shop.porsche.com/us/en-US/p/porsche-911-gt1-98-24-hours-of-le-mans-winner-1998-ltd-P-WAP0230100PLM4/WAP0230100PLM4?queryID=2cc8e3afd932474e3440d557b628c1b0",
     "isSponsored": "f",
-    "category": ""
+    "category": "Style"
   },
   {
     "id": "914d4219-2dba-4628-b868-5d0a09643187",
@@ -16,7 +16,7 @@
     "title": "SongBook MAX Portable Speaker",
     "description": "The SongBook MAX is a showstopping combination of timeless design and modern quality. Its vintage inspired design and bold colors make a statement wherever it goes.",
     "price": "$599.99",
-    "imageUrl": "https://tivoliaudio.com/cdn/shop/files/SBMGRN_Front_1512x.jpg?v=1695909573",
+    "imageUrl": "/images/products/SongBook_MAX_Portable_Speaker.jpg",
     "affiliateLink": "https://tivoliaudio.com/products/songbook-max?variant=43292553019523",
     "isSponsored": "f",
     "category": "Home"
@@ -27,10 +27,10 @@
     "title": "Moccamaster KBGV Select",
     "description": "The selector switch on the KBGV Select allows you to choose between brewing a half or full carafe. The brewing speed and hotplate temperature adjust according to your choice.",
     "price": "$359.00",
-    "imageUrl": "https://us.moccamaster.com/cdn/shop/products/Moccamaster_53923_KBGV_Juniper_Silo_1200x.jpg?v=1739902860",
+    "imageUrl": "/images/products/Moccamaster_KBGV_Select.jpg",
     "affiliateLink": "https://us.moccamaster.com/collections/glass-carafe-brewers/products/kbgv-select?variant=42810331332771",
     "isSponsored": "f",
-    "category": ""
+    "category": "Home & Living"
   },
   {
     "id": "3687e682-ad3f-4285-b5dc-85a8e4ebf419",
@@ -38,7 +38,7 @@
     "title": "Ikigai\u00ae Weekly Pill Case",
     "description": "Pill organizers are 100% approved by the TSA for air travel as stated on the TSA.gov website, just place your Ikigai Cases inside your toiletry bag.",
     "price": "$94.00",
-    "imageUrl": "https://ikigaicases.com/cdn/shop/files/green_1000x.jpg?v=1737388509",
+    "imageUrl": "/images/products/Ikigai_Weekly_Pill_Case.jpg",
     "affiliateLink": "https://ikigaicases.com/collections/the-mission-collection-2-0/products/weekly-pill-cases?variant=42885357076712",
     "isSponsored": "f",
     "category": "Health"
@@ -60,7 +60,7 @@
     "title": "Phantom Parfum by Rabanne",
     "description": "The magnetic masculine fragrance by Rabanne.\nPHANTOM EDT frees your rebel soul to captivate on sight. Your unique masculine signature is a hypnotic blend of creamy lavender, energizing lemon and addictive vanilla.",
     "price": "$70.47",
-    "imageUrl": "https://medias.rabanne.com/cdn-cgi/image/width=700,quality=90/https://medias.rabanne.com/medias/sys_master/images/hdc/hf8/10404636033054/10404635967518/10404635967518.gif",
+    "imageUrl": "/images/products/Phantom_Parfum_by_Rabanne.gif",
     "affiliateLink": "https://www.amazon.com/Phantom-Paco-Rabanne-100ml-Toilette/dp/B09C2M2WB9/ref=pd_ybh_a_d_sccl_28/130-9961866-2639054?pd_rd_w=4qn7p&content-id=amzn1.sym.67f8cf21-ade4-4299-b433-69e404eeecf1&pf_rd_p=67f8cf21-ade4-4299-b433-69e404eeecf1&pf_rd_r=101E10TJ9VMZAX29CVXZ&pd_rd_wg=wRRzm&pd_rd_r=5e646c47-221f-4547-960b-d61a9c15a1b9&pd_rd_i=B09C2M2WB9&th=1",
     "isSponsored": "f",
     "category": "Beauty"
@@ -82,7 +82,7 @@
     "title": "Southern Weather Whole Bean Coffee",
     "description": "Southern Weather by Onyx embodies everything we love about specialty coffee and has evolved into a foundational blend. We brew this in our own cafes as a \u201cHouse\u201d filter option and love how it balances the relationship between modern citric acidity flavors with full bodied chocolates. ",
     "price": "$20.00",
-    "imageUrl": "https://onyxcoffeelab.com/cdn/shop/files/southernweather_1200x.webp?v=1736189959",
+    "imageUrl": "/images/products/Southern_Weather_Whole_Bean_Coffee.webp",
     "affiliateLink": "https://onyxcoffeelab.com/products/southern-weather?variant=31862699917410",
     "isSponsored": "f",
     "category": "Kitchen"
@@ -93,7 +93,7 @@
     "title": "Traintrackr NYC Subway Circuit Board 2.0",
     "description": "The New York City Traintrackr is a printed circuit board that uses WiFi to display real-time locations of trains in the NYC subway using 599 color LEDs.",
     "price": "$219.00",
-    "imageUrl": "https://store.moma.org/cdn/shop/files/501fda8f-1c0b-4069-81b7-aefd23cc0047_afd30fb2-4b64-4840-bf0c-653e4d8544ce_1296x.gif?v=1704478298",
+    "imageUrl": "/images/products/Traintrackr_NYC_Subway_Circuit_Board_20.gif",
     "affiliateLink": "https://store.moma.org/products/traintrackr-nyc-subway-circuit-board-2",
     "isSponsored": "f",
     "category": "Tech"
@@ -115,7 +115,7 @@
     "title": "Baratza Virtuoso\u2122+ Coffee Grinder",
     "description": "The Virtuoso\u2122+ simplifies your coffee prep in a stylish and compact package. Set your timer to the tenth of a second and dial-in your grind with the precision M2 burr. Hit start and fill the room with the fragrance of fresh-ground specialty coffee.",
     "price": "$249.95",
-    "imageUrl": "https://assets.breville.com/cdn-cgi/image/format=auto/ZCG587/ZCG587_Carousel3.png",
+    "imageUrl": "/images/products/Baratza_Virtuoso_Coffee_Grinder.png",
     "affiliateLink": "https://www.baratza.com/en-us/product/virtuosotm-zcg587?sku=ZCG587BLK1AUC1A",
     "isSponsored": "f",
     "category": "Kitchen"
@@ -148,7 +148,7 @@
     "title": "Stumptown Founder's Blend Whole Bean Coffee",
     "description": "Founder's Blend by Stumptown Coffee Roasters: This blend is a dose of Central American sunshine in a cup. Simple and chocolate-forward, this full-bodied cup is an all day, everyday drinker",
     "price": "$15.72",
-    "imageUrl": "https://stumptown-shop.imgix.net/products/Founders_Blend_Product_1.png?v=1649951363&auto=format,compress&w=1500",
+    "imageUrl": "/images/products/Stumptown_Founders_Blend_Whole_Bean_Coffee.png",
     "affiliateLink": "https://www.amazon.com/Stumptown-Coffee-Roasters-Founders-Full-Bodied/dp/B076ZZGHPH/ref=sr_1_1?crid=2TG18FAXW1IEO&dib=eyJ2IjoiMSJ9.1P4StpFoZb-PXuxKcUHMXdzufRjax0hnYtQFUdDpeJVj5chPKTRh_xDXFIKlFoEIENq8-XiXbGt5vUFxTE3Hwx_E-Y8EABYdyUU43ehhmdKgouSh_-Ic2fp3WVQJBeIB86Vm1EiKZ--dAK4zTca8YXU4D6mIBSuaz7w98AINdc27mRw2TVgxMgUfu59KLhTT.f_m8ciEOUUOm_Ra3G3iXD9XiNHXUPWM1DL6x8TiXFx4&dib_tag=se&keywords=stumptown%2Bfounders&qid=1740365401&rdc=1&sprefix=stumptown%2Bfounder%2Caps%2C183&sr=8-1&th=1",
     "isSponsored": "f",
     "category": "Kitchen"
@@ -181,7 +181,7 @@
     "title": "Light Phone III",
     "description": "This is a pre-order of the upcoming Light Phone III, an unlocked 5G/4GLTE cell phone.  You can cancel your pre-order at any point prior to shipping for a full refund.  We'll confirm your address prior to shipping.",
     "price": "$599.00",
-    "imageUrl": "https://images.ctfassets.net/tbduj203nkkk/73X8ObckXtL9e8mDcoICfZ/600eb880b1851b23a344049220deeee0/LightPhoneIII.Float.png?w=1300&fm=webp&q=85",
+    "imageUrl": "/images/products/Light_Phone_III.png",
     "affiliateLink": "https://www.thelightphone.com/shop/products/light-phone-iii",
     "isSponsored": "f",
     "category": "Tech"
@@ -214,7 +214,7 @@
     "title": "International Pocket Briefcase with Pocketini Pen",
     "description": "A folding Pocket Briefcase\u00ae and leather notepad, plus our Pocketini ballpoint pen. Use our pocket-size leather notepad to take notes on the go and keep them organized. Our International Pocket Briefcase dispenses fresh 3 x 5 cards and keeps completed ones separate. It has stash pockets for business cards, ID, a passport and a pen, too. Add a monogram for a personal touch.",
     "price": "$81.75",
-    "imageUrl": "https://www.levenger.com/cdn/shop/products/AL10400_INTERNATIONAL-POCKET-BRIEFCASE-POCKETINI-CLIP-PEN_PIN_s1.jpg?v=1692364679",
+    "imageUrl": "/images/products/International_Pocket_Briefcase_with_Pocketini_Pen.jpg",
     "affiliateLink": "https://www.levenger.com/collections/pocket-briefcases/products/international-pocket-briefcase-w-pocketini-pen?variant=42876119744661",
     "isSponsored": "f",
     "category": "Lifestyle"
@@ -225,7 +225,7 @@
     "title": "reMarkable Paper Pro",
     "description": "The ultimate paper tablet with 11.8\u201d color display, adjustable reading light, and unmatched paper-like feel.",
     "price": "$579.00",
-    "imageUrl": "https://cdn.sanity.io/images/xpujt61d/production/755b538a41217796a5ad0102f741dd1065381096-4000x4000.png?w=1400&fm=webp&sharp=20&q=42&dpr=2",
+    "imageUrl": "/images/products/reMarkable_Paper_Pro.png",
     "affiliateLink": "https://remarkable.com/store/remarkable-paper/pro",
     "isSponsored": "f",
     "category": "Tech"
@@ -236,7 +236,7 @@
     "title": "Beolab 19",
     "description": "Wireless subwoofer with powerful impact bass\nHigh-end wireless subwoofer bringing powerful bass and a unique sculptural design to your living room.",
     "price": "$4,750.00",
-    "imageUrl": "https://images.ctfassets.net/8cd2csgvqd3m/60OIJAMXb2OKfzXqnMIREF/a4b71730a7bbf482f262bcdccde84952/beolab-19-natural-hero.png?q=90&fm=webp&w=1200&h=1200&fit=fill",
+    "imageUrl": "/images/products/Beolab_19.png",
     "affiliateLink": "https://www.bang-olufsen.com/en/us/speakers/beolab-19",
     "isSponsored": "f",
     "category": "Tech"
@@ -247,7 +247,7 @@
     "title": "Tamitio Calligraphy Set",
     "description": "Tamitio calligraphy set. Fountain pen with barrel made of metal, black. High-quality stainless steel nib, rhodium-plated. Spring-loaded metal clip. Highly polished metal fittings. Cartridge / converter system. Chamois-colored gift box.",
     "price": "$335.00",
-    "imageUrl": "https://shop.graf-von-faber-castell.us/cdn/shop/products/gif4sypn5arihkc65cj6_2048x.jpg?v=1736363664",
+    "imageUrl": "/images/products/Calligraphyset.jpg",
     "affiliateLink": "https://shop.graf-von-faber-castell.us/products/calligraphy-set-tamitio-141506",
     "isSponsored": "f",
     "category": "Home"
@@ -313,7 +313,7 @@
     "title": "Hypervolt Go 2",
     "description": "Hyperice's most compact percussion massage device, designed to release muscle soreness on-the-move now in black.",
     "price": "$129.00",
-    "imageUrl": "https://images.ctfassets.net/sa0xzxw55dr7/6f0IYnNWwVQ0LDEEnPha0T/bbd78abac4f2d0725a42fbdc50edc5c2/Hypervolt_Go_2_Black_2.webp?fm=webp&w=3840&q=90",
+    "imageUrl": "/images/products/Hypervolt_Go_2.webp",
     "affiliateLink": "https://hyperice.com/products/hypervolt-go-2-black/?nbt=nb%3Aadwords%3Ax%3A17287535695%3A%3A&nb_adtype=pla&nb_kwd=&nb_ti=&nb_mi=109153790&nb_pc=online&nb_pi=55205%20001-01&nb_ppi=&nb_placement=&nb_li_ms=&nb_lp_ms=&nb_fii=&nb_ap=&nb_mt=&gad_source=1&gbraid=0AAAAADuMRhjGfKyTz5bheeVx8E6UckCjZ&gclid=Cj0KCQiAz6q-BhCfARIsAOezPxk2QW59onIHWx3DPEvMoTyOqpTYUHMxjhaV-LqMxrch8nSkPE4qdo4aAuqIEALw_wcB",
     "isSponsored": "f",
     "category": "Tech"
@@ -324,7 +324,7 @@
     "title": "Logan 1 Person Indoor Sauna",
     "description": "Designed for small spaces, fitting in an apartment, bathroom, or closet. It seats one person, heating to 180\u00baF with a Harvia 6kW heater in an hour or on a delayed start up to eight hours. Designed to use existing flooring, it\u2019s a perfect compact home sauna solution.",
     "price": "$5,810.00",
-    "imageUrl": "https://almostheaven.com/cdn/shop/files/Respite_Logan_Rustic_700x700@2x.png?v=1741393159",
+    "imageUrl": "/images/products/Logan_1_Person_Indoor_Sauna.png",
     "affiliateLink": "https://almostheaven.com/collections/traditional-saunas/products/logan-1-person-indoor-sauna?variant=46268215722202",
     "isSponsored": "f",
     "category": "Home"
@@ -346,7 +346,7 @@
     "title": "Zojirushi \u00ae 3-Cup Rice Cooker",
     "description": "Developed in Japan by the makers of the original rice cooker, a microchip maintains perfect time and temperature to produce moist, fluffy rice time after time. Large LCD displays clock and timer functions and a menu of settings for white, sushi, brown, quick-cooking and gaba rice; as well as porridge and oatmeal. ",
     "price": "$169.95",
-    "imageUrl": "https://cb.scene7.com/is/image/Crate/ZojirushiRiceCooker3CupSHF16?$web_pdp_main_carousel_high$",
+    "imageUrl": "/images/products/Zojirushi_3-Cup_Rice_Cooker.jpg",
     "affiliateLink": "https://www.crateandbarrel.com/zojirushi-3-cup-rice-cooker/s194213?storeid=&a=1552&campaignid=12495285595&adgroupid=120645470124&targetid=pla-294680686006&pla_sku=194213&pcat=HSW&ag=adult&gad_source=1&gclid=CjwKCAjwvr--BhB5EiwAd5YbXuR0MKPtJdvvHPhiOOiDiwiVpfTYSYJJdr4VVn0F69g1ANyAIVcqrBoCroUQAvD_BwE#universal_link",
     "isSponsored": "f",
     "category": "Kitchen"
@@ -368,7 +368,7 @@
     "title": "Morgan Supersport",
     "description": "Supersport embodies an effortless combination of dynamic performance and contemporary, yet unmistakable, design. Every element has been carefully considered to create an engaging and unforgettable driving experience. One that delivers pure driving joy.",
     "price": "$92,182.92 (approx.)",
-    "imageUrl": "https://morgan-motor.com/wp-content/uploads/supersport-roof-options.gif",
+    "imageUrl": "/images/products/Morgan_Supersport.gif",
     "affiliateLink": "https://morgan-motor.com/models/supersport/",
     "isSponsored": "f",
     "category": "Cars"
@@ -390,7 +390,7 @@
     "title": "Lloyd Modern Gel Fuel Fireplace",
     "description": "Enjoy crackling fire, warm flames and mood-evoking colors indoors or outdoors. The Lloyd Fireplace blends the latest in mid-century modern inspired design with an electroplated steel body. ",
     "price": "$699.99",
-    "imageUrl": "https://content.solostove.com/image/upload/c_fill,h_405,w_405/f_auto/dpr_auto/q_auto/v1/transform/b99a1117-8fa9-46bf-aa43-9f8bb94ee3e3/LLoyd-Sunkissed_Product-01",
+    "imageUrl": "/images/products/Lloyd_Modern_Gel_Fuel_Fireplace.jpg",
     "affiliateLink": "https://www.solostove.com/en-us/p/lloyd-modern-gel-fuel-fireplace?sku=TF-LYD44-2-GRY-6K",
     "isSponsored": "f",
     "category": "Home"
@@ -401,7 +401,7 @@
     "title": "Leather Ridge Wallet",
     "description": "Every leather Ridge wallet is made with oil-waxed, full-grain leather and designed to patina like a sleeker, slimmer version of a traditional bifold. Soft to the touch but packed with all the security features of our original metal wallets.",
     "price": "$99.00",
-    "imageUrl": "https://cdn.shopify.com/s/files/1/0613/6213/files/WALLET_ANGLE_CS_eb83cf1d-9116-4f5b-aee4-13e93e57bca9.jpg?v=1724685883",
+    "imageUrl": "/images/products/Leather_Ridge_Wallet.jpg",
     "affiliateLink": "https://ridge.com/products/tobacco-brown",
     "isSponsored": "f",
     "category": "Lifestyle"
@@ -445,7 +445,7 @@
     "title": "Ralph Lauren Iconic Flag Sweater",
     "description": "Made in the USA, The Iconic Flag Sweater from Polo Ralph Lauren embodies Ralph Lauren\u2019s long-standing love of American style. The unisex sweater\u2019s 13 stars and stripes recall early American flags, including the one that flew over Fort McHenry during the War of 1812, which inspired Francis Scott Key to write \u201cThe Star-Spangled Banner,\u201d and the restoration of which Ralph Lauren generously helped underwrite in 1998.",
     "price": "$398.00",
-    "imageUrl": "https://dtcralphlauren.scene7.com/is/image/PoloGSI/s7-AI710718281007_lifestyle?$rl_4x5_zoom$",
+    "imageUrl": "/images/products/Ralph_Lauren_Iconic_Flag_Sweater.jpg",
     "affiliateLink": "https://www.ralphlauren.com/men-clothing-sweaters/the-iconic-flag-sweater/0078524667.html",
     "isSponsored": "f",
     "category": "Lifestyle"
@@ -467,7 +467,7 @@
     "title": "Rorra Countertop System",
     "description": "Our 2.5 gallon stainless steel water filtration system is designed with a timeless combination of form and function, for an elevated look and feel. Rigorously tested by the NSF\u00ae.",
     "price": "$449.00",
-    "imageUrl": "https://rorra.com/cdn/shop/files/PDPCounterTopSystem1-none1_2_7e6cdf2a-091f-4276-9ff4-b2bca9d52210.jpg?v=1732046941&width=1800",
+    "imageUrl": "/images/products/Rorra_Countertop_System.jpg",
     "affiliateLink": "https://rorra.com/products/countertop-system",
     "isSponsored": "f",
     "category": "Kitchen"
@@ -511,7 +511,7 @@
     "title": "Homecoat",
     "description": "The Homecoat by Off Hours NY in Michelangelo is a combination of premium cottons \u2013 classic super soft French Terry forms the outside, and 'sanded' cotton jersey lines the inside (specially fabricated to give it a velvety soft finish).",
     "price": "$295.00",
-    "imageUrl": "https://offhours.co/cdn/shop/products/FPO_11_1732_2048x.jpg?v=1701741281",
+    "imageUrl": "/images/products/Homecoat_261e94.jpg",
     "affiliateLink": "https://offhours.co/collections/shop-all/products/michelangelo-preorder",
     "isSponsored": "f",
     "category": "Lifestyle"
@@ -522,7 +522,7 @@
     "title": "Nightside NS01 Table Lamp",
     "description": "Winner of both 2024 iF Design and LIT Design awards. The soft glow of the Nightside NS01 table lamp creates a relaxing ambience, while a press of a button extends a patented reading spotlight that won't bother anyone else.",
     "price": "$349.00",
-    "imageUrl": "https://nightside.com/cdn/shop/files/Nightside_close_up_room_WhiteLamp_SpotLight_Book.jpg?v=1739219990&width=2890",
+    "imageUrl": "/images/products/Nightside_NS01_Table_Lamp.jpg",
     "affiliateLink": "https://nightside.com/products/nightside-lamp-white",
     "isSponsored": "f",
     "category": "Home"
@@ -533,7 +533,7 @@
     "title": "Reencle Home Composter",
     "description": "Breakthrough three-layer filter system ensures odor-free composting.Enjoy the convenience of fast organic composting without odor! Easily process kitchen scraps into beneficial compost.",
     "price": "$499.00",
-    "imageUrl": "https://reencle.co/cdn/shop/files/reencle_prime_main_01_37b11802-607e-4e28-af89-3d52362616e0.png?v=1739865110",
+    "imageUrl": "/images/products/Reencle_Home_Composter.png",
     "affiliateLink": "https://reencle.co/products/reencle-food-waste-composter?gad_source=1&gclid=Cj0KCQjwhYS_BhD2ARIsAJTMMQaaHxcwMLba2kRP-5p0G6r3SEJQkEoilStM2tRvWZIp9NJU5rGd8M0aAsoxEALw_wcB",
     "isSponsored": "f",
     "category": "Home"
@@ -544,7 +544,7 @@
     "title": "Creed Aventus Men's Fragrance",
     "description": "Audacious, confident and powerful, this signature fragrance from The House of Creed has been delicately crafted to create a true contemporary classic.",
     "price": "$495.00",
-    "imageUrl": "https://creedboutique.com/cdn/shop/files/aventus-100ml-bottle_3413e5f4-3eee-40b3-8451-2546a370ec5b.jpg?v=1734710265&width=1500",
+    "imageUrl": "/images/products/Creed_Aventus_Mens_Fragrance.jpg",
     "affiliateLink": "https://creedboutique.com/products/aventus?variant=32812846743649",
     "isSponsored": "f",
     "category": "Beauty"
@@ -555,7 +555,7 @@
     "title": "Key Wrangler",
     "description": "Key Wrangler is a key holder and organizer. It is designed with a built forever snappy spring clip and a post to keep your keys tidy and easy to access.",
     "price": "$90.00",
-    "imageUrl": "https://cdn.shopify.com/s/files/1/0003/9371/products/orange-keys-on-off_33ce70bb-c805-456d-b968-0021a3007470_1024x1024.gif?v=1570644636",
+    "imageUrl": "/images/products/Key_Wrangler.gif",
     "affiliateLink": "https://cwandt.com/products/key-wrangler?variant=42857376612508",
     "isSponsored": "f",
     "category": "Lifestyle"
@@ -588,7 +588,7 @@
     "title": "Chisos Reserve King Roper Boots",
     "description": "The stunning Chisos Reserve: King Roper elevates the humble roper from a purely utilitarian boot to a statement piece. Full quill ostrich leather hugs the vamps while smooth ostrich forms the uppers, complete with ostrich pulls.",
     "price": "$1,295.00",
-    "imageUrl": "https://chisos.com/cdn/shop/files/boots-chisos-reserve-king-roper-burnt-orange-ostrich-31899834777653_1800x1800.png?v=1706675595",
+    "imageUrl": "/images/products/Chisos_Reserve_King_Roper_Boots.png",
     "affiliateLink": "https://chisos.com/collections/mens-boots/products/king-roper?variant=40121659392053",
     "isSponsored": "f",
     "category": "Lifestyle"
@@ -610,7 +610,7 @@
     "title": "Wake Up Pill \u2013 Time-Release Caffeine",
     "description": "Developed by sleep experts and validated in peer-reviewed studies, our wake-up supplement supports waking up refreshed, and helps counteract sleep inertia.",
     "price": "$74.94",
-    "imageUrl": "https://takezest.com/_next/image?url=https%3A%2F%2Fcdn.shopify.com%2Fs%2Ffiles%2F1%2F0695%2F6548%2F1180%2Ffiles%2Fpill_twirl.gif%3Fv%3D1740546914&w=3840&q=75",
+    "imageUrl": "/images/products/Wake_Up_Pill_Time-Release_Caffeine.gif",
     "affiliateLink": "https://takezest.com/product/wake-up-pill",
     "isSponsored": "f",
     "category": "Health"
@@ -621,7 +621,7 @@
     "title": "Shure SM7B Microphone",
     "description": "The SM7B dynamic microphone has a smooth, flat, wide-range frequency response appropriate for music and speech in all professional audio applications.",
     "price": "$399.00",
-    "imageUrl": "https://products.shureweb.eu/cdn-cgi/image/width=1380,height=1380,format=auto/shure_product_db/product_images/files/05e/f1e/39-/original/5f1d666de11427b3c08b4190b44ff37e.webp",
+    "imageUrl": "/images/products/Shure_SM7B.png",
     "affiliateLink": "https://www.amazon.com/Shure-Microphone-Wide-Range-Construction-Detachable/dp/B0002E4Z8M/ref=sr_1_1_sspa?dib=eyJ2IjoiMSJ9.3Rhd3ZzgYplmKvTVT0z3wHtAusdefIWOEOPZcPiAFMCroYhRI9-MSuUIuxF4i0kSCL0JOOUbPh_Uj8TsdG5gsT2IVRocuvMRPyRTvyjyIHHFENVOfNfl21eeb-gzDzwpUo6GC_MxPk2KFehQKZT-yvD9lYJwAymoN8KMnFme0DfuSCHqZG4lFrnxpbtfXsWVgv_SiyKX4aWq6kL9uAbnJEKeGk-88dr3dvfxSlzbrNQuFHdmjtn3l2g74qonyfKkMtkmZlDT4VQH5wbGjwQNsKlfG8gQD2El6i_5ZSJY7aI.kc-5V8DzDIEfgG_JG2arkoP5jjJ7A4pVHkOa6hjJocY&dib_tag=se&hvadid=598856379541&hvdev=c&hvlocphy=1020519&hvnetw=g&hvqmt=e&hvrand=9056823121893736799&hvtargid=kwd-695878421&hydadcr=29174_14609374&keywords=shure%2Bsm7b&mcid=b5d6247c4e9a321d9e3b597d71f6a4f9&qid=1742319540&sr=8-1-spons&sp_csd=d2lkZ2V0TmFtZT1zcF9hdGY&th=1",
     "isSponsored": "f",
     "category": "Home"
@@ -654,7 +654,7 @@
     "title": "Ray-Ban Meta Headliner Glasses",
     "description": "A hybrid of the Wayfarer and the Round, the Headliner glasses allow you to make the most of every moment. Use your voice to get fast answers with Meta AI, capture memories, make calls, send messages, listen to music, livestream and more.",
     "price": "$299.00",
-    "imageUrl": "https://lookaside.fbsbx.com/elementpath/media/?media_id=3705214173135892&version=1738657986&transcode_extension=webp",
+    "imageUrl": "/images/products/Ray-Ban_Meta_Headliner_Glasses.webp",
     "affiliateLink": "https://www.amazon.com/Meta-Ray-Ban-Headliner-Standard-Glasses/dp/B0D9PLZFB8?ref_=ast_sto_dp&th=1&psc=1",
     "isSponsored": "f",
     "category": "Tech"
@@ -665,7 +665,7 @@
     "title": "Raw Honey Ice Cream (1 Pint)",
     "description": "Ice Cream for Bears is naturally sweetened with pure raw honey, crafted from rich grass-fed dairy, and made without any additives or refined sugars for wholesome indulgence.",
     "price": "$12.00",
-    "imageUrl": "https://icecreamforbears.com/cdn/shop/files/Choc-Updated.png?v=1733957916&width=1800",
+    "imageUrl": "/images/products/Raw_Honey_Ice_Cream_1_Pint.png",
     "affiliateLink": "https://icecreamforbears.com/",
     "isSponsored": "f",
     "category": "Food"
@@ -709,7 +709,7 @@
     "title": "S'well Original Bottle",
     "description": "S'well's signature Therma-S\u2019well\u00ae Technology is designed to keep beverages colder or hotter, longer than all the rest.",
     "price": "$35.00",
-    "imageUrl": "https://www.swell.com/cdn/shop/files/Swell-Water-Bottle-17oz-Brown-Teakwood-LifeStyle-1.jpg?v=1741665372&width=1600",
+    "imageUrl": "/images/products/Swell_Original_Bottle.jpg",
     "affiliateLink": "https://www.swell.com/products/original-bottle-17oz?variant=44119048454402",
     "isSponsored": "f",
     "category": "Kitchen"
@@ -731,7 +731,7 @@
     "title": "Daily Performance Gummies",
     "description": "A monthly supply of Create Gummies - just take 4 gummies per day for your daily dose of creatine, key vitamins and minerals, alongside a core mushrooms and greens blend.",
     "price": "$89.00",
-    "imageUrl": "https://trycreate.co/cdn/shop/files/Create_Wellness_Greens_120cnt_FRONT_3D_Gummies_002_BROWN_Transparent.png?v=1728576255&width=1080",
+    "imageUrl": "/images/products/Daily_Performance_Gummies.png",
     "affiliateLink": "https://trycreate.co/products/daily-performance-gummies",
     "isSponsored": "f",
     "category": "Food"
@@ -742,7 +742,7 @@
     "title": "Vestaboard",
     "description": "Inspire family, team members, or guests by easily sending messages from anywhere with the award-winning messaging display.",
     "price": "$3,499.00",
-    "imageUrl": "https://shop.vestaboard.com/cdn/shop/products/vb-shop-5_47d661c9-289f-402d-86e0-4b1368d495d4_2048x.jpg?v=1617643302",
+    "imageUrl": "/images/products/Vestaboard.jpg",
     "affiliateLink": "https://shop.vestaboard.com/products/vestaboard",
     "isSponsored": "f",
     "category": "Home"
@@ -753,7 +753,7 @@
     "title": "Waffle Stitch Button Up in Flax",
     "description": "Crafted from a waffle sweater knit, this shirt by The Normal Brand offers a textured and lightweight feel, ensuring optimal breathability for all-day comfort. ",
     "price": "$118.00",
-    "imageUrl": "https://thenormalbrand.com/cdn/shop/files/PIC_1_8d071fbc-23e8-4317-b7be-20c12f90b6d5.jpg?v=1741812883",
+    "imageUrl": "/images/products/Waffle_Stitch_Button_Up_in_Flax.jpg",
     "affiliateLink": "https://thenormalbrand.com/products/waffle-knit-button-up-flax?variant=43790922055852",
     "isSponsored": "f",
     "category": "Lifestyle"
@@ -830,7 +830,7 @@
     "title": "Caswell-Massey 3-Soap Bundle",
     "description": "Their products reflect ten generations of expertise in fine American fragrance and a longstanding dedication to naturally derived, mindfully formulated bath soaps and skincare.",
     "price": "$36.00",
-    "imageUrl": "https://www.caswellmassey.com/cdn/shop/files/ThreeSoapSet_BuildYourOwn_Silo_PM_0031_3000px_RGB.png?v=1730739922&width=1600",
+    "imageUrl": "/images/products/Caswell-Massey_3-Soap_Bundle.png",
     "affiliateLink": "https://www.caswellmassey.com/products/build-your-own-3-soap-set",
     "isSponsored": "f",
     "category": "Home"
@@ -841,7 +841,7 @@
     "title": "Birdie\u00ae 2.0 Air Quality Monitor",
     "description": "When air quality is poor, Birdie\u00ae will drop down until you open your windows and bring it back to life. Simple as that.",
     "price": "$189.00",
-    "imageUrl": "https://www.birdie.design/cdn/shop/files/Birdie_product_and_packaging.png?v=1720429336&width=1600",
+    "imageUrl": "/images/products/Birdie_20_Air_Quality_Monitor.png",
     "affiliateLink": "https://www.birdie.design/en-us/products/birdie-yellow",
     "isSponsored": "f",
     "category": "Home"
@@ -852,7 +852,7 @@
     "title": "Stand+ AntiGrav2 Shoes",
     "description": "STAND+ AntiGrav2s are engineered with Energy-Recovery Technology\u2122 to reduce strain on knees, back and joints - keeping you comfortable, energized, and ready to conquer whatever your day demands.",
     "price": "$140.00",
-    "imageUrl": "https://www.standshoes.com/cdn/shop/files/AntiGrav2_Snow_3_6220c18d-2c4f-4464-a2c5-0df970881be2_1540x.progressive.jpg?v=1744904790",
+    "imageUrl": "/images/products/Stand_AntiGrav2_Shoes.jpg",
     "affiliateLink": "https://www.standshoes.com/products/antigrav2",
     "isSponsored": "f",
     "category": "Lifestyle"
@@ -863,7 +863,7 @@
     "title": "Clean Towels XL Bamboo",
     "description": "50 Dermatologist-approved single use face towels. Clinically shown to improve your skin barrier, multi-functional addition to your skincare routine.",
     "price": "$17.95",
-    "imageUrl": "https://cleanskinclub.com/cdn/shop/files/Bamboo-01-Open-Top-left_1_1.png?v=1686325576&width=1080",
+    "imageUrl": "/images/products/Clean_Towels_XL_Bamboo.png",
     "affiliateLink": "https://www.amazon.com/dp/B091FFGXBN?ref=ppx_yo2ov_dt_b_fed_asin_title",
     "isSponsored": "f",
     "category": "Health"
@@ -874,7 +874,7 @@
     "title": "Slate EV Truck",
     "description": "It's a Slate. A radically simple electric pickup truck that can change into whatever you need it to be \u2013 even an SUV. Made in the USA at a price that\u2019s actually affordable (no really, for real).",
     "price": "$20,000 (Est.)",
-    "imageUrl": "https://images.ctfassets.net/20dhmw20vttc/5sxbrRCTjZyVk3IGlbGlkG/6dec8a6932cf9de77498eb893bc98e08/homepage-carousel-a-snap-to-wrap-gif.gif?fm=webp&w=3840&q=75",
+    "imageUrl": "/images/products/Slate_EV_Truck.gif",
     "affiliateLink": "https://www.slate.auto/en",
     "isSponsored": "f",
     "category": "Vehicles"
@@ -885,7 +885,7 @@
     "title": "Bambu Lab P1S 3D Printer",
     "description": "It just works right out of the box. You don't have to mess with it, just simply hit print, and the printer will handle all the calibrations (Auto-Bed Leveling, Vibration compensation) for you. Enjoy trouble-free printing every time with your P1S.",
     "price": "$799.00",
-    "imageUrl": "https://store.bblcdn.com/s7/default/3b6ee971dfc44d14b3685f9fb4c91229/H2D.png__op__resize,m_lfit,w_640__op__format,f_auto__op__quality,q_90",
+    "imageUrl": "/images/products/Bambu_Lab_P1S_3D_Printer.png",
     "affiliateLink": "https://us.store.bambulab.com/products/p1s",
     "isSponsored": "f",
     "category": "Tech"
@@ -896,7 +896,7 @@
     "title": "Bauer Lite Keyboard Kit",
     "description": "Bauer Lite is the injection molded version of their flagship keyboard, Bauer. Over 3 years of R&D lead them to create the best keyboard possible with the most value packed in.",
     "price": "$119.99",
-    "imageUrl": "https://omnitype.com/cdn/shop/files/DSC09248-Edit.jpg?v=1745291128",
+    "imageUrl": "/images/products/Bauer_Lite_Keyboard_Kit.jpg",
     "affiliateLink": "https://omnitype.com/collections/keyboards/products/bauer-lite?variant=44169323479209",
     "isSponsored": "f",
     "category": "Tech"
@@ -907,7 +907,7 @@
     "title": "Tonal 2",
     "description": "An all-in-one smart home gym designed with your goals in mind. Tonal sets your optimal weight for every move, and responsively adjusts to keep you challenged as you build muscle. A blend of cardio and strength.",
     "price": "$4,295.00",
-    "imageUrl": "https://tonal.com/cdn/shop/files/6.png?v=1741105144&width=1110",
+    "imageUrl": "/images/products/Tonal_2.png",
     "affiliateLink": "https://www.tonal.com/product/tonal-2/",
     "isSponsored": "f",
     "category": "Tech"
